@@ -58,9 +58,9 @@ function Signup3() {
                 <p>산책을 매일 하나요?</p>
                 <div className="select">
                   <input type="radio" id="walk1" name="walk" value="yes" />
-                  <label for="walk1">YES</label>
+                  <label htmlFor="walk1">YES</label>
                   <input type="radio" id="walk2" name="walk" value="no" />
-                  <label for="walk2">NO</label>
+                  <label htmlFor="walk2">NO</label>
                 </div>
                 <p>건강고민이 있나요?</p>
                 <div className="select">
@@ -77,7 +77,7 @@ function Signup3() {
                     name="health"
                     value="viscera"
                   />
-                  <label htmlFor="health2"></label>
+                  <label htmlFor="health2">장</label>
                   <input
                     type="checkbox"
                     id="health3"
