@@ -57,9 +57,9 @@ function Signup2() {
               >
                 <div className="select">
                   <input type="radio" id="animal1" name="animal" value="dog" />
-                  <label for="animal1">강아지</label>
+                  <label htmlFor="animal1">강아지</label>
                   <input type="radio" id="animal2" name="animal" value="cat" />
-                  <label for="animal2">고양이</label>
+                  <label htmlFor="animal2">고양이</label>
                 </div>
                 <input
                   className="form"
@@ -78,21 +78,21 @@ function Signup2() {
                 <p>성별</p>
                 <div className="select">
                   <input type="radio" id="gender1" name="gender" value="male" />
-                  <label for="gender1">남</label>
+                  <label htmlFor="gender1">남</label>
                   <input
                     type="radio"
                     id="gender2"
                     name="gender"
                     value="female"
                   />
-                  <label for="gender2">여</label>
+                  <label htmlFor="gender2">여</label>
                 </div>
                 <p>중성화 유무</p>
                 <div className="select">
                   <input type="radio" id="neut1" name="neut" value="yes" />
-                  <label for="neut1">YES</label>
+                  <label htmlFor="neut1">YES</label>
                   <input type="radio" id="neut2" name="neut" value="no" />
-                  <label for="neut2">NO</label>
+                  <label htmlFor="neut2">NO</label>
                 </div>
                 <input
                   className="form"

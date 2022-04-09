@@ -70,42 +70,42 @@ function Signup3() {
                     name="health"
                     value="allery"
                   />
-                  <label for="health1">알레르기</label>
+                  <label htmlFor="health1">알레르기</label>
                   <input
                     type="checkbox"
                     id="health2"
                     name="health"
                     value="viscera"
                   />
-                  <label for="health2">장</label>
+                  <label htmlFor="health2"></label>
                   <input
                     type="checkbox"
                     id="health3"
                     name="health"
                     value="teeth"
                   />
-                  <label for="health3">이빨/구강</label>
+                  <label htmlFor="health3">이빨/구강</label>
                   <input
                     type="checkbox"
                     id="health4"
                     name="health"
                     value="bone"
                   />
-                  <label for="health4">뼈/관절</label>
+                  <label htmlFor="health4">뼈/관절</label>
                   <input
                     type="checkbox"
                     id="health5"
                     name="health"
                     value="fatness"
                   />
-                  <label for="health5">비만</label>
+                  <label htmlFor="health5">비만</label>
                   <input
                     type="checkbox"
                     id="health6"
                     name="health"
-                    value="viscera"
+                    value="skin fur"
                   />
-                  <label for="health6">장</label>
+                  <label htmlFor="health6">피부/모질</label>
                   <input
                     type="checkbox"
                     id="health7"
@@ -113,28 +113,28 @@ function Signup3() {
                     value="old"
                   />
 
-                  <label for="health7">노령</label>
+                  <label htmlFor="health7">노령</label>
                   <input
                     type="checkbox"
                     id="health8"
                     name="health"
                     value="kidneys"
                   />
-                  <label for="health8">신장/요로</label>
+                  <label htmlFor="health8">신장/요로</label>
                   <input
                     type="checkbox"
                     id="health9"
                     name="health"
                     value="breath"
                   />
-                  <label for="health9">호흡기</label>
+                  <label htmlFor="health9">호흡기</label>
                   <input
                     type="checkbox"
                     id="health10"
                     name="health"
                     value="diabetes"
                   />
-                  <label for="health10">당뇨</label>
+                  <label htmlFor="health10">당뇨</label>
 
                   <input
                     type="checkbox"
@@ -142,26 +142,26 @@ function Signup3() {
                     name="health"
                     value="heart"
                   />
-                  <label for="health11">심장</label>
+                  <label htmlFor="health11">심장</label>
                   <input
                     type="checkbox"
                     id="health12"
                     name="health"
                     value="eyes_ears"
                   />
-                  <label for="health12">눈/귀</label>
+                  <label htmlFor="health12">눈/귀</label>
                 </div>
                 <p>알레르기가 있나요?</p>
                 <div className="select">
                   <input type="radio" id="allergy1" name="allergy" value="no" />
-                  <label for="allergy1">YES</label>
+                  <label htmlFor="allergy1">YES</label>
                   <input
                     type="radio"
                     id="allergy2"
                     name="allergy"
                     value="yes"
                   />
-                  <label for="allergy2">NO</label>
+                  <label htmlFor="allergy2">NO</label>
                 </div>
                 <button
                   className="btn"
