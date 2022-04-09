@@ -1,0 +1,74 @@
+#container {
+  margin-left: 0;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: end;
+  background-color: rgb(245, 230, 230);
+}
+#authLayout {
+  width: 390px;
+
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 20px 20px 0px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.text {
+  margin-top: 31px;
+  width: 342px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 500;
+}
+#text_1 {
+  font-size: 25px;
+}
+#text_2 {
+  font-size: 17px;
+  margin-top: 30px;
+}
+#text_3 {
+  font-size: 15px;
+  color: #777777;
+  margin-top: 30px;
+}
+#btn {
+  margin-top: 40px;
+  width: 339px;
+  float: block;
+}
+.btn1 {
+  background-color: white;
+  color: #ed7567;
+  border: solid 0.5px #ed7567;
+  border-radius: 7px;
+  width: 339px;
+  height: 49px;
+}
+.btn2 {
+  background-color: #ed7567;
+  color: white;
+  border: solid 0.5px #ed7567;
+  border-radius: 7px;
+  width: 339px;
+  height: 49px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 200px) and (max-width: 900px) {
+  #container {
+    display: flex;
+
+    justify-content: left;
+    align-items: end;
+  }
+  #authLayout {
+    display: flex;
+    justify-content: center;
+  }
+}

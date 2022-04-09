@@ -1,0 +1,40 @@
+.text_input {
+  background: #ffffff;
+  border: 1px solid #9c9c9c;
+  border-radius: 4px;
+  width: 352px;
+  height: 50px;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: -0.24px;
+  color: #9c9c9c;
+  text-align: left;
+}
+#nya {
+  margin-top: 31px;
+  display: flex;
+  flex-direction: column;
+}
+#loginform {
+  height: 292px;
+}
+.login {
+  margin-top: 10px;
+}
+.password {
+  margin-top: 25px;
+}
+
+.submit {
+  background-color: #ed7567;
+  text-align: center;
+  margin-top: 81px;
+  position: absolute;
+  width: 339px;
+  height: 49px;
+  border-radius: 7px;
+  border: none;
+  color: #ffffff;
+}
