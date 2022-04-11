@@ -26,11 +26,7 @@ function Signup() {
         </div>
         <div id="outline">
           <div id="formContainer">
-            <form
-              action="http://localhost:3000/signup2"
-              method="get"
-              id="signUpForm"
-            >
+            <form action="/signup2" method="get" id="signUpForm">
               <input
                 className="form"
                 type="text"

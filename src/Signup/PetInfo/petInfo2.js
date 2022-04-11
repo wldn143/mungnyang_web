@@ -47,11 +47,7 @@ function Signup3() {
         <div id="outline">
           <div id="authLayout">
             <div id="formContainer2">
-              <form
-                action="http://localhost:3000/complete"
-                method="get"
-                id="signUpForm2"
-              >
+              <form action="/complete" method="get" id="signUpForm2">
                 <p>산책을 매일 하나요?</p>
                 <div className="select">
                   <input type="radio" id="walk1" name="walk" value="yes" />

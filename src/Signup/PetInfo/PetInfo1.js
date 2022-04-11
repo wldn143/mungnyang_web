@@ -46,11 +46,7 @@ function Signup2() {
         <div id="outline">
           <div id="authLayout">
             <div id="formContainer2">
-              <form
-                action="http://localhost:3000/signup3"
-                method="get"
-                id="signUpForm2"
-              >
+              <form action="/signup3" method="get" id="signUpForm2">
                 <div className="select">
                   <input type="radio" id="animal1" name="animal" value="dog" />
                   <label htmlFor="animal1">강아지</label>
