@@ -1,10 +1,6 @@
-import React, { useState } from "react";
-import { Form, Input, InputNumber, Button, Icon } from "antd";
+import { Button } from "antd";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { Select, Radio } from "antd";
 import "./petInfo.css";
-
 import { LeftOutlined } from "@ant-design/icons";
 
 function Signup2() {
