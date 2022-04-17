@@ -10,14 +10,9 @@
   justify-content: space-around;
   align-items: center;
   font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
   font-size: 20px;
   margin-right: 20px;
-
-  /* or 133% */
   text-align: center;
-
   color: black;
   margin-top: 30px;
   height: 100px;
@@ -42,20 +37,23 @@
   height: 50px;
   background: #ffffff;
   border: 1px solid #9c9c9c;
-  box-sizing: border-box;
   border-radius: 4px;
   margin-bottom: 20px;
-
   font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 20px;
-  /* or 167% */
-
-  letter-spacing: -0.24px;
-
+  letter-spacing: 0.1px;
   color: #9c9c9c;
+}
+input[type] {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: black;
+  padding-left: 5px;
 }
 
 button.btn {
@@ -66,6 +64,7 @@ button.btn {
   color: white;
   margin-left: 5px;
   margin-top: 30px;
+  border: none;
 }
 #health {
   margin-left: 20%;

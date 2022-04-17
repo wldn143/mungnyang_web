@@ -1,28 +1,29 @@
 #formContainer2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 600px;
-  width: 500px;
+  margin-top: 50px;
   margin-left: 18px;
 }
 
 .select input[type="radio"] {
   display: none;
 }
-
+.select {
+  margin-bottom: 15px;
+  margin-left: 5px;
+}
+.question {
+  margin-top: 25px;
+}
 .select input[type="radio"] + label {
   color: #9e9e9e;
   background-color: white;
   border: 1px solid #b1b1b1;
   box-sizing: border-box;
   border-radius: 6px;
-  width: 75px;
-  height: 29px;
+
   text-align: center;
   margin-right: 15px;
   margin-bottom: 25px;
+  padding: 3px 15px 3px 15px;
 }
 .select input[type="radio"]:checked + label {
   color: white;
@@ -36,15 +37,13 @@
 
 .select input[type="checkbox"] + label {
   color: #9e9e9e;
-  background-color: white;
+  background-color: #ffffff;
   border: 1px solid #b1b1b1;
   box-sizing: border-box;
   border-radius: 6px;
-  width: 75px;
-  height: 29px;
+  padding: 3px 15px 3px 15px;
   text-align: center;
   margin-right: 15px;
-  margin-bottom: 10px;
 }
 .select input[type="checkbox"]:checked + label {
   color: white;

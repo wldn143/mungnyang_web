@@ -55,7 +55,8 @@ function Signup3() {
                   <input type="radio" id="walk2" name="walk" value="no" />
                   <label htmlFor="walk2">NO</label>
                 </div>
-                <p>건강고민이 있나요?</p>
+                <p className="question">건강고민이 있나요?</p>
+
                 <div className="select">
                   <input
                     type="checkbox"
@@ -85,12 +86,15 @@ function Signup3() {
                     value="bone"
                   />
                   <label htmlFor="health4">뼈/관절</label>
+                </div>
+                <div className="select">
                   <input
                     type="checkbox"
                     id="health5"
                     name="health"
                     value="fatness"
                   />
+
                   <label htmlFor="health5">비만</label>
                   <input
                     type="checkbox"
@@ -114,6 +118,8 @@ function Signup3() {
                     value="kidneys"
                   />
                   <label htmlFor="health8">신장/요로</label>
+                </div>
+                <div className="select">
                   <input
                     type="checkbox"
                     id="health9"
@@ -144,7 +150,8 @@ function Signup3() {
                   />
                   <label htmlFor="health12">눈/귀</label>
                 </div>
-                <p>알레르기가 있나요?</p>
+
+                <p className="question">알레르기가 있나요?</p>
                 <div className="select">
                   <input type="radio" id="allergy1" name="allergy" value="no" />
                   <label htmlFor="allergy1">YES</label>
