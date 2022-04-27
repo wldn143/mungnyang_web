@@ -1,18 +1,49 @@
 import "./App.css";
-import Home from "./Home";
+import Home from "./screens/Home";
+import SignUp from "./screens/SignUp";
 import { Switch, Route, useHistory } from "react-router-dom";
-import Login from "./Login";
-import Signup from "./Signup";
-import Signup2 from "../src/Signup/PetInfo/PetInfo1";
-import Signup3 from "./Signup/PetInfo/petInfo2";
-import Complete from "./Signup/PetInfo/Complete";
-import Main from "./main";
+import Login from "./screens/Login";
+import SignUp2 from "./screens/SignUp2";
+import Ocr from "./screens/Ocr";
 import "antd/dist/antd.min.css";
+import routes from "./routes";
+import SignUp3 from "./screens/SignUp3";
+import SignUpComplete from "./screens/SignUpComplete";
+import OcrUpload from "./screens/OcrUpload";
+import OcrHw from "./screens/OcrHw";
 function App() {
-  const history = useHistory();
   return (
     <div>
-      <div id="header"></div>
+      <Route exact={true} path="/">
+        <Home />
+      </Route>
+      <Route path={routes.logIn}>
+        <Login />
+      </Route>
+      <Route path={routes.signUp}>
+        <SignUp />
+      </Route>
+      <Route exact={true} path="/sign-up2">
+        <SignUp2 />
+      </Route>
+      <Route exact={true} path="/sign-up3">
+        <SignUp3 />
+      </Route>
+      <Route exact={true} path="/sign-up-complete">
+        <SignUpComplete />
+      </Route>
+      <Route exact={true} path="/ocr">
+        <Ocr />
+      </Route>
+      <Route exact={true} path="/ocr-upload">
+        <OcrUpload />
+      </Route>
+      <Route exact={true} path="/ocr-handwrite">
+        <OcrHw />
+      </Route>
+    </div>
+
+    /* <div id="header"></div>
       <div id="body">
         <Switch>
           <Route exact={true} path="/">
@@ -36,9 +67,15 @@ function App() {
           <Route exact={true} path="/main">
             <Main />
           </Route>
+          <Route exact={true} path="/ocr">
+            <Ocr />
+          </Route>
+          <Route exact={true} path="/ocr_upload">
+            <Ocr_Upload />
+          </Route>
         </Switch>
       </div>
-    </div>
+    </div> */
   );
 }
 
