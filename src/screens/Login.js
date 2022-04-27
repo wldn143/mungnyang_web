@@ -26,7 +26,7 @@ function Login() {
         </StartText>
         <Input type="email" placeholder="이메일" />
         <Input type="password" placeholder="비밀번호" />
-        <SubmitButton type="submit" value="로그인"></SubmitButton>
+        <SubmitButton type="submit">로그인</SubmitButton>
       </RoundBox>
     </StartLayout>
   );
