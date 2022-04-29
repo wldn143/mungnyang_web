@@ -13,8 +13,8 @@ import Header from "../components/feed/Header";
 import AuthBox from "../components/auth/AuthBox";
 import Footer from "../components/feed/Footer";
 import BackButton from "../components/feed/BackButton";
-import MeatOcrImg from "../image/meat.png";
-import FruitsOcrImg from "../image/fruits.png";
+import MeatOcrImg from "../image/meatOcr.png";
+import FruitsOcrImg from "../image/fruitsOcr.png";
 import OcrContainer from "../components/auth/OcrContainer";
 function OcrUpload() {
   const [fileImage, setFileImage] = useState("");
@@ -88,7 +88,7 @@ function OcrUpload() {
           style={{
             width: "90%",
             height: "100px",
-            marginTop: "20px",
+            marginTop: "10px",
           }}
         >
           <p>
@@ -160,8 +160,14 @@ function OcrUpload() {
               />
             </div>
           </OcrContainer>
-          <SubmitButton>결과 확인하기</SubmitButton>
         </AuthBox>
+        <div
+          className="WhiteSpace"
+          style={{
+            height: "25px",
+          }}
+        ></div>
+        <SubmitButton>결과 확인하기</SubmitButton>
       </AuthLayout>
     </StartLayout>
   );

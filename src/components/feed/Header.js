@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { LeftOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
-import { Button } from "antd";
 
 const SHeader = styled.div`
   width: 100%;

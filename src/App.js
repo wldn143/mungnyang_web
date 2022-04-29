@@ -11,6 +11,8 @@ import SignUp3 from "./screens/SignUp3";
 import SignUpComplete from "./screens/SignUpComplete";
 import OcrUpload from "./screens/OcrUpload";
 import OcrHw from "./screens/OcrHw";
+import MyPage from "./screens/MyPage";
+import MainPage from "./screens/MainPage";
 function App() {
   return (
     <div>
@@ -40,6 +42,12 @@ function App() {
       </Route>
       <Route exact={true} path="/ocr-handwrite">
         <OcrHw />
+      </Route>
+      <Route exact={true} path="/mypage">
+        <MyPage />
+      </Route>
+      <Route exact={true} path="/mainpage">
+        <MainPage />
       </Route>
     </div>
 
