@@ -44,15 +44,8 @@ function Login() {
         } else {
           alert("이메일 또는 비밀번호가 일치하지 않습니다.");
         }
-        document.location.href = "/";
+        document.location.href = "/log-in";
       });
-    // axios.get("http://localhost:8080/sign-up").then((res) => {
-    //   const foundData = res.users.find((data) => data.email === email);
-    //   //(data=>data.employeeCode===employeeCode)
-    //   console.log(foundData.password);
-    //   //console.log(res);
-    //   //history.replace("/sign-up2");
-    // });
   };
 
   return (
@@ -61,24 +54,26 @@ function Login() {
         <StartText>
           <StartText1>시작하기</StartText1>
         </StartText>
-        <form onSubmit={submitHandler}>
-          <Input
-            name="name"
-            type="text"
-            placeholder="이메일"
-            onChange={emailHandler}
-            required
-          />
-          <Input
-            name="password"
-            type="password"
-            placeholder="비밀번호"
-            value={password}
-            onChange={passwordHandler}
-            required
-          />
-          <SubmitButton type="submit">로그인</SubmitButton>
-        </form>
+        <div className="form" style={{ width: "90%" }}>
+          <form onSubmit={submitHandler}>
+            <Input
+              name="name"
+              type="text"
+              placeholder="이메일"
+              onChange={emailHandler}
+              required
+            />
+            <Input
+              name="password"
+              type="password"
+              placeholder="비밀번호"
+              value={password}
+              onChange={passwordHandler}
+              required
+            />
+            <SubmitButton type="submit">로그인</SubmitButton>
+          </form>
+        </div>
       </RoundBox>
     </StartLayout>
   );

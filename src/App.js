@@ -31,22 +31,18 @@ function App() {
 
   return (
     <div>
-      {/* <Route exact={true} path="/">
+      <Route exact={true} path="/">
         <Home />
-      </Route> */}
-      <div>
+      </Route>
+      <Route exact={true} path="/log-in">
         {isLogin ? (
           // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
           <MainPage isLogin={isLogin} />
         ) : (
           <Login />
         )}
-      </div>
+      </Route>
 
-      {/*{isLogin ? <MainPage isLogin={isLogin} /> : <Login />}
-       <Route path={routes.logIn}>
-        <Login />
-      </Route> */}
       <Route path={routes.signUp}>
         <SignUp />
       </Route>
@@ -71,44 +67,7 @@ function App() {
       <Route exact={true} path="/mypage">
         <MyPage />
       </Route>
-      {/* <Route exact={true} path="/mainpage">
-        <MainPage />
-      </Route> */}
     </div>
-
-    /* <div id="header"></div>
-      <div id="body">
-        <Switch>
-          <Route exact={true} path="/">
-            <Home />
-          </Route>
-          <Route exact={true} path="/login">
-            <Login />
-          </Route>
-          <Route exact={true} path="/signup">
-            <Signup />
-          </Route>
-          <Route exact={true} path="/signup2">
-            <Signup2 />
-          </Route>
-          <Route exact={true} path="/signup3">
-            <Signup3 />
-          </Route>
-          <Route exact={true} path="/complete">
-            <Complete />
-          </Route>
-          <Route exact={true} path="/main">
-            <Main />
-          </Route>
-          <Route exact={true} path="/ocr">
-            <Ocr />
-          </Route>
-          <Route exact={true} path="/ocr_upload">
-            <Ocr_Upload />
-          </Route>
-        </Switch>
-      </div>
-    </div> */
   );
 }
 

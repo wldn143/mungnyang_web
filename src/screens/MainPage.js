@@ -15,7 +15,7 @@ function MainPage(props) {
     // sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
     sessionStorage.removeItem("user");
     // App 으로 이동(새로고침)
-    document.location.href = "/";
+    document.location.href = "/log-in";
   };
 
   return (
