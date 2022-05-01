@@ -13,15 +13,40 @@ import OcrUpload from "./screens/OcrUpload";
 import OcrHw from "./screens/OcrHw";
 import MyPage from "./screens/MyPage";
 import MainPage from "./screens/MainPage";
+import React, { useState, useEffect } from "react";
+
 function App() {
+  const [isLogin, setIsLogin] = useState(false);
+  useEffect(() => {
+    if (sessionStorage.getItem("user") === null) {
+      // sessionStorage 에 user 라는 key 값으로 저장된 값이 없다면
+      console.log("isLogin ?? :: ", isLogin);
+    } else {
+      // sessionStorage 에 user_id 라는 key 값으로 저장된 값이 있다면
+      // 로그인 상태 변경
+      setIsLogin(true);
+      console.log("isLogin ?? :: ", isLogin);
+    }
+  });
+
   return (
     <div>
-      <Route exact={true} path="/">
+      {/* <Route exact={true} path="/">
         <Home />
-      </Route>
-      <Route path={routes.logIn}>
+      </Route> */}
+      <div>
+        {isLogin ? (
+          // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
+          <MainPage isLogin={isLogin} />
+        ) : (
+          <Login />
+        )}
+      </div>
+
+      {/*{isLogin ? <MainPage isLogin={isLogin} /> : <Login />}
+       <Route path={routes.logIn}>
         <Login />
-      </Route>
+      </Route> */}
       <Route path={routes.signUp}>
         <SignUp />
       </Route>
@@ -46,9 +71,9 @@ function App() {
       <Route exact={true} path="/mypage">
         <MyPage />
       </Route>
-      <Route exact={true} path="/mainpage">
+      {/* <Route exact={true} path="/mainpage">
         <MainPage />
-      </Route>
+      </Route> */}
     </div>
 
     /* <div id="header"></div>

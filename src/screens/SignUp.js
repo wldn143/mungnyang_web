@@ -7,7 +7,6 @@ import Header from "../components/feed/Header";
 import AuthBox from "../components/auth/AuthBox";
 import BackButton from "../components/feed/BackButton";
 import axios from "axios";
-import { Form, Divider, Button } from "antd";
 import { useHistory } from "react-router-dom";
 
 function SignUp() {
