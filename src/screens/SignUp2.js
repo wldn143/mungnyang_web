@@ -14,23 +14,81 @@ import AuthBox from "../components/auth/AuthBox";
 import Radio from "../components/auth/Radio";
 import DogUnclick from "../image/dog_unclick.png";
 import BackButton from "../components/feed/BackButton";
-function SignUp2() {
-  function getCheckboxValue() {
-    // 선택된 목록에서 value 찾기
+import axios from "axios";
+
+function SignUp2(props) {
+  const isLogin = props.isLogin;
+
+  const [animal, setAnimal] = useState("");
+  const [pet_name, set_pet_name] = useState("");
+  const [pet_age, set_pet_age] = useState("");
+  const [pet_sex, set_pet_sex] = useState("");
+  const [pet_neuter, set_pet_neuter] = useState("");
+  const [pet_weight, set_pet_weight] = useState("");
+  const [pet_size, set_pet_size] = useState("");
+  const pet_name_Handler = (e) => {
+    e.preventDefault();
+    set_pet_name(e.target.value);
+  };
+  const pet_age_Handler = (e) => {
+    e.preventDefault();
+    set_pet_age(e.target.value);
+  };
+  const pet_weight_Handler = (e) => {
+    e.preventDefault();
+    set_pet_weight(e.target.value);
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
     let animal = "";
-    document.querySelectorAll('input[name="animal"]:checked').forEach((el) => {
-      animal = el.value;
+    document.querySelectorAll('input[name="animal"]:checked').forEach((e) => {
+      animal = e.value;
+      setAnimal(animal);
     });
 
     let neut = "";
     document.querySelectorAll('input[name="neut"]:checked').forEach((el) => {
       neut = el.value;
+      set_pet_neuter(neut);
     });
     let gender = "";
     document.querySelectorAll('input[name="gender"]:checked').forEach((el) => {
       gender = el.value;
+      set_pet_sex(gender);
     });
-  }
+    let size = "";
+    document.querySelectorAll('input[name="size"]:checked').forEach((el) => {
+      size = el.value;
+      set_pet_size(size);
+    });
+    // state에 저장한 값을 가져옵니다.
+    //console.log(animal, neut, size, pet_name, pet_age, pet_weight);
+
+    let body = {
+      cat_or_dog: animal,
+      pet_name: pet_name,
+      pet_age: pet_age,
+      pet_sex: gender,
+      pet_neuter: neut,
+      pet_size: size,
+      pet_weight: pet_weight,
+    };
+
+    axios.post("http://localhost:8080/pet", body).then((res) => {
+      //console.log(res.data.result.id);
+      //history.replace("/log-in");
+      sessionStorage.setItem("pet", res.data.result.id);
+      document.location.href = "/sign-up";
+    });
+
+    let userId = sessionStorage.getItem("user");
+    let petId = sessionStorage.getItem("pet");
+
+    axios.put(`http://localhost:8080/user/${userId}`, {
+      pet_id: petId,
+    });
+  };
 
   return (
     <StartLayout>
@@ -49,7 +107,7 @@ function SignUp2() {
         ></div>
         <RoundBoxL>
           <AuthBox>
-            <form action="/sign-up3" method="get">
+            <form onSubmit={submitHandler}>
               <div
                 className="select"
                 style={{
@@ -66,6 +124,8 @@ function SignUp2() {
                 type="text"
                 name="pet_name"
                 placeholder="이름"
+                value={pet_name}
+                onChange={pet_name_Handler}
                 required
               />
               <Input
@@ -73,6 +133,8 @@ function SignUp2() {
                 type="number"
                 name="age"
                 placeholder="나이"
+                value={pet_age}
+                onChange={pet_age_Handler}
                 required
               />
 
@@ -100,24 +162,30 @@ function SignUp2() {
                 <Radio id="neut2" name="neut" value="no" />
                 <label htmlFor="neut2">NO</label>
               </div>
+              <p>크기</p>
+              <div
+                className="select"
+                style={{
+                  marginBottom: "23px",
+                }}
+              >
+                <Radio id="size1" name="size" value="small" />
+                <label htmlFor="size1">소</label>
+                <Radio id="size2" type="radio" name="size" value="medium" />
+                <label htmlFor="size2">중</label>
+                <Radio id="size3" name="size" value="large" />
+                <label htmlFor="size3">대</label>
+              </div>
               <Input
                 className="form"
                 type="number"
                 name="weight"
                 placeholder="체중"
+                value={pet_weight}
+                onChange={pet_weight_Handler}
                 required
               />
-              <div
-                id="WhiteSpace"
-                style={{
-                  backgroundColor: "white",
-                  width: "100%",
-                  height: "30px",
-                }}
-              ></div>
-              <SubmitButton type="submit" onClick={() => getCheckboxValue()}>
-                다음
-              </SubmitButton>
+              <SubmitButton type="submit">다음</SubmitButton>
             </form>
           </AuthBox>
         </RoundBoxL>

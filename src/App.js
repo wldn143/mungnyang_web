@@ -17,6 +17,7 @@ import React, { useState, useEffect } from "react";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
+  const [isPetInput, setIsPetInput] = useState(false);
   useEffect(() => {
     if (sessionStorage.getItem("user") === null) {
       // sessionStorage 에 user 라는 key 값으로 저장된 값이 없다면
@@ -24,8 +25,19 @@ function App() {
     } else {
       // sessionStorage 에 user_id 라는 key 값으로 저장된 값이 있다면
       // 로그인 상태 변경
-      setIsLogin(true);
       console.log("isLogin ?? :: ", isLogin);
+      setIsLogin(true);
+
+      console.log("isLogin ?? :: ", isLogin);
+    }
+  });
+  useEffect(() => {
+    if (sessionStorage.getItem("pet") === null) {
+      console.log("isPetInput ?? :: ", isPetInput);
+    } else {
+      console.log("isPetInput ?? :: ", isPetInput);
+      setIsPetInput(true);
+      console.log("isPetInput ?? :: ", isPetInput);
     }
   });
 
@@ -43,12 +55,25 @@ function App() {
         )}
       </Route>
 
-      <Route path={routes.signUp}>
+      <Route exact={true} path="/sign-up">
+        {isLogin ? ( // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
+          <SignUp2 isLogin={isLogin} />
+        ) : (
+          <SignUp />
+        )}
+        {/* {isPetInput ? (
+          <SignUp3 isLogin={isLogin} />
+        ) : (
+          <SignUp2 />
+        )} */}
+      </Route>
+
+      {/* <Route path={routes.signUp}>
         <SignUp />
-      </Route>
-      <Route exact={true} path="/sign-up2">
+      </Route> */}
+      {/* <Route exact={true} path="/sign-up2">
         <SignUp2 />
-      </Route>
+      </Route> */}
       <Route exact={true} path="/sign-up3">
         <SignUp3 />
       </Route>

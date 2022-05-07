@@ -16,7 +16,8 @@ import DogUnclick from "../image/dog_unclick.png";
 import CheckBox from "../components/auth/CheckBox";
 import BackButton from "../components/feed/BackButton";
 
-function SignUp3() {
+function SignUp3(props) {
+  const isLogin = props.isLogin;
   function getCheckboxValue() {
     let walk = "";
     document.querySelectorAll('input[name="walk"]:checked').forEach((el) => {
