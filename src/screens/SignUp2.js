@@ -16,9 +16,9 @@ import DogUnclick from "../image/dog_unclick.png";
 import BackButton from "../components/feed/BackButton";
 import axios from "axios";
 
-function SignUp2(props) {
-  const isLogin = props.isLogin;
-
+function SignUp2() {
+  //const isSigningUp = props.isSigningUp;
+  const history = useHistory();
   const [animal, setAnimal] = useState("");
   const [pet_name, set_pet_name] = useState("");
   const [pet_age, set_pet_age] = useState("");
@@ -62,32 +62,30 @@ function SignUp2(props) {
       size = el.value;
       set_pet_size(size);
     });
-    // state에 저장한 값을 가져옵니다.
-    //console.log(animal, neut, size, pet_name, pet_age, pet_weight);
 
-    let body = {
-      cat_or_dog: animal,
-      pet_name: pet_name,
-      pet_age: pet_age,
-      pet_sex: gender,
-      pet_neuter: neut,
-      pet_size: size,
-      pet_weight: pet_weight,
-    };
+    sessionStorage.setItem("cat_or_dog", animal);
+    sessionStorage.setItem("pet_name", pet_name);
+    sessionStorage.setItem("pet_age", pet_age);
+    sessionStorage.setItem("pet_sex", gender);
+    sessionStorage.setItem("pet_neuter", neut);
+    sessionStorage.setItem("pet_size", size);
+    sessionStorage.setItem("pet_weight", pet_weight);
 
-    axios.post("http://localhost:8080/pet", body).then((res) => {
-      //console.log(res.data.result.id);
-      //history.replace("/log-in");
-      sessionStorage.setItem("pet", res.data.result.id);
-      document.location.href = "/sign-up";
-    });
+    fetch("http://localhost:8080/pet")
+      .then((response) => response.json())
+      .then((json) => {
+        let petId;
+        let firstPetData = json.pets[0];
+        if (firstPetData === undefined) {
+          petId = 1;
+          sessionStorage.setItem("pet_id", petId);
+        } else {
+          petId = json.pets[json.pets.length - 1].pet_id + 1;
+          sessionStorage.setItem("pet_id", petId);
+        }
+      });
 
-    let userId = sessionStorage.getItem("user");
-    let petId = sessionStorage.getItem("pet");
-
-    axios.put(`http://localhost:8080/user/${userId}`, {
-      pet_id: petId,
-    });
+    history.push("/sign-up3");
   };
 
   return (

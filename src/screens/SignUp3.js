@@ -15,27 +15,42 @@ import Radio from "../components/auth/Radio";
 import DogUnclick from "../image/dog_unclick.png";
 import CheckBox from "../components/auth/CheckBox";
 import BackButton from "../components/feed/BackButton";
+import axios from "axios";
 
 function SignUp3(props) {
+  const history = useHistory();
   const isLogin = props.isLogin;
-  function getCheckboxValue() {
-    let walk = "";
-    document.querySelectorAll('input[name="walk"]:checked').forEach((el) => {
-      walk = el.value;
-    });
-    console.log();
+  const [health_problem, set_health] = useState("");
+  const [pet_id, set_Pet_id] = useState(null);
+  // function getCheckboxValue() {
+  //   let walk = "";
+  //   document.querySelectorAll('input[name="walk"]:checked').forEach((el) => {
+  //     walk = el.value;
+  //   });
+  //   console.log();
 
+  //   var health = new Array();
+  //   // let result = "";
+  //   document.querySelectorAll('input[name="health"]:checked').forEach((el) => {
+  //     health.push(el.value);
+  //   });
+
+  //   let allergy = "";
+  //   document.querySelectorAll('input[name="allergy"]:checked').forEach((el) => {
+  //     allergy = el.value;
+  //   });
+  // }
+  const submitHandler = (e) => {
+    e.preventDefault();
     var health = new Array();
-    // let result = "";
     document.querySelectorAll('input[name="health"]:checked').forEach((el) => {
       health.push(el.value);
+      set_health(health);
     });
 
-    let allergy = "";
-    document.querySelectorAll('input[name="allergy"]:checked').forEach((el) => {
-      allergy = el.value;
-    });
-  }
+    sessionStorage.setItem("health", health);
+    history.push("/sign-up-complete");
+  };
 
   return (
     <StartLayout>
@@ -54,7 +69,7 @@ function SignUp3(props) {
         ></div>
         <RoundBoxL>
           <AuthBox>
-            <form action="/sign-up-complete" method="get" id="signUpForm2">
+            <form onSubmit={submitHandler}>
               <p>산책을 매일 하나요?</p>
 
               <Radio id="walk1" name="walk" value="yes" />
@@ -82,13 +97,13 @@ function SignUp3(props) {
                     marginBottom: "20px",
                   }}
                 >
-                  <CheckBox id="health1" name="health" value="allery" />
+                  <CheckBox id="health1" name="health" value="1" />
                   <label htmlFor="health1">알레르기</label>
-                  <CheckBox id="health2" name="health" value="viscera" />
+                  <CheckBox id="health2" name="health" value="2" />
                   <label htmlFor="health2">장</label>
-                  <CheckBox id="health3" name="health" value="teeth" />
+                  <CheckBox id="health3" name="health" value="3" />
                   <label htmlFor="health3">이빨/구강</label>
-                  <CheckBox id="health4" name="health" value="bone" />
+                  <CheckBox id="health4" name="health" value="4" />
                   <label htmlFor="health4">뼈/관절</label>
                 </div>
                 <div
@@ -97,14 +112,14 @@ function SignUp3(props) {
                     marginBottom: "20px",
                   }}
                 >
-                  <CheckBox id="health5" name="health" value="fatness" />
+                  <CheckBox id="health5" name="health" value="5" />
                   <label htmlFor="health5">비만</label>
-                  <CheckBox id="health6" name="health" value="skin fur" />
+                  <CheckBox id="health6" name="health" value="6" />
                   <label htmlFor="health6">피부/모질</label>
-                  <CheckBox id="health7" name="health" value="old" />
+                  <CheckBox id="health7" name="health" value="7" />
 
                   <label htmlFor="health7">노령</label>
-                  <CheckBox id="health8" name="health" value="kidneys" />
+                  <CheckBox id="health8" name="health" value="8" />
                   <label htmlFor="health8">신장/요로</label>
                 </div>
                 <div
@@ -113,14 +128,14 @@ function SignUp3(props) {
                     marginBottom: "20px",
                   }}
                 >
-                  <CheckBox id="health9" name="health" value="breath" />
+                  <CheckBox id="health9" name="health" value="9" />
                   <label htmlFor="health9">호흡기</label>
-                  <CheckBox id="health10" name="health" value="diabetes" />
+                  <CheckBox id="health10" name="health" value="10" />
                   <label htmlFor="health10">당뇨</label>
 
-                  <CheckBox id="health11" name="health" value="heart" />
+                  <CheckBox id="health11" name="health" value="11" />
                   <label htmlFor="health11">심장</label>
-                  <CheckBox id="health12" name="health" value="eyes_ears" />
+                  <CheckBox id="health12" name="health" value="12" />
                   <label htmlFor="health12">눈/귀</label>
                 </div>
               </div>
@@ -144,13 +159,7 @@ function SignUp3(props) {
                   height: "30px",
                 }}
               ></div>
-              <SubmitButton
-                type="submit"
-                onClick={() => getCheckboxValue()}
-                form="signUpForm2"
-              >
-                다음
-              </SubmitButton>
+              <SubmitButton type="submit">다음</SubmitButton>
             </form>
           </AuthBox>
         </RoundBoxL>

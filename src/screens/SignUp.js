@@ -33,22 +33,25 @@ function SignUp() {
   const submitHandler = (e) => {
     e.preventDefault();
     // state에 저장한 값을 가져옵니다.
-    console.log(name);
-    console.log(email);
-    console.log(password);
+    //console.log(name);
+    //console.log(email);
+    //console.log(password);
 
     let body = {
       name: name,
       email: email,
       password: password,
     };
-
-    axios.post("http://localhost:8080/user", body).then((res) => {
-      console.log(res.data.result.id);
-      //history.replace("/log-in");
-      sessionStorage.setItem("user", res.data.result.id);
-      document.location.href = "/sign-up";
-    });
+    sessionStorage.setItem("name", name);
+    sessionStorage.setItem("email", email);
+    sessionStorage.setItem("password", password);
+    //axios.post("http://localhost:8080/user", body).then((res) => {
+    //  console.log(res.data.result);
+    ///  history.replace("/sign-up2");
+    //sessionStorage.setItem("signingup", "o");
+    //document.location.href = "/sign-up";
+    //});
+    history.push("/sign-up2");
   };
 
   return (
@@ -111,7 +114,7 @@ function SignUp() {
                 height: "30px",
               }}
             ></div>
-            <SubmitButton type="submit">회원가입</SubmitButton>
+            <SubmitButton type="submit">다음</SubmitButton>
           </form>
         </AuthBox>
       </AuthLayout>
