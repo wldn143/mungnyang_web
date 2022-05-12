@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Contatiner = styled.div`
-  width: 110%;
+  width: 100%;
   height: 200px;
   display: flex;
   justify-content: space-around;
