@@ -28,7 +28,7 @@ function OcrUpload() {
   const [fruitImageUrl, setFruitImageUrl] = useState(null);
   const [vegeImageUrl, setVegeImageUrl] = useState(null);
   const [nutImageUrl, setNutImageUrl] = useState(null);
-
+  let petId = sessionStorage.getItem("pet_id");
   const history = useHistory();
   const onChangeImage1 = (info) => {
     if (info.file.status === "uploading") {
@@ -85,6 +85,7 @@ function OcrUpload() {
 
     axios
       .post("http://localhost:8080/ocrimg", {
+        pet_id: petId,
         meatImageUrl: meatImageUrl,
         fishImageUrl: fishImageUrl,
         fruitImageUrl: fruitImageUrl,
