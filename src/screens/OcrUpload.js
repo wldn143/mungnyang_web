@@ -21,8 +21,34 @@ import nutOcrImg from "../image/nutOcr.png";
 import { Upload } from "antd";
 import OcrContainer from "../components/auth/OcrContainer";
 import axios from "axios";
+const HalfButton = styled.button`
+  background-color: #ed7567;
+  color: white;
+  text-align: center;
+  opacity: ${(props) => (props.disabled ? "0.2" : "")};
 
+  border-radius: 7px;
+  width: 120px;
+  height: 49px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+`;
+const HalfButton2 = styled.button`
+  background-color: grey;
+  color: white;
+  text-align: center;
+  opacity: ${(props) => (props.disabled ? "0.2" : "")};
+
+  border-radius: 7px;
+  width: 120px;
+  height: 49px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+`;
 function OcrUpload() {
+  sessionStorage.setItem("pet_id", 47);
   const [meatImageUrl, setMeatImageUrl] = useState(null);
   const [fishImageUrl, setFishImageUrl] = useState(null);
   const [fruitImageUrl, setFruitImageUrl] = useState(null);
@@ -98,6 +124,8 @@ function OcrUpload() {
       .catch((error) => {
         console.error(error);
       });
+    history.push("./ocr-result");
+    window.location.reload();
   };
 
   return (
@@ -222,7 +250,15 @@ function OcrUpload() {
               )}
             </Upload>
           </OcrContainer>
-          <SubmitButton type="submit">다음</SubmitButton>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-around",
+            }}
+          >
+            <SubmitButton type="submit">제출하기</SubmitButton>
+          </div>
         </form>
       </AuthLayout>
     </StartLayout>

@@ -22,24 +22,6 @@ function SignUp3(props) {
   const isLogin = props.isLogin;
   const [health_problem, set_health] = useState("");
   const [pet_id, set_Pet_id] = useState(null);
-  // function getCheckboxValue() {
-  //   let walk = "";
-  //   document.querySelectorAll('input[name="walk"]:checked').forEach((el) => {
-  //     walk = el.value;
-  //   });
-  //   console.log();
-
-  //   var health = new Array();
-  //   // let result = "";
-  //   document.querySelectorAll('input[name="health"]:checked').forEach((el) => {
-  //     health.push(el.value);
-  //   });
-
-  //   let allergy = "";
-  //   document.querySelectorAll('input[name="allergy"]:checked').forEach((el) => {
-  //     allergy = el.value;
-  //   });
-  // }
   const submitHandler = (e) => {
     e.preventDefault();
     var health = new Array();

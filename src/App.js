@@ -14,6 +14,7 @@ import OcrHw from "./screens/OcrHw";
 import MyPage from "./screens/MyPage";
 import MainPage from "./screens/MainPage";
 import React, { useState, useEffect } from "react";
+import OcrResult from "./screens/OcrResult";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -32,7 +33,7 @@ function App() {
   });
   useEffect(() => {
     //로그인 완료인지 아닌지 체크
-    if (sessionStorage.getItem("user") === null) {
+    if (sessionStorage.getItem("email") === null) {
       // sessionStorage 에 user 라는 key 값으로 저장된 값이 없다면
       console.log("isLogin ?? :: ", isLogin);
     } else {
@@ -122,6 +123,9 @@ function App() {
       </Route>
       <Route exact={true} path="/mypage">
         <MyPage />
+      </Route>
+      <Route exact={true} path="/ocr-result">
+        <OcrResult />
       </Route>
     </div>
   );
