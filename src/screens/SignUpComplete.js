@@ -27,7 +27,7 @@ function SignUpComplete() {
   let pet_size = sessionStorage.getItem("pet_size");
   let pet_sex = sessionStorage.getItem("pet_sex");
   let pet_weight = sessionStorage.getItem("pet_weight");
-
+  console.log(health);
   let pet_body = {
     cat_or_dog: cat_or_dog,
     pet_name: pet_name,
