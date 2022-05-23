@@ -48,7 +48,6 @@ const HalfButton2 = styled.button`
   cursor: pointer;
 `;
 function OcrUpload() {
-  sessionStorage.setItem("pet_id", 47);
   const [meatImageUrl, setMeatImageUrl] = useState(null);
   const [fishImageUrl, setFishImageUrl] = useState(null);
   const [fruitImageUrl, setFruitImageUrl] = useState(null);
@@ -125,8 +124,8 @@ function OcrUpload() {
         console.error(error);
       });
     history.push("./ocr-result");
-    window.location.reload();
-  };
+    //window.location.reload();
+  }; //;
 
   return (
     <StartLayout>

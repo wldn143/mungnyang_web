@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Container,
@@ -8,11 +9,33 @@ import {
   Res,
 } from "./OcrContainer";
 
-function NutsContainer({ children }) {
-  let bean = sessionStorage.getItem("bean");
-  let peanut = sessionStorage.getItem("peanut");
-  let rice = sessionStorage.getItem("rice");
-  let flour = sessionStorage.getItem("flour");
+function NutsContainer() {
+  let petId = parseInt(sessionStorage.getItem("pet_id"));
+  const [NutsOcrResult, setNutsOcrResult] = useState([]);
+  const [bean, setBean] = useState([]);
+  const [peanut, setPeanut] = useState([]);
+  const [rice, setRice] = useState([]);
+  const [flour, setFlour] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/OCR_result_nuts")
+      .then((response) => response.json())
+      .then((data) => {
+        setNutsOcrResult(data.OCR_result_nuts);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (NutsOcrResult.filter((item) => item.pet_id === petId).length) {
+      let userMeatResult = NutsOcrResult.filter(
+        (item) => item.pet_id === petId
+      );
+      setBean(userMeatResult[0].bean);
+      setPeanut(userMeatResult[0].peanut);
+      setRice(userMeatResult[0].rice);
+      setFlour(userMeatResult[0].flour);
+    }
+  });
 
   return (
     <Container>

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Container,
@@ -8,15 +9,40 @@ import {
   Res,
 } from "./OcrContainer";
 
-function SeafoodContainer({ children }) {
-  let crab = sessionStorage.getItem("crab");
-  let shrimp = sessionStorage.getItem("shrimp");
-  let mackerel = sessionStorage.getItem("mackerel");
-  let sardine = sessionStorage.getItem("sardine");
-  let anchovy = sessionStorage.getItem("anchovy");
-  let cod = sessionStorage.getItem("cod");
-  let salmon = sessionStorage.getItem("salmon");
-  let tuna = sessionStorage.getItem("tuna");
+function SeafoodContainer() {
+  const [seafoodOcrResult, setSeafoodOcrResult] = useState([]);
+  const [crab, setCrab] = useState([]);
+  const [shrimp, setShrimp] = useState([]);
+  const [mackerel, setMackerel] = useState([]);
+  const [sardine, setSardine] = useState([]);
+  const [anchovy, setAnchovy] = useState([]);
+  const [cod, setCod] = useState([]);
+  const [salmon, setSalmon] = useState([]);
+  const [tuna, setTuna] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/OCR_result_seafood")
+      .then((response) => response.json())
+      .then((data) => {
+        setSeafoodOcrResult(data.OCR_result_seafood);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (seafoodOcrResult.filter((item) => item.pet_id === 6).length) {
+      let userSeafoodResult = seafoodOcrResult.filter(
+        (item) => item.pet_id === 6
+      );
+      setCrab(userSeafoodResult[0].crab);
+      setShrimp(userSeafoodResult[0].shrimp);
+      setMackerel(userSeafoodResult[0].mackerel);
+      setSardine(userSeafoodResult[0].sardine);
+      setAnchovy(userSeafoodResult[0].anchovy);
+      setCod(userSeafoodResult[0].cod);
+      setSalmon(userSeafoodResult[0].salmon);
+      setTuna(userSeafoodResult[0].tuna);
+    }
+  });
 
   return (
     <Container>

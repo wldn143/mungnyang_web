@@ -16,6 +16,7 @@ import MainPage from "./screens/MainPage";
 import React, { useState, useEffect } from "react";
 import OcrResult from "./screens/OcrResult";
 import OcrComplete from "./screens/OcrComplete";
+import PetPage from "./screens/PetPage";
 function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [isPetInput, setIsPetInput] = useState(false);
@@ -129,6 +130,9 @@ function App() {
       </Route>
       <Route exact={true} path="/ocr-complete">
         <OcrComplete />
+      </Route>
+      <Route exact={true} path="/petpage">
+        <PetPage />
       </Route>
     </div>
   );

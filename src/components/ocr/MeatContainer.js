@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Container,
@@ -8,13 +9,37 @@ import {
   Res,
 } from "./OcrContainer";
 
-function MeatContainer({ children }) {
-  let duck = sessionStorage.getItem("duck");
-  let lamb = sessionStorage.getItem("lamb");
-  let beef = sessionStorage.getItem("beef");
-  let chicken = sessionStorage.getItem("chicken");
-  let turckey = sessionStorage.getItem("turckey");
-  let pork = sessionStorage.getItem("pork");
+function MeatContainer() {
+  let petId = parseInt(sessionStorage.getItem("pet_id"));
+  const [meatOcrResult, setMeatOcrResult] = useState([]);
+  const [duck, setDuck] = useState([]);
+  const [lamb, setLamb] = useState([]);
+  const [beef, setBeef] = useState([]);
+  const [chicken, setChicken] = useState([]);
+  const [turckey, setTurckey] = useState([]);
+  const [pork, setPork] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/OCR_result_meat")
+      .then((response) => response.json())
+      .then((data) => {
+        setMeatOcrResult(data.OCR_result_meat);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (meatOcrResult.filter((item) => item.pet_id === petId).length) {
+      let userMeatResult = meatOcrResult.filter(
+        (item) => item.pet_id === petId
+      );
+      setDuck(userMeatResult[0].duck);
+      setLamb(userMeatResult[0].lamb);
+      setBeef(userMeatResult[0].beef);
+      setChicken(userMeatResult[0].chicken);
+      setTurckey(userMeatResult[0].turckey);
+      setPork(userMeatResult[0].pork);
+    }
+  });
 
   return (
     <Container>

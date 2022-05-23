@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Container,
@@ -8,17 +9,44 @@ import {
   Res,
 } from "./OcrContainer";
 
-function VegeContainer({ children }) {
-  let carrot = sessionStorage.getItem("carrot");
-  let corn = sessionStorage.getItem("corn");
-  let potato = sessionStorage.getItem("potato");
-  let s_potato = sessionStorage.getItem("s_potato");
-  let pumpkin = sessionStorage.getItem("pumpkin");
-  let broccoli = sessionStorage.getItem("broccoli");
-  let cabbage = sessionStorage.getItem("cabbage");
-  let pea = sessionStorage.getItem("pea");
-  let tomato = sessionStorage.getItem("tomato");
-  let seaweed = sessionStorage.getItem("seaweed");
+function VegeContainer() {
+  const [VegeOcrResult, setVegeOcrResult] = useState([]);
+  const [carrot, setCarrot] = useState([]);
+  const [corn, setcorn] = useState([]);
+  const [potato, setPotato] = useState([]);
+  const [s_potato, setSpotato] = useState([]);
+  const [pumpkin, setPumpkin] = useState([]);
+  const [broccoli, setBroccoli] = useState([]);
+  const [cabbage, setCabbage] = useState([]);
+  const [pea, setPea] = useState([]);
+  const [tomato, setTomato] = useState([]);
+  const [seaweed, setSeaweed] = useState([]);
+  let petId = parseInt(sessionStorage.getItem("pet_id"));
+  useEffect(() => {
+    fetch("http://localhost:8080/OCR_result_vege")
+      .then((response) => response.json())
+      .then((data) => {
+        setVegeOcrResult(data.OCR_result_vege);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (VegeOcrResult.filter((item) => item.pet_id === petId).length) {
+      let userVegeResult = VegeOcrResult.filter(
+        (item) => item.pet_id === petId
+      );
+      setCarrot(userVegeResult[0].carrot);
+      setcorn(userVegeResult[0].corn);
+      setPotato(userVegeResult[0].potato);
+      setSpotato(userVegeResult[0].s_potato);
+      setPumpkin(userVegeResult[0].pumpkin);
+      setBroccoli(userVegeResult[0].broccoli);
+      setCabbage(userVegeResult[0].cabbage);
+      setPea(userVegeResult[0].pea);
+      setTomato(userVegeResult[0].tomato);
+      setSeaweed(userVegeResult[0].seaweed);
+    }
+  });
 
   return (
     <Container>
