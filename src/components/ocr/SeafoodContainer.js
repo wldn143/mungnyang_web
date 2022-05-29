@@ -19,6 +19,7 @@ function SeafoodContainer() {
   const [cod, setCod] = useState([]);
   const [salmon, setSalmon] = useState([]);
   const [tuna, setTuna] = useState([]);
+  let petId = parseInt(sessionStorage.getItem("pet_id"));
 
   useEffect(() => {
     fetch("http://localhost:8080/OCR_result_seafood")
@@ -29,9 +30,9 @@ function SeafoodContainer() {
   }, []);
 
   useEffect(() => {
-    if (seafoodOcrResult.filter((item) => item.pet_id === 6).length) {
+    if (seafoodOcrResult.filter((item) => item.pet_id === petId).length) {
       let userSeafoodResult = seafoodOcrResult.filter(
-        (item) => item.pet_id === 6
+        (item) => item.pet_id === petId
       );
       setCrab(userSeafoodResult[0].crab);
       setShrimp(userSeafoodResult[0].shrimp);

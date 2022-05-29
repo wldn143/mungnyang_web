@@ -4,25 +4,18 @@ import StartLayout from "../components/auth/StartLayout";
 import { useHistory } from "react-router-dom";
 import AuthLayout from "../components/auth/AuthLayout";
 import Header from "../components/feed/Header";
-import AuthBox from "../components/auth/AuthBox";
 import BackButton from "../components/feed/BackButton";
-import RoundBox from "../components/auth/RoundBox";
-import AddBox from "../components/auth/AddBox";
-import PetInfoBox from "../components/auth/PetInfoBox";
-import RoundBoxL from "../components/auth/RoundBoxL";
-import { Empty } from "antd";
 import OcrYes from "../components/ocr/OcrYes";
 import OcrNo from "../components/ocr/OcrNo";
 function PetPage() {
   let petId = parseInt(sessionStorage.getItem("pet_id"));
   const [isOcr, setIsOcr] = useState([]); //패치나 axios쓸때 얘를 써야 데이터를 꺼낼수가이쎄
-  const [isOcrUser, setIsOcrUser] = useState([]);
   const [content, setContent] = useState();
   useEffect(() => {
-    fetch("http://localhost:8080/ocrimg")
+    fetch("http://localhost:8080/OCR_result_meat")
       .then((response) => response.json())
       .then((data) => {
-        setIsOcr(data.ocrurl);
+        setIsOcr(data.OCR_result_meat);
       });
   }, []); //IsOcr는 ocrurl들이 담겨있는 배열이당 최초로 1회 실행
 

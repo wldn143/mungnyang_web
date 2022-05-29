@@ -10,13 +10,15 @@ import routes from "./routes";
 import SignUp3 from "./screens/SignUp3";
 import SignUpComplete from "./screens/SignUpComplete";
 import OcrUpload from "./screens/OcrUpload";
-import OcrHw from "./screens/OcrHw";
+import OcrSelect from "./screens/OcrSelect";
 import MyPage from "./screens/MyPage";
 import MainPage from "./screens/MainPage";
 import React, { useState, useEffect } from "react";
 import OcrResult from "./screens/OcrResult";
 import OcrComplete from "./screens/OcrComplete";
 import PetPage from "./screens/PetPage";
+import OcrHw from "./screens/OcrHw";
+import Ocr2 from "./screens/Ocr2";
 function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [isPetInput, setIsPetInput] = useState(false);
@@ -59,17 +61,17 @@ function App() {
 
   return (
     <div>
-      <Route exact={true} path="/">
+      <Route exact={true} path='/'>
         <Home />
       </Route>
-      <Route exact={true} path="/log-in">
+      <Route exact={true} path='/log-in'>
         {isLogin ? <MainPage isLogin={isLogin} /> : <Login />}
       </Route>
 
-      <Route exact={true} path="/sign-up">
+      <Route exact={true} path='/sign-up'>
         <SignUp />
       </Route>
-      <Route exact={true} path="/sign-up2">
+      <Route exact={true} path='/sign-up2'>
         <SignUp2 />
       </Route>
       {/* <Route exact={true} path="/sign-up2">
@@ -107,32 +109,38 @@ function App() {
         <SignUp />
       </Route> */}
 
-      <Route exact={true} path="/sign-up3">
+      <Route exact={true} path='/sign-up3'>
         <SignUp3 />
       </Route>
-      <Route exact={true} path="/sign-up-complete">
+      <Route exact={true} path='/sign-up-complete'>
         <SignUpComplete />
       </Route>
-      <Route exact={true} path="/ocr">
+      <Route exact={true} path='/ocr'>
         <Ocr />
       </Route>
-      <Route exact={true} path="/ocr-upload">
+      <Route exact={true} path='/ocr-upload'>
         <OcrUpload />
       </Route>
-      <Route exact={true} path="/ocr-handwrite">
-        <OcrHw />
+      <Route exact={true} path='/ocr-select'>
+        <OcrSelect />
       </Route>
-      <Route exact={true} path="/mypage">
+      <Route exact={true} path='/mypage'>
         <MyPage />
       </Route>
-      <Route exact={true} path="/ocr-result">
+      <Route exact={true} path='/ocr-result'>
         <OcrResult />
       </Route>
-      <Route exact={true} path="/ocr-complete">
+      <Route exact={true} path='/ocr-complete'>
         <OcrComplete />
       </Route>
-      <Route exact={true} path="/petpage">
+      <Route exact={true} path='/petpage'>
         <PetPage />
+      </Route>
+      <Route exact={true} path='/ocr-handwrite'>
+        <OcrHw />
+      </Route>
+      <Route exact={true} path='/ocr2'>
+        <Ocr2 />
       </Route>
     </div>
   );

@@ -8,169 +8,193 @@ import "./btn.css";
 import SubmitButton from "../components/auth/SubmitButton";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-const FoodListBtn = styled.button`
-  width: 100px;
-  height: 30px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  border: 1.5px solid #ed7567;
-  border-radius: 4px;
+import comp from "../components/auth/comp";
+import MeatHw from "../components/ocr/MeatHw";
+import SeafoodHw from "../components/ocr/SeafoodHw";
+import FruitsHw from "../components/ocr/FruitsHw";
+import VegeHw from "../components/ocr/VegeHw";
+import NutsHw from "../components/ocr/NutsHw";
+import PinkButton from "../components/auth/PinkButton";
+
+const OcrNavBtn = styled.button`
+  height: 35px;
   color: #ed7567;
+  font-size: 15px;
+  margin: 0px 15px 0px 5px;
   font-weight: bolder;
+  cursor: pointer;
 `;
 function OcrHw() {
   const history = useHistory();
-  const [foods, setFoods] = useState([]);
-  const [searchField, setSearchField] = useState("");
-  const [filteredFoods, setFilteredFoods] = useState([]);
-  const [result, setResult] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:8080/food")
-      .then((response) => response.json())
-      .then((foods) => {
-        setFoods(foods.foods);
-      });
-  }, []);
-  useEffect(() => {
-    setFilteredFoods(() =>
-      foods.filter((item) => item.foodInKor.includes(searchField))
-    );
-  }, [searchField, foods]);
-  let [foodsArray, setFoodsArray] = useState([]);
-
-  const ClickBtn = (a) => {
-    setFoodsArray([...foodsArray, a]);
-  };
-  let deDup = [...new Set(foodsArray)];
-  if (foodsArray.length !== deDup.length) {
-    //console.log("중복!");
-  } else if (foodsArray.length !== 0 && deDup.length !== 13) {
-    const allergyFoodBtn = document.getElementById("allergyFoodBtn");
-    const btn = document.createElement("button");
-    btn.innerHTML = foodsArray[foodsArray.length - 1];
-    btn.id = "allergyfoodbtn";
-    if (allergyFoodBtn.childElementCount + 1 === foodsArray.length) {
-      allergyFoodBtn.appendChild(btn);
+  let petId = sessionStorage.getItem("pet_id");
+  const [content, setContent] = useState();
+  const buttonValueSetting = (e) => {
+    e.preventDefault();
+    const { name } = e.target;
+    setContent(name);
+    if (name === "육류") {
+      document.getElementById("육류").style.color = "#ed7567";
+      document.getElementById("해산물").style.color = "pink";
+      document.getElementById("과일").style.color = "pink";
+      document.getElementById("야채").style.color = "pink";
+      document.getElementById("견과류").style.color = "pink";
     }
-  }
-  foodsArray = deDup;
-
-  const currentScroll = useRef({ scrollTop: 0, scrollBottom: 300 });
-  const containerRef = useRef();
-  const onScroll = (e) => {
-    currentScroll.current = {
-      scrollTop: e.target.scrollTop,
-      scrollBottom: e.target.scrollTop + 300,
-    };
+    if (name === "해산물") {
+      document.getElementById("육류").style.color = "pink";
+      document.getElementById("해산물").style.color = "#ed7567";
+      document.getElementById("과일").style.color = "pink";
+      document.getElementById("야채").style.color = "pink";
+      document.getElementById("견과류").style.color = "pink";
+    }
+    if (name === "과일") {
+      document.getElementById("육류").style.color = "pink";
+      document.getElementById("해산물").style.color = "pink";
+      document.getElementById("과일").style.color = "#ed7567";
+      document.getElementById("야채").style.color = "pink";
+      document.getElementById("견과류").style.color = "pink";
+    }
+    if (name === "야채") {
+      document.getElementById("육류").style.color = "pink";
+      document.getElementById("해산물").style.color = "pink";
+      document.getElementById("과일").style.color = "pink";
+      document.getElementById("야채").style.color = "#ed7567";
+      document.getElementById("견과류").style.color = "pink";
+    }
+    if (name === "견과류") {
+      document.getElementById("육류").style.color = "pink";
+      document.getElementById("해산물").style.color = "pink";
+      document.getElementById("과일").style.color = "pink";
+      document.getElementById("야채").style.color = "pink";
+      document.getElementById("견과류").style.color = "#ed7567";
+    }
   };
-  function submitAllergyFood() {
-    var resultArray = new Array();
-    let petId = sessionStorage.getItem("pet_id");
-    let body = {
+  const selectComponent = {
+    육류: <MeatHw />,
+    해산물: <SeafoodHw />,
+    과일: <FruitsHw />,
+    야채: <VegeHw />,
+    견과류: <NutsHw />,
+  };
+
+  function ocrUpload() {
+    let meat_body = {
       pet_id: petId,
+      duck: parseInt(sessionStorage.getItem("duck")),
+      lamb: parseInt(sessionStorage.getItem("lamb")),
+      beef: parseInt(sessionStorage.getItem("beef")),
+      chicken: parseInt(sessionStorage.getItem("chicken")),
+      turckey: parseInt(sessionStorage.getItem("turckey")),
+      pork: parseInt(sessionStorage.getItem("pork")),
     };
+
+    let seafood_body = {
+      pet_id: petId,
+      crab: parseInt(sessionStorage.getItem("crab")),
+      shrimp: parseInt(sessionStorage.getItem("shrimp")),
+      mackerel: parseInt(sessionStorage.getItem("mackerel")),
+      sardine: parseInt(sessionStorage.getItem("sardine")),
+      anchovy: parseInt(sessionStorage.getItem("anchovy")),
+      cod: parseInt(sessionStorage.getItem("cod")),
+      salmon: parseInt(sessionStorage.getItem("salmon")),
+      tuna: parseInt(sessionStorage.getItem("tuna")),
+    };
+    let fruits_body = {
+      pet_id: petId,
+      w_melon: parseInt(sessionStorage.getItem("w_melon")),
+      melon: parseInt(sessionStorage.getItem("melon")),
+      pear: parseInt(sessionStorage.getItem("pear")),
+      mandarine: parseInt(sessionStorage.getItem("mandarine")),
+      orange: parseInt(sessionStorage.getItem("orange")),
+      apple: parseInt(sessionStorage.getItem("apple")),
+      banana: parseInt(sessionStorage.getItem("banana")),
+      guava: parseInt(sessionStorage.getItem("guava")),
+    };
+    let vege_body = {
+      pet_id: petId,
+      carrot: parseInt(sessionStorage.getItem("carrot")),
+      corn: parseInt(sessionStorage.getItem("corn")),
+      potato: parseInt(sessionStorage.getItem("potato")),
+      s_potato: parseInt(sessionStorage.getItem("s_potato")),
+      pumpkin: parseInt(sessionStorage.getItem("pumpkin")),
+      broccoli: parseInt(sessionStorage.getItem("broccoli")),
+      cabbage: parseInt(sessionStorage.getItem("cabbage")),
+      pea: parseInt(sessionStorage.getItem("pea")),
+      tomato: parseInt(sessionStorage.getItem("tomato")),
+      seaweed: parseInt(sessionStorage.getItem("seaweed")),
+    };
+    let nuts_body = {
+      pet_id: petId,
+      bean: parseInt(sessionStorage.getItem("bean")),
+      peanut: parseInt(sessionStorage.getItem("peanut")),
+      rice: parseInt(sessionStorage.getItem("rice")),
+      flour: parseInt(sessionStorage.getItem("flour")),
+    };
+
     axios
-      .post("http://localhost:8080/allergyfood", body)
-      .then((res) => {})
-      .catch((error) => {
-        console.log(error);
-      });
-
-    for (let i = 0; i < foodsArray.length; i++) {
-      fetch("http://localhost:8080/food")
-        .then((response) => response.json())
-        .then((data) => {
-          resultArray.push(
-            data.foods.filter((item) => item.foodInKor === foodsArray[i])[0].id
-          );
-
-          axios
-            .put(`http://localhost:8080/allergyfood/${petId}`, {
-              allergy_food_id: resultArray,
-            })
-            .then(function (response) {
-              console.log(resultArray);
-            });
-        });
-    }
+      .post("http://localhost:8080/OCR_result_meat", meat_body)
+      .then((res) => {});
+    axios
+      .post("http://localhost:8080/OCR_result_seafood", seafood_body)
+      .then((res) => {});
+    axios
+      .post("http://localhost:8080/OCR_result_fruit", fruits_body)
+      .then((res) => {});
+    axios
+      .post("http://localhost:8080/OCR_result_vege", vege_body)
+      .then((res) => {});
+    axios
+      .post("http://localhost:8080/OCR_result_nuts", nuts_body)
+      .then((res) => {});
+    //sessionStorage.clear();
     history.push("/ocr-complete");
   }
+
   return (
     <StartLayout>
       <AuthLayout>
         <Header>
-          <BackButton></BackButton>
-          <div>알레르기 정보 직접 입력</div>
+          <div> ㅤ</div>
+          <div style={{ fontWeight: "bold" }}>알레르기 검사 결과 입력</div>
           <div> </div>
         </Header>
-        <div
-          id="allergyFoodContainer"
-          style={{
-            height: "160px",
-            width: "90%",
-            display: "flex",
-            flexWrap: "wrap",
-            alignContent: "center",
-          }}
-        >
-          <div style={{ height: "30px", fontSize: "15px" }}>
-            주의해야 할 음식
-          </div>
-          <div
-            id="allergyFood"
-            style={{
-              width: "100%",
-              display: "flex",
-              height: "100px",
-              flexWrap: "wrap",
-              alignContent: "center",
-            }}
-          >
-            <div id="allergyFoodBtn"></div>
-          </div>
+        <div style={{ height: "80px", width: "85%" }}>
+          반려동물 알레르기 검사지 인식 결과를
+          <br /> 입력해주세요.
         </div>
-        <div
-          style={{
-            height: "450px",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <div className="app">
-            <input
-              id="searchbar"
-              type="search"
-              placeholder="주의해야 할 음식 정보를 입력하세요."
-              onChange={(e) => setSearchField(e.target.value)}
-              style={{
-                marginLeft: "18px",
-              }}
-            ></input>
+        <div>
+          <div>
             <div
-              className="list-container"
-              onScroll={onScroll}
-              ref={containerRef}
-              style={{ display: "flex", justifyContent: "center" }}
+              style={{
+                width: "330px",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "start",
+                borderColor: "#E0E0E0",
+                borderWidth: "2px",
+                borderStyle: "none none solid none",
+              }}
             >
-              <div style={{ width: "100px" }}>
-                {filteredFoods.map((food) => (
-                  <FoodListBtn
-                    key={food.id}
-                    food={food}
-                    onClick={() => {
-                      ClickBtn(food.foodInKor);
-                    }}
+              {comp.map((data) => {
+                return (
+                  <OcrNavBtn
+                    onClick={buttonValueSetting}
+                    name={data}
+                    id={data}
+                    key={data}
                   >
-                    {food.foodInKor}
-                  </FoodListBtn>
-                ))}
-              </div>
+                    {data}
+                  </OcrNavBtn>
+                );
+              })}
             </div>
-            <div style={{ height: "20px" }}></div>
-            <SubmitButton onClick={submitAllergyFood}>제출하기</SubmitButton>
+            {content ? (
+              <div>{selectComponent[content]}</div>
+            ) : (
+              <div style={{ width: "90%", height: "425px" }}></div>
+            )}
           </div>
         </div>
+        <PinkButton onClick={ocrUpload}>제출하기</PinkButton>
       </AuthLayout>
     </StartLayout>
   );
