@@ -37,6 +37,7 @@ function OcrSelect() {
       foods.filter((item) => item.foodInKor.includes(searchField))
     );
   }, [searchField, foods]);
+  console.log(filteredFoods);
   let [foodsArray, setFoodsArray] = useState([]);
 
   const ClickBtn = (a) => {

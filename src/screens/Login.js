@@ -41,10 +41,11 @@ function Login() {
         if (foundData.password === password) {
           //history.replace("/mainpage");
           sessionStorage.setItem("user", foundData.email);
+          sessionStorage.setItem("pet_id", foundData.pet_id);
         } else {
           alert("이메일 또는 비밀번호가 일치하지 않습니다.");
         }
-        document.location.href = "/log-in";
+        document.location.href = "/mainpage";
       });
   };
 
@@ -54,24 +55,24 @@ function Login() {
         <StartText>
           <StartText1>시작하기</StartText1>
         </StartText>
-        <div className="form" style={{ width: "90%" }}>
+        <div className='form' style={{ width: "90%" }}>
           <form onSubmit={submitHandler}>
             <Input
-              name="name"
-              type="text"
-              placeholder="이메일"
+              name='name'
+              type='text'
+              placeholder='이메일'
               onChange={emailHandler}
               required
             />
             <Input
-              name="password"
-              type="password"
-              placeholder="비밀번호"
+              name='password'
+              type='password'
+              placeholder='비밀번호'
               value={password}
               onChange={passwordHandler}
               required
             />
-            <SubmitButton type="submit">로그인</SubmitButton>
+            <SubmitButton type='submit'>로그인</SubmitButton>
           </form>
         </div>
       </RoundBox>

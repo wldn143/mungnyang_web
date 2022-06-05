@@ -74,6 +74,9 @@ function App() {
       <Route exact={true} path='/sign-up2'>
         <SignUp2 />
       </Route>
+      <Route exact={true} path='/mainpage'>
+        <MainPage />
+      </Route>
       {/* <Route exact={true} path="/sign-up2">
         {isSigningUp ? <SignUp2 isSigningUp={isSigningUp} /> : <SignUp />}
       </Route> */}
