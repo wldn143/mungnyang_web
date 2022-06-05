@@ -18,6 +18,7 @@ import OcrComplete from "./screens/OcrComplete";
 import PetPage from "./screens/PetPage";
 import OcrHw from "./screens/OcrHw";
 import Ocr2 from "./screens/Ocr2";
+import RecipeDetail from "./components/recipe/RecipeDetail";
 function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [isPetInput, setIsPetInput] = useState(false);
@@ -143,6 +144,9 @@ function App() {
       </Route>
       <Route exact={true} path='/ocr2'>
         <Ocr2 />
+      </Route>
+      <Route exact={true} path='/detail'>
+        <RecipeDetail />
       </Route>
     </div>
   );

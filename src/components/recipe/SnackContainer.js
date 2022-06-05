@@ -1,11 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 
+const RecipeListBtn = styled.button`
+  width: 300px;
+  height: 150px;
+  background-color: ghostwhite;
+  cursor: pointer;
+  border: solid 0.5px gray;
+`;
 function SnackContainer(props) {
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [recipe, setRecipe] = useState(props.recipe);
   const [petKind, setPetKind] = useState(props.petKind);
   const [allergyFoodArr, setAllergyFoodArr] = useState(props.allergyFoodArr); //해당 반려동물의 알러지음식 배열
-
+  const [recipeResult, setRecipeResult] = useState([]);
+  const currentScroll = useRef({ scrollTop: 0, scrollBottom: 300 });
+  const containerRef = useRef();
+  const onScroll = (e) => {
+    currentScroll.current = {
+      scrollTop: e.target.scrollTop,
+      scrollBottom: e.target.scrollTop + 300,
+    };
+  };
+  function detailPage(indexNO) {
+    document.location.href = `/detail?${indexNO}`;
+  }
   useEffect(() => {
     setRecipe(props.recipe);
     setPetKind(props.petKind);
@@ -97,11 +116,43 @@ function SnackContainer(props) {
     });
     const set = new Set(arr3);
     const uniqueSet = [...set];
-    var recipeResult = filteredRecipes.filter(function (data) {
+    var arr4 = filteredRecipes.filter(function (data) {
       return !uniqueSet.includes(data);
     });
-    console.log(recipeResult);
+    setRecipeResult(arr4);
+    console.log(arr4);
   }, [filteredRecipes]);
-  return <div>snack</div>;
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <div
+        className='list-container'
+        onScroll={onScroll}
+        ref={containerRef}
+        style={{
+          textAlign: "center",
+          height: "450px",
+        }}
+      >
+        <div>
+          {recipeResult.map((food) => (
+            <RecipeListBtn
+              key={food.indexNO}
+              food={food}
+              onClick={() => detailPage(food.indexNO)}
+            >
+              {food.recipe_name}
+            </RecipeListBtn>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
 export default SnackContainer;

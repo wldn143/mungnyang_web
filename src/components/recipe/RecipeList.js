@@ -7,7 +7,6 @@ import PureeContainer from "./PureeContainer";
 import RawContainer from "./RawContainer";
 import SnackContainer from "./SnackContainer";
 const CategoryBtn = styled.button`
-  font-weight: bold;
   width: 50px;
   height: 50px;
   border: 2px solid #ed7567;
@@ -61,8 +60,10 @@ function RecipeList() {
         const foundData = json.allergy_food.find(
           (data) => data.pet_id === petId
         );
-        var a = foundData.allergy_food_id.split(",").map(Number);
-        setAllergyId(a);
+        if (foundData !== undefined) {
+          var a = foundData.allergy_food_id.split(",").map(Number);
+          setAllergyId(a);
+        }
       });
   }, [petInfo]);
 
@@ -142,16 +143,30 @@ function RecipeList() {
     생식: <RawContainer />,
   };
   return (
-    <div>
-      <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <div
           style={{
             width: "330px",
             borderWidth: "2px",
             display: "flex",
+            alignItems: "center",
             justifyContent: "space-between",
             marginTop: "10px",
             marginBottom: "10px",
+            height: "70px",
           }}
         >
           {recipeType.map((data) => {

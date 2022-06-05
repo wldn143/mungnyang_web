@@ -1,15 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-const FoodListBtn = styled.button`
+
+const RecipeListBtn = styled.button`
   width: 300px;
-  height: 30px;
-  /* margin-bottom: 20px;
+  height: 150px;
+  background-color: ghostwhite;
   cursor: pointer;
-  border: 1.5px solid #ed7567;
-  border-radius: 4px;
-  color: #ed7567;
-  font-weight: bolder; */
+  border: solid 0.5px gray;
 `;
 
 function CookedContainer(props) {
@@ -28,6 +26,10 @@ function CookedContainer(props) {
       scrollBottom: e.target.scrollTop + 300,
     };
   };
+
+  function detailPage(indexNO) {
+    document.location.href = `/detail?${indexNO}`;
+  }
 
   useEffect(() => {
     setRecipe(props.recipe);
@@ -124,23 +126,35 @@ function CookedContainer(props) {
       return !uniqueSet.includes(data);
     });
     setRecipeResult(arr4);
-    console.log(recipeResult);
+    console.log(arr4);
   }, [filteredRecipes]);
 
   return (
-    <div>
-      Cooked
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <div
         className='list-container'
         onScroll={onScroll}
         ref={containerRef}
-        style={{ display: "flex", justifyContent: "center" }}
+        style={{
+          textAlign: "center",
+          height: "450px",
+        }}
       >
-        <div style={{ width: "300px" }}>
+        <div>
           {recipeResult.map((food) => (
-            <FoodListBtn key={food.id} food={food}>
+            <RecipeListBtn
+              key={food.indexNO}
+              food={food}
+              onClick={() => detailPage(food.indexNO)}
+            >
               {food.recipe_name}
-            </FoodListBtn>
+            </RecipeListBtn>
           ))}
         </div>
       </div>

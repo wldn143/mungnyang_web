@@ -4,17 +4,17 @@ import AuthLayout from "../components/auth/AuthLayout";
 import RecipeList from "../components/recipe/RecipeList";
 
 function MainPage(props) {
-  sessionStorage.setItem("pet_id", 14);
+  //sessionStorage.setItem("pet_id", 14);
   const isLogin = props.isLogin;
-  console.log(isLogin);
-  console.log(sessionStorage.getItem("user"));
+  //console.log(isLogin);
+  //console.log(sessionStorage.getItem("user"));
 
-  // const onLogout = () => {
-  //   // sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
-  //   sessionStorage.removeItem("user");
-  //   // App 으로 이동(새로고침)
-  //   document.location.href = "/log-in";
-  // };
+  const onLogout = () => {
+    // sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
+    sessionStorage.removeItem("user");
+    // App 으로 이동(새로고침)
+    document.location.href = "/log-in";
+  };
   const clickMyPage = (e) => {
     e.preventDefault();
     document.location.href = "/petpage";
@@ -23,14 +23,14 @@ function MainPage(props) {
     <StartLayout>
       <AuthLayout>
         {/* <RoundBox> */}
-        {/* <div>
-          <WhiteButton type='button' onClick={onLogout}>
-            Logout
-          </WhiteButton>
-        </div> */}
+
         <div
           style={{
             width: "85%",
+            height: "200px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
           }}
         >
           <div
@@ -48,35 +48,40 @@ function MainPage(props) {
             >
               멍냥식탁
             </div>
-            <button
-              style={{
-                cursor: "pointer",
-                width: "40px",
-                border: "1px solid gray",
-                borderRadius: "10px",
-              }}
-              onClick={clickMyPage}
-            >
-              MY
-            </button>
+            <div>
+              <button
+                style={{
+                  cursor: "pointer",
+                  width: "50px",
+                  border: "1px solid gray",
+                  borderRadius: "10px",
+                }}
+                onClick={clickMyPage}
+              >
+                MY
+              </button>
+              <button
+                style={{
+                  cursor: "pointer",
+                  width: "50px",
+                  border: "1px solid red",
+                  borderRadius: "10px",
+                }}
+                onClick={onLogout}
+              >
+                Logout
+              </button>
+            </div>
           </div>
+
           <div>반려동물 맞춤 자연식 레시피 찾아보기</div>
-          {/* <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginTop: "10px",
-              marginBottom: "10px",
-            }}
-          >
-            <CategoryBtn>조리식</CategoryBtn>
-            <CategoryBtn>퓨레</CategoryBtn>
-            <CategoryBtn>간식</CategoryBtn>
-            <CategoryBtn>생식</CategoryBtn>
-          </div> */}
         </div>
         {/* <RoundBoxL> */}
-        <div>
+        <div
+          style={{
+            height: "600px",
+          }}
+        >
           <RecipeList></RecipeList>
         </div>
         {/* </RoundBoxL> */}
