@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import comp from "../auth/comp";
 import MeatContainer from "./MeatContainer";
-import SeafoodContainer from "./SeaFoodContainer";
+import SeafoodContainer from "./SeafoodContainer";
 import VegeContainer from "./VegeContainer";
 import NutsContainer from "./NutsContainer";
 import FruitsContainer from "./FruitsContainer";
