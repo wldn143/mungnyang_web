@@ -1,10 +1,6 @@
-import styled from "styled-components";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import StartLayout from "../components/auth/StartLayout";
 import RoundBoxL from "../components/auth/RoundBoxL";
-import PinkButton from "../components/auth/PinkButton";
-import WhiteButton from "../components/auth/WhiteButton";
-import StartText from "../components/auth/StartText";
 import Input from "../components/auth/Input";
 import SubmitButton from "../components/auth/SubmitButton";
 import { useHistory } from "react-router-dom";
@@ -12,9 +8,7 @@ import AuthLayout from "../components/auth/AuthLayout";
 import Header from "../components/feed/Header";
 import AuthBox from "../components/auth/AuthBox";
 import Radio from "../components/auth/Radio";
-import DogUnclick from "../image/dog_unclick.png";
 import BackButton from "../components/feed/BackButton";
-import axios from "axios";
 
 function SignUp2() {
   //const isSigningUp = props.isSigningUp;
@@ -97,7 +91,7 @@ function SignUp2() {
           <div> </div>
         </Header>
         <div
-          className="WhiteSpace"
+          className='WhiteSpace'
           style={{
             width: "100%",
             height: "50px",
@@ -107,30 +101,30 @@ function SignUp2() {
           <AuthBox>
             <form onSubmit={submitHandler}>
               <div
-                className="select"
+                className='select'
                 style={{
                   marginBottom: "23px",
                 }}
               >
-                <Radio id="animal1" name="animal" value="dog" />
-                <label htmlFor="animal1">강아지</label>
-                <Radio type="radio" id="animal2" name="animal" value="cat" />
-                <label htmlFor="animal2">고양이</label>
+                <Radio id='animal1' name='animal' value='dog' />
+                <label htmlFor='animal1'>강아지</label>
+                <Radio type='radio' id='animal2' name='animal' value='cat' />
+                <label htmlFor='animal2'>고양이</label>
               </div>
               <Input
-                className="form"
-                type="text"
-                name="pet_name"
-                placeholder="이름"
+                className='form'
+                type='text'
+                name='pet_name'
+                placeholder='이름'
                 value={pet_name}
                 onChange={pet_name_Handler}
                 required
               />
               <Input
-                className="form"
-                type="number"
-                name="age"
-                placeholder="나이"
+                className='form'
+                type='number'
+                name='age'
+                placeholder='나이'
                 value={pet_age}
                 onChange={pet_age_Handler}
                 required
@@ -138,52 +132,52 @@ function SignUp2() {
 
               <p>성별</p>
               <div
-                className="select"
+                className='select'
                 style={{
                   marginBottom: "23px",
                 }}
               >
-                <Radio id="gender1" name="gender" value="male" />
-                <label htmlFor="gender1">남</label>
-                <Radio id="gender2" name="gender" value="female" />
-                <label htmlFor="gender2">여</label>
+                <Radio id='gender1' name='gender' value='male' />
+                <label htmlFor='gender1'>남</label>
+                <Radio id='gender2' name='gender' value='female' />
+                <label htmlFor='gender2'>여</label>
               </div>
               <p>중성화 유무</p>
               <div
-                className="select"
+                className='select'
                 style={{
                   marginBottom: "23px",
                 }}
               >
-                <Radio id="neut1" name="neut" value="yes" />
-                <label htmlFor="neut1">YES</label>
-                <Radio id="neut2" name="neut" value="no" />
-                <label htmlFor="neut2">NO</label>
+                <Radio id='neut1' name='neut' value='yes' />
+                <label htmlFor='neut1'>YES</label>
+                <Radio id='neut2' name='neut' value='no' />
+                <label htmlFor='neut2'>NO</label>
               </div>
               <p>크기</p>
               <div
-                className="select"
+                className='select'
                 style={{
                   marginBottom: "23px",
                 }}
               >
-                <Radio id="size1" name="size" value="small" />
-                <label htmlFor="size1">소</label>
-                <Radio id="size2" type="radio" name="size" value="medium" />
-                <label htmlFor="size2">중</label>
-                <Radio id="size3" name="size" value="large" />
-                <label htmlFor="size3">대</label>
+                <Radio id='size1' name='size' value='small' />
+                <label htmlFor='size1'>소</label>
+                <Radio id='size2' type='radio' name='size' value='medium' />
+                <label htmlFor='size2'>중</label>
+                <Radio id='size3' name='size' value='large' />
+                <label htmlFor='size3'>대</label>
               </div>
               <Input
-                className="form"
-                type="number"
-                name="weight"
-                placeholder="체중"
+                className='form'
+                type='number'
+                name='weight'
+                placeholder='체중'
                 value={pet_weight}
                 onChange={pet_weight_Handler}
                 required
               />
-              <SubmitButton type="submit">다음</SubmitButton>
+              <SubmitButton type='submit'>다음</SubmitButton>
             </form>
           </AuthBox>
         </RoundBoxL>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import AuthBox from "../components/auth/AuthBox";
 import AuthLayout from "../components/auth/AuthLayout";

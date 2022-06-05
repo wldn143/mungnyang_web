@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { LeftOutlined } from "@ant-design/icons";
-import { useHistory } from "react-router-dom";
 
 const SHeader = styled.div`
   width: 100%;
@@ -13,7 +11,6 @@ const SHeader = styled.div`
 `;
 
 function Header({ children }) {
-  const history = useHistory();
   return <SHeader>{children}</SHeader>;
 }
 

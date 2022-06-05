@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import StartLayout from "../components/auth/StartLayout";
 import Input from "../components/auth/Input";
 import SubmitButton from "../components/auth/SubmitButton";
@@ -6,7 +6,6 @@ import AuthLayout from "../components/auth/AuthLayout";
 import Header from "../components/feed/Header";
 import AuthBox from "../components/auth/AuthBox";
 import BackButton from "../components/feed/BackButton";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 function SignUp() {
@@ -63,7 +62,7 @@ function SignUp() {
           <div> </div>
         </Header>
         <div
-          className="WhiteSpace"
+          className='WhiteSpace'
           style={{
             width: "100%",
             height: "50px",
@@ -72,49 +71,49 @@ function SignUp() {
         <AuthBox>
           <form onSubmit={submitHandler}>
             <Input
-              name="name"
-              type="text"
-              placeholder="이름"
+              name='name'
+              type='text'
+              placeholder='이름'
               value={name}
               onChange={nameHandler}
               required
             />
             <div>
               <Input
-                name="email"
-                type="email"
-                placeholder="이메일"
+                name='email'
+                type='email'
+                placeholder='이메일'
                 value={email}
                 onChange={emailHandler}
                 required
               />
-              <div id="emailvaild"></div>
+              <div id='emailvaild'></div>
             </div>
-            <Input type="text" placeholder="전화번호" />
+            <Input type='text' placeholder='전화번호' />
             <Input
-              name="password"
-              type="password"
-              placeholder="비밀번호"
+              name='password'
+              type='password'
+              placeholder='비밀번호'
               value={password}
               onChange={passwordHandler}
               required
             />
             <Input
-              type="password"
-              name="confirmPassword"
-              placeholder="비밀번호 확인"
+              type='password'
+              name='confirmPassword'
+              placeholder='비밀번호 확인'
               //value={confirmPassword}
               required
             />
             <div
-              id="WhiteSpace"
+              id='WhiteSpace'
               style={{
                 backgroundColor: "white",
                 width: "100%",
                 height: "30px",
               }}
             ></div>
-            <SubmitButton type="submit">다음</SubmitButton>
+            <SubmitButton type='submit'>다음</SubmitButton>
           </form>
         </AuthBox>
       </AuthLayout>

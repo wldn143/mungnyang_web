@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import StartLayout from "../components/auth/StartLayout";
 import AuthLayout from "../components/auth/AuthLayout";
 import Header from "../components/feed/Header";
-import BackButton from "../components/feed/BackButton";
 import "./btn.css";
-import SubmitButton from "../components/auth/SubmitButton";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import comp from "../components/auth/comp";

@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { LeftOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
 import { Button } from "antd";
@@ -6,7 +5,7 @@ import { Button } from "antd";
 function BackButton() {
   const history = useHistory();
   return (
-    <div className="back">
+    <div className='back'>
       <Button
         onClick={() => {
           history.goBack();

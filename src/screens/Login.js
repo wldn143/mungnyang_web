@@ -1,14 +1,11 @@
 import styled from "styled-components";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import StartLayout from "../components/auth/StartLayout";
 import RoundBox from "../components/auth/RoundBox";
-import PinkButton from "../components/auth/PinkButton";
-import WhiteButton from "../components/auth/WhiteButton";
 import StartText from "../components/auth/StartText";
 import Input from "../components/auth/Input";
 import SubmitButton from "../components/auth/SubmitButton";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 
 const StartText1 = styled.p`
   font-weight: bold;

@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import StartLayout from "../components/auth/StartLayout";
 import { useHistory } from "react-router-dom";

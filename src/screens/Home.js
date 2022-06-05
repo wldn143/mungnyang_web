@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import StartLayout from "../components/auth/StartLayout";
 import RoundBox from "../components/auth/RoundBox";
 import PinkButton from "../components/auth/PinkButton";

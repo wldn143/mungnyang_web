@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { LeftOutlined } from "@ant-design/icons";
-import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../../screens/btn.css";
 const InfoBox = styled.div`
@@ -119,7 +117,7 @@ function PetInfo() {
       </div>
       <div style={{ marginTop: "20px" }}>주의해야할 음식</div>
       <div
-        id="allergyFood"
+        id='allergyFood'
         style={{
           display: "flex",
           width: "350px",
@@ -128,7 +126,7 @@ function PetInfo() {
           alignContent: "center",
         }}
       >
-        <div id="allergyFoodBtn"></div>
+        <div id='allergyFoodBtn'></div>
       </div>
       <div style={{ height: "30px", width: "350px" }}>알레르기 검사 데이터</div>
     </div>

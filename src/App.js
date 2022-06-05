@@ -1,12 +1,11 @@
 import "./App.css";
 import Home from "./screens/Home";
 import SignUp from "./screens/SignUp";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Login from "./screens/Login";
 import SignUp2 from "./screens/SignUp2";
 import Ocr from "./screens/Ocr";
 import "antd/dist/antd.min.css";
-import routes from "./routes";
 import SignUp3 from "./screens/SignUp3";
 import SignUpComplete from "./screens/SignUpComplete";
 import OcrUpload from "./screens/OcrUpload";

@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import StartLayout from "../components/auth/StartLayout";
 import { useHistory } from "react-router-dom";
 import AuthLayout from "../components/auth/AuthLayout";
@@ -20,7 +19,7 @@ function MyPage() {
           <div> </div>
         </Header>
         <div
-          className="WhiteSpace"
+          className='WhiteSpace'
           style={{
             width: "100%",
             height: "50px",
@@ -36,7 +35,7 @@ function MyPage() {
         >
           <PetInfoBox></PetInfoBox>
           <button
-            id="allergy_input_write"
+            id='allergy_input_write'
             onClick={function () {
               history.push("/sign-up2");
             }}

@@ -1,16 +1,8 @@
-import React, { useState } from "react";
-import { Form, Input, InputNumber, Button, Icon } from "antd";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { Select, Radio } from "antd";
-import AuthBox from "../components/auth/AuthBox";
 import AuthLayout from "../components/auth/AuthLayout";
 import StartLayout from "../components/auth/StartLayout";
 import Header from "../components/feed/Header";
-import Footer from "../components/feed/Footer";
-import WhiteButton from "../components/auth/WhiteButton";
-import PinkButton from "../components/auth/PinkButton";
-import Logo from "../image/landing_logo.png";
 import BackButton from "../components/feed/BackButton";
 import OcrType from "../image/Ocr_result_type.png";
 import OcrUploadPageButton from "../image/Ocr_upload_btn.png";

@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import styled from "styled-components";
 
 function SnackContainer(props) {
-  let petId = parseInt(sessionStorage.getItem("pet_id"));
-  const history = useHistory();
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [recipe, setRecipe] = useState(props.recipe);
   const [petKind, setPetKind] = useState(props.petKind);

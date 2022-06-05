@@ -1,17 +1,9 @@
-import styled from "styled-components";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import StartLayout from "../components/auth/StartLayout";
-import RoundBox from "../components/auth/RoundBox";
-import PinkButton from "../components/auth/PinkButton";
-import WhiteButton from "../components/auth/WhiteButton";
-import StartText from "../components/auth/StartText";
-import Input from "../components/auth/Input";
 import SubmitButton from "../components/auth/SubmitButton";
 import { useHistory } from "react-router-dom";
 import AuthLayout from "../components/auth/AuthLayout";
 import Header from "../components/feed/Header";
-import AuthBox from "../components/auth/AuthBox";
-import Footer from "../components/feed/Footer";
 import BackButton from "../components/feed/BackButton";
 import MeatOcrImg from "../image/meatOcr.png";
 import FruitsOcrImg from "../image/fruitsOcr.png";
@@ -21,32 +13,7 @@ import nutOcrImg from "../image/nutOcr.png";
 import { Upload } from "antd";
 import OcrContainer from "../components/auth/OcrContainer";
 import axios from "axios";
-const HalfButton = styled.button`
-  background-color: #ed7567;
-  color: white;
-  text-align: center;
-  opacity: ${(props) => (props.disabled ? "0.2" : "")};
 
-  border-radius: 7px;
-  width: 120px;
-  height: 49px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-`;
-const HalfButton2 = styled.button`
-  background-color: grey;
-  color: white;
-  text-align: center;
-  opacity: ${(props) => (props.disabled ? "0.2" : "")};
-
-  border-radius: 7px;
-  width: 120px;
-  height: 49px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-`;
 function OcrUpload() {
   const [meatImageUrl, setMeatImageUrl] = useState(null);
   const [fishImageUrl, setFishImageUrl] = useState(null);
@@ -139,44 +106,44 @@ function OcrUpload() {
         <form onSubmit={onSubmit}>
           <OcrContainer>
             <Upload
-              name="image"
+              name='image'
               action={"http://localhost:8080/image"}
-              listType="picture"
+              listType='picture'
               showUploadList={false}
               onChange={onChangeImage1}
             >
               {meatImageUrl ? (
                 <img
-                  id="upload-img"
+                  id='upload-img'
                   src={`http://localhost:8080/${meatImageUrl}`}
                   style={{ margin: "auto" }}
-                  width="163"
-                  height="197"
+                  width='163'
+                  height='197'
                 />
               ) : (
-                <div id="upload-img-placeholder">
+                <div id='upload-img-placeholder'>
                   <img src={MeatOcrImg} />
                 </div>
               )}
             </Upload>
 
             <Upload
-              name="image"
+              name='image'
               action={"http://localhost:8080/image"}
-              listType="picture"
+              listType='picture'
               showUploadList={false}
               onChange={onChangeImage2}
             >
               {fruitImageUrl ? (
                 <img
-                  id="upload-img"
+                  id='upload-img'
                   src={`http://localhost:8080/${fruitImageUrl}`}
                   style={{ margin: "auto" }}
-                  width="163"
-                  height="197"
+                  width='163'
+                  height='197'
                 />
               ) : (
-                <div id="upload-img-placeholder">
+                <div id='upload-img-placeholder'>
                   <img src={FruitsOcrImg} />
                 </div>
               )}
@@ -184,43 +151,43 @@ function OcrUpload() {
           </OcrContainer>
           <OcrContainer>
             <Upload
-              name="image"
+              name='image'
               action={"http://localhost:8080/image"}
-              listType="picture"
+              listType='picture'
               showUploadList={false}
               onChange={onChangeImage3}
             >
               {fishImageUrl ? (
                 <img
-                  id="upload-img"
+                  id='upload-img'
                   src={`http://localhost:8080/${fishImageUrl}`}
                   style={{ margin: "auto" }}
-                  width="163"
-                  height="197"
+                  width='163'
+                  height='197'
                 />
               ) : (
-                <div id="upload-img-placeholder">
+                <div id='upload-img-placeholder'>
                   <img src={FishOcrImg} />
                 </div>
               )}
             </Upload>
             <Upload
-              name="image"
+              name='image'
               action={"http://localhost:8080/image"}
-              listType="picture"
+              listType='picture'
               showUploadList={false}
               onChange={onChangeImage4}
             >
               {vegeImageUrl ? (
                 <img
-                  id="upload-img"
+                  id='upload-img'
                   src={`http://localhost:8080/${vegeImageUrl}`}
                   style={{ margin: "auto" }}
-                  width="163"
-                  height="197"
+                  width='163'
+                  height='197'
                 />
               ) : (
-                <div id="upload-img-placeholder">
+                <div id='upload-img-placeholder'>
                   <img src={VegeOcrImg} />
                 </div>
               )}
@@ -228,22 +195,22 @@ function OcrUpload() {
           </OcrContainer>
           <OcrContainer>
             <Upload
-              name="image"
+              name='image'
               action={"http://localhost:8080/image"}
-              listType="picture"
+              listType='picture'
               showUploadList={false}
               onChange={onChangeImage5}
             >
               {nutImageUrl ? (
                 <img
-                  id="upload-img"
+                  id='upload-img'
                   src={`http://localhost:8080/${nutImageUrl}`}
                   style={{ margin: "auto" }}
-                  width="163"
-                  height="197"
+                  width='163'
+                  height='197'
                 />
               ) : (
-                <div id="upload-img-placeholder">
+                <div id='upload-img-placeholder'>
                   <img src={nutOcrImg} />
                 </div>
               )}
@@ -256,7 +223,7 @@ function OcrUpload() {
               justifyContent: "space-around",
             }}
           >
-            <SubmitButton type="submit">제출하기</SubmitButton>
+            <SubmitButton type='submit'>제출하기</SubmitButton>
           </div>
         </form>
       </AuthLayout>

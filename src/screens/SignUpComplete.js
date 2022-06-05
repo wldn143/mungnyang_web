@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import { Form, Input, InputNumber, Button, Icon } from "antd";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { Select, Radio } from "antd";
 import AuthBox from "../components/auth/AuthBox";
 import AuthLayout from "../components/auth/AuthLayout";
 import StartLayout from "../components/auth/StartLayout";
@@ -68,7 +65,7 @@ function SignUpComplete() {
           <div> </div>
         </Header>
         <div
-          className="WhiteSpace"
+          className='WhiteSpace'
           style={{
             width: "100%",
             height: "50px",
@@ -79,7 +76,7 @@ function SignUpComplete() {
             <img src={Logo} />
           </div>
           <div
-            className="text"
+            className='text'
             style={{
               marginTop: "10px",
               color: "#888888",

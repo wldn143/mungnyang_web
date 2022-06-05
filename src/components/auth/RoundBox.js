@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { BaseBox } from "../feed/shared";
 
 const Contatiner = styled.div`
   display: flex;

@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
+import { useState } from "react";
 import {
   Container,
   ElementContainer,
@@ -8,10 +7,8 @@ import {
   ResBox,
 } from "./OcrContainer";
 import { InputBox } from "./InputBox";
-import SubmitButton from "../auth/SubmitButton";
 
 function NutsHw() {
-  let petId = parseInt(sessionStorage.getItem("pet_id"));
   let beanData = sessionStorage.getItem("bean");
   let peanutData = sessionStorage.getItem("peanut");
   let riceData = sessionStorage.getItem("rice");

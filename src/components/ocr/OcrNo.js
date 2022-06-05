@@ -1,5 +1,3 @@
-import { Checkbox } from "antd";
-import styled from "styled-components";
 import PetInfo from "../feed/PetInfo";
 import ocrinfo from "../../image/ocrinfo.png";
 import SubmitButton from "../auth/SubmitButton";

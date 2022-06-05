@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
+import { useState } from "react";
 import {
   Container,
   ElementContainer,
@@ -10,7 +9,6 @@ import {
 import { InputBox } from "./InputBox";
 
 function FruitsHw() {
-  let petId = parseInt(sessionStorage.getItem("pet_id"));
   let w_melonData = sessionStorage.getItem("w_melon");
   let melonData = sessionStorage.getItem("melon");
   let pearData = sessionStorage.getItem("pear");
@@ -20,7 +18,6 @@ function FruitsHw() {
   let bananaData = sessionStorage.getItem("banana");
   let guavaData = sessionStorage.getItem("guava");
 
-  const [fruitsOcrResult, setFruitsOcrResult] = useState([]);
   const [w_melon, setWmelon] = useState(w_melonData === null ? 0 : w_melonData);
   const [melon, setMelon] = useState(melonData === null ? 0 : melonData);
   const [pear, setPear] = useState(pearData === null ? 0 : pearData);
@@ -41,14 +38,6 @@ function FruitsHw() {
     ["banana", banana],
     ["guava", guava],
   ];
-  //   sessionStorage.setItem("w_melon", w_melon);
-  //   sessionStorage.setItem("melon", melon);
-  //   sessionStorage.setItem("pear", pear);
-  //   sessionStorage.setItem("mandarine", mandarine);
-  //   sessionStorage.setItem("orange", orange);
-  //   sessionStorage.setItem("apple", apple);
-  //   sessionStorage.setItem("banana", banana);
-  //   sessionStorage.setItem("guava", guava);
   fruits.map((data) => {
     return sessionStorage.setItem(data[0], data[1]);
   });
