@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import comp from "../auth/comp";
 import MeatContainer from "./MeatContainer";
@@ -6,6 +6,7 @@ import SeafoodContainer from "./SeafoodContainer";
 import VegeContainer from "./VegeContainer";
 import NutsContainer from "./NutsContainer";
 import FruitsContainer from "./FruitsContainer";
+import axios from "axios";
 const OcrNavBtn = styled.button`
   height: 35px;
   color: #ed7567;
@@ -14,7 +15,131 @@ const OcrNavBtn = styled.button`
   font-weight: bolder;
   cursor: pointer;
 `;
-function OcrDatagraph() {
+function OcrDatagraph(props) {
+  let petId = parseInt(sessionStorage.getItem("pet_id"));
+
+  const [meatOcrResult, setMeatOcrResult] = useState(props.meatOcrResult);
+  const [seafoodOcrResult, setSeafoodOcrResult] = useState(
+    props.seafoodOcrResult
+  );
+  const [fruitsOcrResult, setFruitsOcrResult] = useState(props.fruitsOcrResult);
+  const [VegeOcrResult, setVegeOcrResult] = useState(props.VegeOcrResult);
+  const [NutsOcrResult, setNutsOcrResult] = useState(props.NutsOcrResult);
+
+  const [userMeatResult, setUserMeatResult] = useState();
+  const [userSeafoodResult, setUserSeafoodResult] = useState();
+  const [userFruitsResult, setUserFruitsResult] = useState();
+  const [userVegeResult, setUserVegeResult] = useState();
+  const [userNutsResult, setUserNutsResult] = useState();
+
+  const [allergyFood, setAllergyFood] = useState();
+  let control = 0;
+  //const [control, setControl] = useState(0);
+  useEffect(() => {
+    if (meatOcrResult.filter((item) => item.pet_id === petId).length) {
+      let MeatResult = meatOcrResult.filter((item) => item.pet_id === petId);
+      setUserMeatResult(MeatResult);
+    }
+    if (seafoodOcrResult.filter((item) => item.pet_id === petId).length) {
+      let SeafoodResult = seafoodOcrResult.filter(
+        (item) => item.pet_id === petId
+      );
+      setUserSeafoodResult(SeafoodResult);
+    }
+    if (fruitsOcrResult.filter((item) => item.pet_id === petId).length) {
+      let FruitsResult = fruitsOcrResult.filter(
+        (item) => item.pet_id === petId
+      );
+      setUserFruitsResult(FruitsResult);
+    }
+    if (VegeOcrResult.filter((item) => item.pet_id === petId).length) {
+      let VegeResult = VegeOcrResult.filter((item) => item.pet_id === petId);
+      setUserVegeResult(VegeResult);
+    }
+    if (NutsOcrResult.filter((item) => item.pet_id === petId).length) {
+      let NutsResult = NutsOcrResult.filter((item) => item.pet_id === petId);
+      setUserNutsResult(NutsResult);
+    }
+  });
+
+  useEffect(() => {
+    setMeatOcrResult(props.meatOcrResult);
+    setSeafoodOcrResult(props.seafoodOcrResult);
+    setFruitsOcrResult(props.fruitsOcrResult);
+    setVegeOcrResult(props.VegeOcrResult);
+    setNutsOcrResult(props.NutsOcrResult);
+  });
+
+  useEffect(() => {
+    let body = {
+      pet_id: petId,
+    };
+    axios
+      .post("http://localhost:8080/allergyfood", body)
+      .then((res) => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    var allergyFoodArray = new Array();
+    if (userMeatResult !== undefined) {
+      const values = Object.values(userMeatResult[0]);
+      for (let i = 2; i < values.length - 2; i++) {
+        if (values[i] >= 5000) {
+          allergyFoodArray.push(i - 1);
+        }
+      }
+    }
+    if (userSeafoodResult !== undefined) {
+      const values = Object.values(userSeafoodResult[0]);
+      for (let i = 2; i < values.length - 2; i++) {
+        if (values[i] >= 5000) {
+          allergyFoodArray.push(i + 2);
+        }
+      }
+    }
+    if (userFruitsResult !== undefined) {
+      const values = Object.values(userFruitsResult[0]);
+      for (let i = 2; i < values.length - 2; i++) {
+        if (values[i] >= 5000) {
+          allergyFoodArray.push(i + 13);
+        }
+      }
+    }
+    if (userVegeResult !== undefined) {
+      const values = Object.values(userVegeResult[0]);
+      for (let i = 2; i < values.length - 2; i++) {
+        if (values[i] >= 5000) {
+          allergyFoodArray.push(i + 21);
+        }
+      }
+    }
+    if (userNutsResult !== undefined) {
+      const values = Object.values(userNutsResult[0]);
+      for (let i = 2; i < values.length - 2; i++) {
+        if (values[i] >= 5000) {
+          allergyFoodArray.push(i + 31);
+        }
+      }
+    }
+    setAllergyFood(allergyFoodArray);
+  });
+  // async function putData() {
+  //   axios.put(`http://localhost:8080/allergyfood/${petId}`, {
+  //     allergy_food_id: allergyFood,
+  //   });
+  //   console.log(allergyFood);
+  //   control++;
+  // }
+  // if (control < 5) {
+  //   putData();
+  // }
+  // useEffect(() => {
+  //   putData();
+  // });
+
   const [content, setContent] = useState();
   const buttonValueSetting = (e) => {
     e.preventDefault();
@@ -57,11 +182,11 @@ function OcrDatagraph() {
     }
   };
   const selectComponent = {
-    육류: <MeatContainer />,
-    해산물: <SeafoodContainer />,
-    과일: <FruitsContainer />,
-    야채: <VegeContainer />,
-    견과류: <NutsContainer />,
+    육류: <MeatContainer userMeatResult={userMeatResult} />,
+    해산물: <SeafoodContainer userSeafoodResult={userSeafoodResult} />,
+    과일: <FruitsContainer userFruitsResult={userFruitsResult} />,
+    야채: <VegeContainer userVegeResult={userVegeResult} />,
+    견과류: <NutsContainer userNutsResult={userNutsResult} />,
   };
   return (
     <div>

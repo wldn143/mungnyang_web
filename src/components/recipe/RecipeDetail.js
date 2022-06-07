@@ -6,6 +6,7 @@ import StartLayout from "../auth/StartLayout";
 import BackButton from "../feed/BackButton";
 import Header from "../feed/Header";
 import RecipeImg from "../../image/recipeImg.png";
+import axios from "axios";
 const Minibutn = styled.button`
   width: 230px;
   height: 40px;
@@ -20,9 +21,13 @@ const Minibutn = styled.button`
 `;
 
 function RecipeDetail() {
+  let petId = sessionStorage.getItem("pet_id");
   const [recipe, setRecipe] = useState();
   const [recipeName, setRecipeName] = useState("");
   const receivedId = document.location.href.split("?")[1];
+  let body = {
+    pet_id: petId,
+  };
 
   useEffect(() => {
     fetch(`http://localhost:8080/recipe/${receivedId}`)
@@ -30,7 +35,12 @@ function RecipeDetail() {
       .then((json) => {
         setRecipe(json.recipe);
       });
+
+    axios
+      .post(`http://localhost:8080/recipe/${receivedId}`, body)
+      .then((res) => {});
   }, []);
+
   useEffect(() => {
     if (recipe !== undefined) {
       setRecipeName(recipe.recipe_name);

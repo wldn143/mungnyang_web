@@ -8,9 +8,10 @@ import {
   Res,
 } from "./OcrContainer";
 
-function FruitsContainer() {
-  let petId = parseInt(sessionStorage.getItem("pet_id"));
-  const [fruitsOcrResult, setFruitsOcrResult] = useState([]);
+function FruitsContainer(props) {
+  const [userFruitsResult, setUserFruitsResult] = useState(
+    props.userFruitsResult
+  );
   const [w_melon, setWmelon] = useState([]);
   const [melon, setMelon] = useState([]);
   const [pear, setPear] = useState([]);
@@ -21,18 +22,11 @@ function FruitsContainer() {
   const [guava, setGuava] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/OCR_result_fruit")
-      .then((response) => response.json())
-      .then((data) => {
-        setFruitsOcrResult(data.OCR_result_fruit);
-      });
+    setUserFruitsResult(props.userFruitsResult);
   }, []);
 
   useEffect(() => {
-    if (fruitsOcrResult.filter((item) => item.pet_id === petId).length) {
-      let userFruitsResult = fruitsOcrResult.filter(
-        (item) => item.pet_id === petId
-      );
+    if (userFruitsResult !== undefined) {
       setWmelon(userFruitsResult[0].w_melon);
       setMelon(userFruitsResult[0].melon);
       setPear(userFruitsResult[0].pear);

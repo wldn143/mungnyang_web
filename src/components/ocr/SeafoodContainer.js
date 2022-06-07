@@ -9,8 +9,10 @@ import {
   Res,
 } from "./OcrContainer";
 
-function SeafoodContainer() {
-  const [seafoodOcrResult, setSeafoodOcrResult] = useState([]);
+function SeafoodContainer(props) {
+  const [userSeafoodResult, setUserSeafoodResult] = useState(
+    props.userSeafoodResult
+  );
   const [crab, setCrab] = useState([]);
   const [shrimp, setShrimp] = useState([]);
   const [mackerel, setMackerel] = useState([]);
@@ -19,21 +21,13 @@ function SeafoodContainer() {
   const [cod, setCod] = useState([]);
   const [salmon, setSalmon] = useState([]);
   const [tuna, setTuna] = useState([]);
-  let petId = parseInt(sessionStorage.getItem("pet_id"));
 
   useEffect(() => {
-    fetch("http://localhost:8080/OCR_result_seafood")
-      .then((response) => response.json())
-      .then((data) => {
-        setSeafoodOcrResult(data.OCR_result_seafood);
-      });
+    setUserSeafoodResult(props.userSeafoodResult);
   }, []);
 
   useEffect(() => {
-    if (seafoodOcrResult.filter((item) => item.pet_id === petId).length) {
-      let userSeafoodResult = seafoodOcrResult.filter(
-        (item) => item.pet_id === petId
-      );
+    if (userSeafoodResult !== undefined) {
       setCrab(userSeafoodResult[0].crab);
       setShrimp(userSeafoodResult[0].shrimp);
       setMackerel(userSeafoodResult[0].mackerel);

@@ -8,8 +8,8 @@ import {
   Res,
 } from "./OcrContainer";
 
-function VegeContainer() {
-  const [VegeOcrResult, setVegeOcrResult] = useState([]);
+function VegeContainer(props) {
+  const [userVegeResult, setUserVegeResult] = useState(props.userVegeResult);
   const [carrot, setCarrot] = useState([]);
   const [corn, setcorn] = useState([]);
   const [potato, setPotato] = useState([]);
@@ -20,20 +20,12 @@ function VegeContainer() {
   const [pea, setPea] = useState([]);
   const [tomato, setTomato] = useState([]);
   const [seaweed, setSeaweed] = useState([]);
-  let petId = parseInt(sessionStorage.getItem("pet_id"));
   useEffect(() => {
-    fetch("http://localhost:8080/OCR_result_vege")
-      .then((response) => response.json())
-      .then((data) => {
-        setVegeOcrResult(data.OCR_result_vege);
-      });
+    setUserVegeResult(props.userVegeResult);
   }, []);
 
   useEffect(() => {
-    if (VegeOcrResult.filter((item) => item.pet_id === petId).length) {
-      let userVegeResult = VegeOcrResult.filter(
-        (item) => item.pet_id === petId
-      );
+    if (userVegeResult !== undefined) {
       setCarrot(userVegeResult[0].carrot);
       setcorn(userVegeResult[0].corn);
       setPotato(userVegeResult[0].potato);

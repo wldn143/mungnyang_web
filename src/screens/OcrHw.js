@@ -144,7 +144,7 @@ function OcrHw() {
       .post("http://localhost:8080/OCR_result_nuts", nuts_body)
       .then((res) => {});
     //sessionStorage.clear();
-    history.push("/ocr-complete");
+    history.push("/ocr-result");
   }
 
   return (

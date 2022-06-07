@@ -8,9 +8,10 @@ import {
   Res,
 } from "./OcrContainer";
 
-function MeatContainer() {
-  let petId = parseInt(sessionStorage.getItem("pet_id"));
-  const [meatOcrResult, setMeatOcrResult] = useState([]);
+function MeatContainer(props) {
+  //let petId = parseInt(sessionStorage.getItem("pet_id"));
+  const [userMeatResult, setUserMeatResult] = useState(props.userMeatResult);
+  //const [meatOcrResult, setMeatOcrResult] = useState(props.meatOcrResult);
   const [duck, setDuck] = useState([]);
   const [lamb, setLamb] = useState([]);
   const [beef, setBeef] = useState([]);
@@ -19,18 +20,12 @@ function MeatContainer() {
   const [pork, setPork] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/OCR_result_meat")
-      .then((response) => response.json())
-      .then((data) => {
-        setMeatOcrResult(data.OCR_result_meat);
-      });
+    setUserMeatResult(props.userMeatResult);
   }, []);
+  //console.log(userMeatResult);
 
   useEffect(() => {
-    if (meatOcrResult.filter((item) => item.pet_id === petId).length) {
-      let userMeatResult = meatOcrResult.filter(
-        (item) => item.pet_id === petId
-      );
+    if (userMeatResult !== undefined) {
       setDuck(userMeatResult[0].duck);
       setLamb(userMeatResult[0].lamb);
       setBeef(userMeatResult[0].beef);
