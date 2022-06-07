@@ -21,7 +21,7 @@ const Minibutn = styled.button`
 `;
 
 function RecipeDetail() {
-  let petId = sessionStorage.getItem("pet_id");
+  let petId = parseInt(sessionStorage.getItem("pet_id"));
   const [recipe, setRecipe] = useState();
   const [recipeName, setRecipeName] = useState("");
   const receivedId = document.location.href.split("?")[1];
