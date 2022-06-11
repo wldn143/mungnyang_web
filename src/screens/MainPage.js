@@ -27,7 +27,7 @@ function MainPage(props) {
         <div
           style={{
             width: "85%",
-            height: "200px",
+            height: "100px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -78,9 +78,11 @@ function MainPage(props) {
         </div>
         {/* <RoundBoxL> */}
         <div
-          style={{
-            height: "600px",
-          }}
+          style={
+            {
+              //height: "650px",
+            }
+          }
         >
           <RecipeList></RecipeList>
         </div>

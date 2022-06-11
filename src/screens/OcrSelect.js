@@ -23,7 +23,6 @@ function OcrSelect() {
   const [foods, setFoods] = useState([]);
   const [searchField, setSearchField] = useState("");
   const [filteredFoods, setFilteredFoods] = useState([]);
-  const [result, setResult] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:8080/food")
@@ -37,7 +36,6 @@ function OcrSelect() {
       foods.filter((item) => item.foodInKor.includes(searchField))
     );
   }, [searchField, foods]);
-  console.log(filteredFoods);
   let [foodsArray, setFoodsArray] = useState([]);
 
   const ClickBtn = (a) => {

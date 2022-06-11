@@ -8,6 +8,14 @@
   font-weight: bolder;
   margin: 0px 8px 10px 0px;
 }
+#foodBtn {
+  cursor: pointer;
+  width: 95px;
+  height: 27px;
+  color: black;
+  border: #ed7567 solid 1px;
+  margin: 0px 8px 10px 0px;
+}
 #searchbar {
   width: 316px;
   height: 39px;

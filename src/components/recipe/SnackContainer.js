@@ -137,7 +137,7 @@ function SnackContainer(props) {
         ref={containerRef}
         style={{
           textAlign: "center",
-          height: "450px",
+          height: "475px",
         }}
       >
         <div>

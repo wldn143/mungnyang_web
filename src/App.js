@@ -19,6 +19,8 @@ import PetPage from "./screens/PetPage";
 import OcrHw from "./screens/OcrHw";
 import Ocr2 from "./screens/Ocr2";
 import RecipeDetail from "./components/recipe/RecipeDetail";
+import SelectRaw from "./components/recipe/SelectRaw";
+import RawFoodRecipe from "./components/recipe/RawFoodRecipe";
 function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [isPetInput, setIsPetInput] = useState(false);
@@ -147,6 +149,12 @@ function App() {
       </Route>
       <Route exact={true} path='/detail'>
         <RecipeDetail />
+      </Route>
+      <Route exact={true} path='/select-raw'>
+        <SelectRaw />
+      </Route>
+      <Route exact={true} path='/rawFoodRecipe'>
+        <RawFoodRecipe />
       </Route>
     </div>
   );
