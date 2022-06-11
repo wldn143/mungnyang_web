@@ -11,6 +11,7 @@ const SelectedContainer = styled.div`
   height: 75px;
 `;
 function RawContainer() {
+  let petId = parseInt(sessionStorage.getItem("pet_id"));
   const location = useLocation();
   const history = useHistory();
   const [selectedIngredient, setSelectedIngredient] = useState([]);
@@ -91,6 +92,7 @@ function RawContainer() {
 
   function submitRaw() {
     let body = {
+      pet_id: petId,
       indexNOArr: indexNOArr,
     };
     axios.post("http://localhost:8080/rawFood", body);
