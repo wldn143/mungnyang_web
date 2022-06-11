@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import {
   Container,
@@ -9,9 +10,10 @@ import {
 } from "./OcrContainer";
 
 function MeatContainer(props) {
-  //let petId = parseInt(sessionStorage.getItem("pet_id"));
+  let petId = parseInt(sessionStorage.getItem("pet_id"));
   const [userMeatResult, setUserMeatResult] = useState(props.userMeatResult);
-  //const [meatOcrResult, setMeatOcrResult] = useState(props.meatOcrResult);
+  const [postAllergyFood, setPostAllergyFood] = useState(props.postAllergyFood);
+
   const [duck, setDuck] = useState([]);
   const [lamb, setLamb] = useState([]);
   const [beef, setBeef] = useState([]);
@@ -21,8 +23,11 @@ function MeatContainer(props) {
 
   useEffect(() => {
     setUserMeatResult(props.userMeatResult);
+    setPostAllergyFood(props.postAllergyFood);
+    axios.put(`http://localhost:8080/allergyfood/${petId}`, {
+      allergy_food_id: postAllergyFood.allergy_food_id,
+    });
   }, []);
-  //console.log(userMeatResult);
 
   useEffect(() => {
     if (userMeatResult !== undefined) {

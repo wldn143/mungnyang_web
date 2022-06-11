@@ -8,7 +8,6 @@ import OcrDatagraph from "../components/ocr/OcrDatagraph";
 import axios from "axios";
 
 function OcrResult() {
-  let petId = sessionStorage.getItem("pet_id");
   const history = useHistory();
   const [meatOcrResult, setMeatOcrResult] = useState([]);
   const [seafoodOcrResult, setSeafoodOcrResult] = useState([]);

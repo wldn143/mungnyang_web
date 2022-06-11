@@ -33,8 +33,8 @@ function OcrDatagraph(props) {
   const [userNutsResult, setUserNutsResult] = useState();
 
   const [allergyFood, setAllergyFood] = useState();
-  let control = 0;
-  //const [control, setControl] = useState(0);
+  const [postAllergyFood, setPostAllergyFood] = useState();
+
   useEffect(() => {
     if (meatOcrResult.filter((item) => item.pet_id === petId).length) {
       let MeatResult = meatOcrResult.filter((item) => item.pet_id === petId);
@@ -125,20 +125,10 @@ function OcrDatagraph(props) {
       }
     }
     setAllergyFood(allergyFoodArray);
+    setPostAllergyFood({
+      allergy_food_id: allergyFood,
+    });
   });
-  // async function putData() {
-  //   axios.put(`http://localhost:8080/allergyfood/${petId}`, {
-  //     allergy_food_id: allergyFood,
-  //   });
-  //   console.log(allergyFood);
-  //   control++;
-  // }
-  // if (control < 5) {
-  //   putData();
-  // }
-  // useEffect(() => {
-  //   putData();
-  // });
 
   const [content, setContent] = useState();
   const buttonValueSetting = (e) => {
@@ -182,7 +172,12 @@ function OcrDatagraph(props) {
     }
   };
   const selectComponent = {
-    육류: <MeatContainer userMeatResult={userMeatResult} />,
+    육류: (
+      <MeatContainer
+        userMeatResult={userMeatResult}
+        postAllergyFood={postAllergyFood}
+      />
+    ),
     해산물: <SeafoodContainer userSeafoodResult={userSeafoodResult} />,
     과일: <FruitsContainer userFruitsResult={userFruitsResult} />,
     야채: <VegeContainer userVegeResult={userVegeResult} />,
