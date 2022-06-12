@@ -22,7 +22,9 @@ function RawContainer() {
   const [indexNOArr, setIndexNOArr] = useState([]);
   useEffect(() => {
     var arr = [];
-    setSelectedIngredient(location.state.data);
+    if (location.state !== undefined) {
+      setSelectedIngredient(location.state.data);
+    }
     selectedIngredient.filter((item) => {
       arr.push(item.indexNO);
     });
@@ -52,7 +54,9 @@ function RawContainer() {
   }, [selectedIngredient]);
 
   useEffect(() => {
-    setSelectedIngredient(location.state.data);
+    if (location.state !== undefined) {
+      setSelectedIngredient(location.state.data);
+    }
     selectedIngredient.filter((item) => {
       if (item.group === "육류") {
         const meatBtn = document.getElementById("meat");
