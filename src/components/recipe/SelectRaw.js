@@ -1,16 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import WhiteButton from "../auth/WhiteButton";
-import PinkButton from "../auth/PinkButton";
 import StartLayout from "../auth/StartLayout";
 import AuthLayout from "../auth/AuthLayout";
 import SubmitButton from "../auth/SubmitButton";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
 
-const addIngredients = (e) => {
-  e.preventDefault();
-};
 const FoodListBtn = styled.button`
   width: 250px;
   height: 30px;
@@ -32,21 +26,21 @@ function SelectRaw() {
   const [selectedIngredient, setSelectedIngredient] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/ingredient_DB")
+    fetch("http://localhost:8080/raw_ingredient")
       .then((response) => response.json())
       .then((data) => {
-        setFoods(data.ingredient_DB);
+        setFoods(data.raw);
       });
   }, []);
   useEffect(() => {
     setFilteredFoods(() =>
-      foods.filter((item) => item.foodDescription_KOR.includes(searchField))
+      foods.filter((item) => item.ingredient.includes(searchField))
     );
   }, [searchField, foods]);
   let [foodsArray, setFoodsArray] = useState([]);
 
-  const ClickBtn = (indexNO, name, group) => {
-    setFoodsArray([...foodsArray, { indexNO, name, group }]);
+  const ClickBtn = (id, category, ingredient) => {
+    setFoodsArray([...foodsArray, { id, ingredient, category }]);
   };
   let deDup = [...new Set(foodsArray)];
   if (foodsArray.length !== deDup.length) {
@@ -54,7 +48,7 @@ function SelectRaw() {
   } else if (foodsArray.length !== 0 && deDup.length !== 13) {
     const allergyFoodBtn = document.getElementById("allergyFoodBtn");
     const btn = document.createElement("button");
-    btn.innerHTML = foodsArray[foodsArray.length - 1].name;
+    btn.innerHTML = foodsArray[foodsArray.length - 1].ingredient;
     btn.id = "allergyfoodbtn";
     if (allergyFoodBtn.childElementCount + 1 === foodsArray.length) {
       allergyFoodBtn.appendChild(btn);
@@ -145,17 +139,13 @@ function SelectRaw() {
                 >
                   {filteredFoods.map((food) => (
                     <FoodListBtn
-                      key={food.indexNO}
+                      key={food.id}
                       food={food}
                       onClick={() => {
-                        ClickBtn(
-                          food.indexNO,
-                          food.foodDescription_KOR,
-                          food.foodGroups
-                        );
+                        ClickBtn(food.id, food.category, food.ingredient);
                       }}
                     >
-                      {food.foodDescription_KOR}
+                      {food.ingredient}
                     </FoodListBtn>
                   ))}
                 </div>

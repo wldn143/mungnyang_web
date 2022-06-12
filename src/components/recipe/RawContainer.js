@@ -5,10 +5,11 @@ import PinkButton from "../auth/PinkButton";
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-const SelectedContainer = styled.div`
-  color: #ed7567;
-  font-weight: bold;
-  height: 75px;
+
+const SelectedElem = styled.div`
+  font-size: 10px;
+  width: 340px;
+  height: 70px;
 `;
 function RawContainer() {
   let petId = parseInt(sessionStorage.getItem("pet_id"));
@@ -26,73 +27,78 @@ function RawContainer() {
       setSelectedIngredient(location.state.data);
     }
     selectedIngredient.filter((item) => {
-      arr.push(item.indexNO);
+      arr.push(item.id);
     });
     setIndexNOArr(arr);
   });
+
   useEffect(() => {
     var arr1 = [];
     var arr2 = [];
     var arr3 = [];
     var arr4 = [];
-    //setSelectedIngredient(location.state.data);
-    selectedIngredient.filter((item) => {
-      if (item.group === "육류") {
-        arr1.push(item.name);
-      } else if (item.group === "채소류") {
-        arr2.push(item.name);
-      } else if (item.group === "과일류") {
-        arr3.push(item.name);
-      } else {
-        arr4.push(item.name);
-      }
-    });
-    setMeatIngredient(arr1);
-    setVegeIngredient(arr2);
-    setFruitsIngredient(arr3);
-    setElseIngredient(arr4);
+    if (selectedIngredient.length) {
+      selectedIngredient.filter((item) => {
+        if (item.category === "육류") {
+          arr1.push(item.ingredient);
+        } else if (item.category === "채소") {
+          arr2.push(item.ingredient);
+        } else if (item.category === "과일") {
+          arr3.push(item.ingredient);
+        } else {
+          arr4.push(item.ingredient);
+        }
+      });
+      setMeatIngredient(arr1);
+      setVegeIngredient(arr2);
+      setFruitsIngredient(arr3);
+      setElseIngredient(arr4);
+    }
+    console.log(selectedIngredient);
   }, [selectedIngredient]);
 
   useEffect(() => {
     if (location.state !== undefined) {
       setSelectedIngredient(location.state.data);
     }
-    selectedIngredient.filter((item) => {
-      if (item.group === "육류") {
-        const meatBtn = document.getElementById("meat");
-        const btn = document.createElement("button");
-        btn.innerHTML = item.name;
-        btn.id = "foodBtn";
-        if (meatBtn.childElementCount <= setMeatIngredient.length + 1) {
-          meatBtn.appendChild(btn);
+    if (selectedIngredient.length) {
+      selectedIngredient.filter((item) => {
+        if (item.category === "육류") {
+          const meatBtn = document.getElementById("meat");
+          const btn = document.createElement("button");
+          btn.innerHTML = item.ingredient;
+          btn.id = "foodBtn";
+          if (meatBtn.childElementCount < meatIngredient.length) {
+            meatBtn.appendChild(btn);
+          }
+        } else if (item.category === "채소") {
+          const vegeBtn = document.getElementById("vege");
+          const btn = document.createElement("button");
+          btn.innerHTML = item.ingredient;
+          btn.id = "foodBtn";
+          if (vegeBtn.childElementCount < vegeIngredient.length) {
+            vegeBtn.appendChild(btn);
+          }
+        } else if (item.category === "과일") {
+          const fruitsBtn = document.getElementById("fruits");
+          const btn = document.createElement("button");
+          btn.innerHTML = item.ingredient;
+          btn.id = "foodBtn";
+          if (fruitsBtn.childElementCount < fruitsIngredient.length) {
+            fruitsBtn.appendChild(btn);
+          }
+        } else if (item.category === "기타") {
+          const elseBtn = document.getElementById("else");
+          const btn = document.createElement("button");
+          btn.innerHTML = item.ingredient;
+          btn.id = "foodBtn";
+          if (elseBtn.childElementCount < elseIngredient.length) {
+            elseBtn.appendChild(btn);
+          }
         }
-      } else if (item.group === "채소류") {
-        const vegeBtn = document.getElementById("vege");
-        const btn = document.createElement("button");
-        btn.innerHTML = item.name;
-        btn.id = "vege";
-        if (vegeBtn.childElementCount <= setVegeIngredient.length + 1) {
-          vegeBtn.appendChild(btn);
-        }
-      } else if (item.group === "과일류") {
-        const fruitsBtn = document.getElementById("fruits");
-        const btn = document.createElement("button");
-        btn.innerHTML = item.name;
-        btn.id = "foodBtn";
-        if (fruitsBtn.childElementCount <= setFruitsIngredient.length + 1) {
-          fruitsBtn.appendChild(btn);
-        }
-      } else {
-        const elseBtn = document.getElementById("else");
-        const btn = document.createElement("button");
-        btn.innerHTML = item.name;
-        btn.id = "foodBtn";
-        if (elseBtn.childElementCount <= setElseIngredient.length + 1) {
-          elseBtn.appendChild(btn);
-        }
-      }
-    });
-  }, [selectedIngredient]);
+      });
+    }
+  });
 
   function submitRaw() {
     let body = {
@@ -103,12 +109,7 @@ function RawContainer() {
     history.push("/rawFoodRecipe");
   }
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <div>
       <div>
         <div style={{ height: "30px" }}>재료선택</div>
 
@@ -121,22 +122,56 @@ function RawContainer() {
       <div
         style={{
           width: "100%",
-          height: "297px",
+          height: "360px",
           marginTop: "15px",
+          color: "#ed7567",
+          fontWeight: "bold",
         }}
       >
-        <SelectedContainer>
-          육류<div id='meat'></div>
-        </SelectedContainer>
-        <SelectedContainer>
-          채소<div id='vege'></div>
-        </SelectedContainer>
-        <SelectedContainer>
-          과일<div id='fruits'></div>
-        </SelectedContainer>
-        <SelectedContainer>
-          기타<div id='else'></div>
-        </SelectedContainer>
+        육류
+        <div
+          style={{
+            marginTop: "3px",
+            display: "flex",
+            flexWrap: "wrap",
+            alignContent: "center",
+          }}
+        >
+          <SelectedElem id='meat'></SelectedElem>
+        </div>
+        채소
+        <div
+          style={{
+            marginTop: "3px",
+            display: "flex",
+            flexWrap: "wrap",
+            alignContent: "center",
+          }}
+        >
+          <SelectedElem id='vege'></SelectedElem>
+        </div>
+        과일
+        <div
+          style={{
+            marginTop: "3px",
+            display: "flex",
+            flexWrap: "wrap",
+            alignContent: "center",
+          }}
+        >
+          <SelectedElem id='fruits'></SelectedElem>
+        </div>
+        기타
+        <div
+          style={{
+            marginTop: "3px",
+            display: "flex",
+            flexWrap: "wrap",
+            alignContent: "center",
+          }}
+        >
+          <SelectedElem id='else'></SelectedElem>
+        </div>
       </div>
       <div style={{ width: "339px" }}>
         <WhiteButton
@@ -149,9 +184,8 @@ function RawContainer() {
             });
           }}
         >
-          재료 추가하기
+          재료 선택하기
         </WhiteButton>
-        {/* <WhiteButton>초기화</WhiteButton> */}
         <PinkButton onClick={submitRaw}>결과보기</PinkButton>
       </div>
     </div>
