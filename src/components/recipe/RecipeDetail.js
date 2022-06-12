@@ -13,12 +13,11 @@ const Minibutn = styled.button`
   height: 40px;
   background-color: #ed7567;
   color: white;
-
   border-radius: 7px;
   cursor: pointer;
 `;
 const WhiteMinibtn = styled.button`
-  width: 100px;
+  width: 110px;
   height: 40px;
   color: #ed7567;
   border: #ed7567 solid 1px;
@@ -71,7 +70,7 @@ function RecipeDetail() {
         const Ielement = document.createElement("div");
         Ielement.innerHTML = item.ingredient2 + "  " + item.weight + "g";
         Ielement.id = "Ielement";
-        if (Icontainer.childElementCount + 1 !== ingredientArray.length)
+        if (Icontainer.childElementCount !== ingredientArray.length)
           Icontainer.appendChild(Ielement);
       });
     }
@@ -116,8 +115,10 @@ function RecipeDetail() {
             <div
               className='name'
               style={{
+                height: "50px",
                 fontSize: "17px",
-                marginBottom: "10px",
+                display: "flex",
+                alignItems: "center",
               }}
             >
               {recipeName}
@@ -127,6 +128,7 @@ function RecipeDetail() {
               style={{
                 display: "flex",
                 //flexDirection: "column",
+                justifyContent: "space-between",
                 alignItems: "center",
                 height: "60px",
               }}
