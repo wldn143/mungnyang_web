@@ -36,29 +36,37 @@ function OcrDatagraph(props) {
   const [postAllergyFood, setPostAllergyFood] = useState();
 
   useEffect(() => {
-    if (meatOcrResult.filter((item) => item.pet_id === petId).length) {
-      let MeatResult = meatOcrResult.filter((item) => item.pet_id === petId);
-      setUserMeatResult(MeatResult);
-    }
-    if (seafoodOcrResult.filter((item) => item.pet_id === petId).length) {
-      let SeafoodResult = seafoodOcrResult.filter(
-        (item) => item.pet_id === petId
-      );
-      setUserSeafoodResult(SeafoodResult);
-    }
-    if (fruitsOcrResult.filter((item) => item.pet_id === petId).length) {
-      let FruitsResult = fruitsOcrResult.filter(
-        (item) => item.pet_id === petId
-      );
-      setUserFruitsResult(FruitsResult);
-    }
-    if (VegeOcrResult.filter((item) => item.pet_id === petId).length) {
-      let VegeResult = VegeOcrResult.filter((item) => item.pet_id === petId);
-      setUserVegeResult(VegeResult);
-    }
-    if (NutsOcrResult.filter((item) => item.pet_id === petId).length) {
-      let NutsResult = NutsOcrResult.filter((item) => item.pet_id === petId);
-      setUserNutsResult(NutsResult);
+    if (
+      meatOcrResult !== undefined &&
+      seafoodOcrResult !== undefined &&
+      fruitsOcrResult !== undefined &&
+      VegeOcrResult !== undefined &&
+      NutsOcrResult !== undefined
+    ) {
+      if (meatOcrResult.filter((item) => item.pet_id === petId).length) {
+        let MeatResult = meatOcrResult.filter((item) => item.pet_id === petId);
+        setUserMeatResult(MeatResult);
+      }
+      if (seafoodOcrResult.filter((item) => item.pet_id === petId).length) {
+        let SeafoodResult = seafoodOcrResult.filter(
+          (item) => item.pet_id === petId
+        );
+        setUserSeafoodResult(SeafoodResult);
+      }
+      if (fruitsOcrResult.filter((item) => item.pet_id === petId).length) {
+        let FruitsResult = fruitsOcrResult.filter(
+          (item) => item.pet_id === petId
+        );
+        setUserFruitsResult(FruitsResult);
+      }
+      if (VegeOcrResult.filter((item) => item.pet_id === petId).length) {
+        let VegeResult = VegeOcrResult.filter((item) => item.pet_id === petId);
+        setUserVegeResult(VegeResult);
+      }
+      if (NutsOcrResult.filter((item) => item.pet_id === petId).length) {
+        let NutsResult = NutsOcrResult.filter((item) => item.pet_id === petId);
+        setUserNutsResult(NutsResult);
+      }
     }
   });
 

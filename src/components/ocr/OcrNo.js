@@ -8,14 +8,13 @@ function OcrNo() {
       <div>
         <div
           style={{
-            height: "250px",
+            height: "300px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             textAlign: "center",
             color: "#888888",
-            //marginBottom: "25px",
           }}
         >
           <img src={ocrinfo} />

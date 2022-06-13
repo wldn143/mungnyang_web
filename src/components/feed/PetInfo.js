@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import "../../screens/btn.css";
 const InfoBox = styled.div`
   width: 120px;
-  margin: 0 0 10px 0;
-  font-family: Noto Sans;
+  margin: 0 0 5px 0;
+  text-align: center;
+  font-size: 13px;
 `;
 function PetInfo() {
   let petId = parseInt(sessionStorage.getItem("pet_id"));
@@ -35,23 +36,37 @@ function PetInfo() {
   }, []);
 
   useEffect(() => {
-    if (allergyId.filter((item) => item.pet_id === petId).length) {
-      let allergyStr = allergyId.filter((item) => item.pet_id === petId)[0]
-        .allergy_food_id;
-      let allergyList = allergyStr.split(",").map(function (item) {
-        return parseInt(item, 10);
-      });
-      for (let i = 0; i < allergyList.length; i++) {
-        if (foods.filter((item) => item.id === allergyList[i])) {
-          let allergyfood = foods.filter(
-            (item) => item.id === allergyList[i]
-          )[0].foodInKor;
-          const allergyFoodBtn = document.getElementById("allergyFoodBtn");
-          const btn = document.createElement("button");
-          btn.innerHTML = allergyfood;
-          btn.id = "allergyfoodbtn";
-          if (allergyFoodBtn.childElementCount < allergyList.length) {
-            allergyFoodBtn.appendChild(btn);
+    if (allergyId.length) {
+      if (allergyId.filter((item) => item.pet_id === petId).length) {
+        let allergyStr = allergyId.filter((item) => item.pet_id === petId)[0]
+          .allergy_food_id;
+        if (allergyStr !== null) {
+          let allergyList = allergyStr.split(",").map(function (item) {
+            return parseInt(item, 10);
+          });
+          if (
+            (allergyList[0] =
+              isNaN ||
+              allergyList.length === 0 ||
+              allergyList === undefined ||
+              allergyList === null)
+          ) {
+          } else {
+            for (let i = 0; i < allergyList.length; i++) {
+              if (foods.filter((item) => item.id === allergyList[i])) {
+                let allergyfood = foods.filter(
+                  (item) => item.id === allergyList[i]
+                )[0].foodInKor;
+                const allergyFoodBtn =
+                  document.getElementById("allergyFoodBtn");
+                const btn = document.createElement("button");
+                btn.innerHTML = allergyfood;
+                btn.id = "allergyfoodbtn";
+                if (allergyFoodBtn.childElementCount < allergyList.length) {
+                  allergyFoodBtn.appendChild(btn);
+                }
+              }
+            }
           }
         }
       }
@@ -80,7 +95,7 @@ function PetInfo() {
   return (
     <div
       style={{
-        height: "270px",
+        height: "230px",
         display: "flex",
         flexDirection: "column",
       }}
@@ -91,18 +106,17 @@ function PetInfo() {
           justifyContent: "center",
           alignItems: "center",
           fontSize: "20px",
-          height: "60px",
+          height: "40px",
         }}
       >
         {petName}
       </div>
       <div
         style={{
-          height: "60px",
+          height: "50px",
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-around",
-
           alignItems: "center",
         }}
       >
@@ -115,13 +129,13 @@ function PetInfo() {
           <InfoBox>중성화 유무: {petNeuter}</InfoBox>
         </div>
       </div>
-      <div style={{ marginTop: "20px" }}>주의해야할 음식</div>
+      <div style={{ marginTop: "10px" }}>주의해야할 음식</div>
       <div
         id='allergyFood'
         style={{
           display: "flex",
           width: "350px",
-          height: "100px",
+          height: "80px",
           flexWrap: "wrap",
           alignContent: "center",
         }}

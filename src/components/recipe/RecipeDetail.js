@@ -7,7 +7,6 @@ import BackButton from "../feed/BackButton";
 import Header from "../feed/Header";
 import RecipeImg from "../../image/recipeImg.png";
 import axios from "axios";
-
 const Minibutn = styled.button`
   width: 230px;
   height: 40px;
@@ -24,6 +23,7 @@ const WhiteMinibtn = styled.button`
   border-radius: 7px;
   cursor: pointer;
 `;
+
 function RecipeDetail() {
   let petId = parseInt(sessionStorage.getItem("pet_id"));
   const [recipe, setRecipe] = useState();
@@ -34,13 +34,11 @@ function RecipeDetail() {
 
   //하루권장 섭취량
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/Pet_RER`)
+    fetch(`http://localhost:8080/Pet_RER`)
       .then((response) => response.json())
       .then((json) => {
         const der = json.Pet_RER.find((data) => data.pet_id === petId);
         setDER(der.DER);
-        console.log(PET_DER);
       });
     fetch(`http://localhost:8080/recipe/${receivedId}`)
       .then((response) => response.json())
@@ -81,6 +79,10 @@ function RecipeDetail() {
     }
   }, [recipe]);
 
+  function recipeDesPage() {
+    document.location.href = `/recipe_des?${receivedId}`;
+  }
+
   return (
     <StartLayout>
       <AuthLayout>
@@ -92,7 +94,7 @@ function RecipeDetail() {
         <div>
           <img
             src={require(`./crawled_img/${receivedId}.jpg`)}
-            style={{ height: "200px" }}
+            style={{ height: "200px", width: "350px" }}
           />
         </div>
         <div
@@ -113,14 +115,65 @@ function RecipeDetail() {
               flexDirection: "column",
             }}
           >
-            <div className='element'></div>
+            <div
+              className='element'
+              style={{
+                display: "flex",
+                fontSize: "12px",
+                height: "30px",
+                alignItems: "end",
+              }}
+            >
+              <div>
+                {ingredientArray !== undefined ? (
+                  <div>
+                    {ingredientArray[0].ingredient2 !== null ? (
+                      <div
+                        style={{
+                          backgroundColor: "pink",
+                          marginRight: "10px",
+                          padding: "0px 5px 0px 5px",
+                        }}
+                      >
+                        #{ingredientArray[0].ingredient2}
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+              </div>
+              <div>
+                {ingredientArray !== undefined ? (
+                  <div>
+                    {ingredientArray[1].ingredient2 !== null ? (
+                      <div
+                        style={{
+                          backgroundColor: "#86DF84",
+                          padding: "0px 5px 0px 5px",
+                        }}
+                      >
+                        #{ingredientArray[1].ingredient2}
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+              </div>
+            </div>
             <div
               className='name'
               style={{
-                height: "50px",
+                height: "32px",
                 fontSize: "17px",
                 display: "flex",
                 alignItems: "center",
+                marginTop: "5px",
               }}
             >
               {recipeName}
@@ -129,14 +182,15 @@ function RecipeDetail() {
               className='create'
               style={{
                 display: "flex",
-                //flexDirection: "column",
                 justifyContent: "space-between",
                 alignItems: "center",
-                height: "60px",
+                height: "50px",
               }}
             >
               <WhiteMinibtn>♥ 찜하기</WhiteMinibtn>
-              <Minibutn>레시피 제작방법</Minibutn>
+              <Minibutn onClick={() => recipeDesPage()}>
+                레시피 제작방법
+              </Minibutn>
             </div>
             <div
               style={{
@@ -147,7 +201,7 @@ function RecipeDetail() {
               하루 권장 섭취량: {PET_DER}kcal
             </div>
           </div>
-          <div className='ingredient'>
+          <div className='ingredient' style={{ width: "90%" }}>
             <div style={{ fontSize: "17px", height: "27px" }}>
               재료 정보 (g)
             </div>
@@ -165,7 +219,10 @@ function RecipeDetail() {
             <div
               id='ingredientContainer'
               style={{
-                marginTop: "5px",
+                marginTop: "12px",
+                display: "flex",
+                flexWrap: "wrap",
+                alignContent: "center",
               }}
             ></div>
           </div>

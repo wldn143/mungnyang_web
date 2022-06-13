@@ -8,12 +8,15 @@ import RawContainer from "./RawContainer";
 import SnackContainer from "./SnackContainer";
 import RoundBoxM from "../auth/RoundBoxM";
 const CategoryBtn = styled.button`
-  width: 50px;
-  height: 50px;
+  width: 54px;
+  height: 54px;
   border: 2px solid #ed7567;
-  border-radius: 25px;
+  border-radius: 27px;
   cursor: pointer;
+  font-weight: bold;
+  color: #ed7567;
 `;
+
 function RecipeList() {
   const [content, setContent] = useState();
   let petId = parseInt(sessionStorage.getItem("pet_id"));
@@ -46,26 +49,30 @@ function RecipeList() {
 
   //음식 전체 리스트
   useEffect(() => {
-    fetch("http://localhost:8080/food")
-      .then((response) => response.json())
-      .then((json) => {
-        setfoods(json.foods);
-      });
+    if (foods.length === 0) {
+      fetch("http://localhost:8080/food")
+        .then((response) => response.json())
+        .then((json) => {
+          setfoods(json.foods);
+        });
+    }
   }, []);
 
   //알러지 음식 확인 ID배열
   useEffect(() => {
-    fetch("http://localhost:8080/allergyfood")
-      .then((response) => response.json())
-      .then((json) => {
-        const foundData = json.allergy_food.find(
-          (data) => data.pet_id === petId
-        );
-        if (foundData !== undefined) {
-          var a = foundData.allergy_food_id.split(",").map(Number);
-          setAllergyId(a);
-        }
-      });
+    if (allergyId.length === 0) {
+      fetch("http://localhost:8080/allergyfood")
+        .then((response) => response.json())
+        .then((json) => {
+          const foundData = json.allergy_food.find(
+            (data) => data.pet_id === petId
+          );
+          if (foundData !== undefined && foundData.allergy_food_id !== null) {
+            var a = foundData.allergy_food_id.split(",").map(Number);
+            setAllergyId(a);
+          }
+        });
+    }
   }, [petInfo]);
 
   //알러지 푸드 아이디를 한글 배열로
@@ -83,11 +90,13 @@ function RecipeList() {
 
   //레시피 전체 출력
   useEffect(() => {
-    fetch("http://localhost:8080/recipe")
-      .then((response) => response.json())
-      .then((recipe) => {
-        setRecipe(recipe.recipe);
-      });
+    if (recipe.length === 0) {
+      fetch("http://localhost:8080/recipe")
+        .then((response) => response.json())
+        .then((recipe) => {
+          setRecipe(recipe.recipe);
+        });
+    }
   }, []);
 
   const buttonValueSetting = (e) => {
@@ -95,28 +104,44 @@ function RecipeList() {
     const { name } = e.target;
     setContent(name);
     if (name === "조리식") {
-      document.getElementById("조리식").style.color = "#ed7567";
+      document.getElementById("조리식").style.color = "white";
+      document.getElementById("조리식").style.backgroundColor = "#ed7567";
       document.getElementById("퓨레").style.color = "pink";
       document.getElementById("간식").style.color = "pink";
       document.getElementById("생식").style.color = "pink";
+      document.getElementById("퓨레").style.backgroundColor = "white";
+      document.getElementById("간식").style.backgroundColor = "white";
+      document.getElementById("생식").style.backgroundColor = "white";
     }
     if (name === "퓨레") {
       document.getElementById("조리식").style.color = "pink";
-      document.getElementById("퓨레").style.color = "#ed7567";
+      document.getElementById("퓨레").style.color = "white";
+      document.getElementById("퓨레").style.backgroundColor = "#ed7567";
       document.getElementById("간식").style.color = "pink";
       document.getElementById("생식").style.color = "pink";
+      document.getElementById("조리식").style.backgroundColor = "white";
+      document.getElementById("간식").style.backgroundColor = "white";
+      document.getElementById("생식").style.backgroundColor = "white";
     }
     if (name === "간식") {
       document.getElementById("조리식").style.color = "pink";
       document.getElementById("퓨레").style.color = "pink";
-      document.getElementById("간식").style.color = "#ed7567";
+      document.getElementById("간식").style.color = "white";
+      document.getElementById("간식").style.backgroundColor = "#ed7567";
       document.getElementById("생식").style.color = "pink";
+      document.getElementById("퓨레").style.backgroundColor = "white";
+      document.getElementById("조리식").style.backgroundColor = "white";
+      document.getElementById("생식").style.backgroundColor = "white";
     }
     if (name === "생식") {
       document.getElementById("조리식").style.color = "pink";
       document.getElementById("퓨레").style.color = "pink";
       document.getElementById("간식").style.color = "pink";
-      document.getElementById("생식").style.color = "#ed7567";
+      document.getElementById("생식").style.color = "white";
+      document.getElementById("생식").style.backgroundColor = "#ed7567";
+      document.getElementById("퓨레").style.backgroundColor = "white";
+      document.getElementById("간식").style.backgroundColor = "white";
+      document.getElementById("조리식").style.backgroundColor = "white";
     }
   };
   const selectComponent = {
@@ -165,7 +190,6 @@ function RecipeList() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            marginTop: "10px",
             marginBottom: "10px",
             height: "70px",
           }}

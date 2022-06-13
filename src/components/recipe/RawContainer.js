@@ -21,15 +21,19 @@ function RawContainer() {
   const [fruitsIngredient, setFruitsIngredient] = useState([]);
   const [elseIngredient, setElseIngredient] = useState([]);
   const [indexNOArr, setIndexNOArr] = useState([]);
+  const [infoArr, setInfoArr] = useState([]);
   useEffect(() => {
     var arr = [];
+    var arr2 = [];
     if (location.state !== undefined) {
       setSelectedIngredient(location.state.data);
     }
     selectedIngredient.filter((item) => {
       arr.push(item.id);
+      arr2.push({ name: item.ingredient, category: item.category });
     });
     setIndexNOArr(arr);
+    setInfoArr(arr2);
   });
 
   useEffect(() => {
@@ -54,7 +58,6 @@ function RawContainer() {
       setFruitsIngredient(arr3);
       setElseIngredient(arr4);
     }
-    console.log(selectedIngredient);
   }, [selectedIngredient]);
 
   useEffect(() => {
@@ -124,8 +127,16 @@ function RawContainer() {
       pet_id: petId,
       indexNOArr: indexNOArr,
     };
-    axios.post("http://localhost:8080/rawFood", body);
-    history.push("/rawFoodRecipe");
+    let info = {
+      infoArr: infoArr,
+    };
+    history.push({
+      pathname: "/rawFoodRecipe",
+      state: {
+        data: body,
+        info: info,
+      },
+    });
   }
   return (
     <div>

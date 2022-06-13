@@ -6,6 +6,7 @@ import Header from "../components/feed/Header";
 import BackButton from "../components/feed/BackButton";
 import OcrYes from "../components/ocr/OcrYes";
 import OcrNo from "../components/ocr/OcrNo";
+import RoundBoxF from "../components/auth/RoundBoxF";
 function PetPage() {
   let petId = parseInt(sessionStorage.getItem("pet_id"));
   const [isOcr, setIsOcr] = useState([]); //패치나 axios쓸때 얘를 써야 데이터를 꺼낼수가이쎄
@@ -41,16 +42,17 @@ function PetPage() {
           <div>반려동물 정보</div>
           <div> </div>
         </Header>
-
-        {/* <RoundBoxL>
+        <RoundBoxF>
+          {/* <RoundBoxL>
           <AuthBox> */}
-        {content ? (
-          <div>{selectComponent[content]}</div>
-        ) : (
-          <div style={{ width: "90%", height: "425px" }}></div>
-        )}
-        {/* </AuthBox>
+          {content ? (
+            <div>{selectComponent[content]}</div>
+          ) : (
+            <div style={{ width: "90%", height: "425px" }}></div>
+          )}
+          {/* </AuthBox>
         </RoundBoxL> */}
+        </RoundBoxF>
       </AuthLayout>
     </StartLayout>
   );

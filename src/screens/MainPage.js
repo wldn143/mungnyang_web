@@ -2,7 +2,7 @@ import React from "react";
 import StartLayout from "../components/auth/StartLayout";
 import AuthLayout from "../components/auth/AuthLayout";
 import RecipeList from "../components/recipe/RecipeList";
-
+import MyPageBtn from "../image/mypage.png";
 function MainPage(props) {
   //sessionStorage.setItem("pet_id", 14);
   const isLogin = props.isLogin;
@@ -52,24 +52,10 @@ function MainPage(props) {
               <button
                 style={{
                   cursor: "pointer",
-                  width: "50px",
-                  border: "1px solid gray",
-                  borderRadius: "10px",
                 }}
                 onClick={clickMyPage}
               >
-                MY
-              </button>
-              <button
-                style={{
-                  cursor: "pointer",
-                  width: "50px",
-                  border: "1px solid red",
-                  borderRadius: "10px",
-                }}
-                onClick={onLogout}
-              >
-                Logout
+                <img src={MyPageBtn} alt=''></img>
               </button>
             </div>
           </div>

@@ -21,6 +21,7 @@ import Ocr2 from "./screens/Ocr2";
 import RecipeDetail from "./components/recipe/RecipeDetail";
 import SelectRaw from "./components/recipe/SelectRaw";
 import RawFoodRecipe from "./components/recipe/RawFoodRecipe";
+import RecipeDes from "./components/recipe/RecipeDes";
 function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [isPetInput, setIsPetInput] = useState(false);
@@ -155,6 +156,9 @@ function App() {
       </Route>
       <Route exact={true} path='/rawFoodRecipe'>
         <RawFoodRecipe />
+      </Route>
+      <Route exact={true} path='/recipe_des'>
+        <RecipeDes />
       </Route>
     </div>
   );
