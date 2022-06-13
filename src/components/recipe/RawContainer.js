@@ -9,7 +9,7 @@ import axios from "axios";
 const SelectedElem = styled.div`
   font-size: 10px;
   width: 340px;
-  height: 70px;
+  height: 65px;
 `;
 function RawContainer() {
   let petId = parseInt(sessionStorage.getItem("pet_id"));
@@ -63,13 +63,20 @@ function RawContainer() {
     }
     if (selectedIngredient.length) {
       selectedIngredient.filter((item) => {
+        const more = document.createElement("div");
+        more.id = "more";
+        more.innerHTML = "...";
         if (item.category === "육류") {
           const meatBtn = document.getElementById("meat");
           const btn = document.createElement("button");
           btn.innerHTML = item.ingredient;
           btn.id = "foodBtn";
           if (meatBtn.childElementCount < meatIngredient.length) {
-            meatBtn.appendChild(btn);
+            if (meatBtn.childElementCount <= 3) {
+              meatBtn.appendChild(btn);
+            } else if (meatBtn.childElementCount === 4) {
+              meatBtn.appendChild(more);
+            }
           }
         } else if (item.category === "채소") {
           const vegeBtn = document.getElementById("vege");
@@ -77,7 +84,11 @@ function RawContainer() {
           btn.innerHTML = item.ingredient;
           btn.id = "foodBtn";
           if (vegeBtn.childElementCount < vegeIngredient.length) {
-            vegeBtn.appendChild(btn);
+            if (vegeBtn.childElementCount <= 3) {
+              vegeBtn.appendChild(btn);
+            } else if (vegeBtn.childElementCount === 4) {
+              vegeBtn.appendChild(more);
+            }
           }
         } else if (item.category === "과일") {
           const fruitsBtn = document.getElementById("fruits");
@@ -85,7 +96,11 @@ function RawContainer() {
           btn.innerHTML = item.ingredient;
           btn.id = "foodBtn";
           if (fruitsBtn.childElementCount < fruitsIngredient.length) {
-            fruitsBtn.appendChild(btn);
+            if (fruitsBtn.childElementCount <= 3) {
+              fruitsBtn.appendChild(btn);
+            } else if (fruitsBtn.childElementCount === 4) {
+              fruitsBtn.appendChild(more);
+            }
           }
         } else if (item.category === "기타") {
           const elseBtn = document.getElementById("else");
@@ -93,7 +108,11 @@ function RawContainer() {
           btn.innerHTML = item.ingredient;
           btn.id = "foodBtn";
           if (elseBtn.childElementCount < elseIngredient.length) {
-            elseBtn.appendChild(btn);
+            if (elseBtn.childElementCount <= 3) {
+              elseBtn.appendChild(btn);
+            } else if (elseBtn.childElementCount === 4) {
+              elseBtn.appendChild(more);
+            }
           }
         }
       });
@@ -110,10 +129,9 @@ function RawContainer() {
   }
   return (
     <div>
-      <div>
-        <div style={{ height: "30px" }}>재료선택</div>
-
-        <div style={{ fontSize: "12px" }}>
+      <div style={{ height: "60px", marginTop: "10px" }}>
+        <div>재료선택</div>
+        <div style={{ fontSize: "12px", marginTop: "10px" }}>
           선택한 재료를 바탕으로 하루 권장 섭취 영양 성분
           <br />
           적합도를 계산합니다.
@@ -121,8 +139,7 @@ function RawContainer() {
       </div>
       <div
         style={{
-          width: "100%",
-          height: "360px",
+          height: "340px",
           marginTop: "15px",
           color: "#ed7567",
           fontWeight: "bold",

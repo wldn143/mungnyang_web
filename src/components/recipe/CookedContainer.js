@@ -3,11 +3,30 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 const RecipeListBtn = styled.button`
-  width: 300px;
-  height: 150px;
-  background-color: ghostwhite;
+  width: 100%;
+  height: 160px;
   cursor: pointer;
-  border: solid 0.5px gray;
+  border: solid 0.5px #e3e3e3;
+  display: flex;
+  align-items: center;
+  border-style: none none solid none;
+  justify-content: space-evenly;
+`;
+const RecipeName = styled.div`
+  width: 180px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+`;
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin-bottom: -35px;
+  height: 60px;
+  justify-content: center;
+  font-size: 13.5px;
 `;
 
 function CookedContainer(props) {
@@ -126,7 +145,7 @@ function CookedContainer(props) {
       return !uniqueSet.includes(data);
     });
     setRecipeResult(arr4);
-    console.log(arr4);
+    console.log(arr4); //
   }, [filteredRecipes]);
 
   return (
@@ -137,13 +156,22 @@ function CookedContainer(props) {
         alignItems: "center",
       }}
     >
+      <TextContainer>
+        <div style={{ display: "flex" }}>
+          <div style={{ color: "#ED7567" }}>멍냥식탁</div>
+          <div>이 추천하는</div>
+        </div>
+        조리식 레시피
+      </TextContainer>
       <div
         className='list-container'
         onScroll={onScroll}
         ref={containerRef}
         style={{
-          textAlign: "center",
-          height: "475px",
+          height: "490px",
+          width: "390px",
+          border: "solid 0.5px #E3E3E3",
+          borderStyle: "solid none none none",
         }}
       >
         <div>
@@ -153,7 +181,60 @@ function CookedContainer(props) {
               food={food}
               onClick={() => detailPage(food.indexNO)}
             >
-              {food.recipe_name}
+              <div>
+                <img
+                  src={require(`./crawled_img/${food.recipe_img}`)}
+                  style={{ width: "140px", height: "110px" }}
+                />
+              </div>
+              <div>
+                <RecipeName>
+                  {food.recipe_name}
+                  <div
+                    style={{
+                      display: "flex",
+                      marginTop: "5px",
+                      fontSize: "13px",
+                    }}
+                  >
+                    <div>
+                      {food.ingredient1 !== "그램수 없음" ? (
+                        <div
+                          style={{
+                            backgroundColor: "pink",
+                            marginRight: "10px",
+                            padding: "0px 5px 0px 5px",
+                          }}
+                        >
+                          #{food.ingredient1}
+                        </div>
+                      ) : (
+                        <p></p>
+                      )}
+                    </div>
+                    <div>
+                      {food.ingredient2 ? (
+                        <div
+                          style={{
+                            backgroundColor: "#86DF84",
+                            padding: "0px 5px 0px 5px",
+                          }}
+                        >
+                          #{food.ingredient2}
+                        </div>
+                      ) : (
+                        <div></div>
+                      )}
+                    </div>
+                  </div>
+                </RecipeName>
+
+                <div
+                  style={{ textAlign: "end", fontSize: "12px", color: "grey" }}
+                >
+                  자세히보기 {">"}
+                </div>
+              </div>
             </RecipeListBtn>
           ))}
         </div>

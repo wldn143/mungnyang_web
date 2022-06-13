@@ -6,6 +6,7 @@ import CookedContainer from "./CookedContainer";
 import PureeContainer from "./PureeContainer";
 import RawContainer from "./RawContainer";
 import SnackContainer from "./SnackContainer";
+import RoundBoxM from "../auth/RoundBoxM";
 const CategoryBtn = styled.button`
   width: 50px;
   height: 50px;
@@ -182,7 +183,9 @@ function RecipeList() {
             );
           })}
         </div>
-        {content ? <div>{selectComponent[content]}</div> : <RawContainer />}
+        <RoundBoxM>
+          {content ? <div>{selectComponent[content]}</div> : <RawContainer />}
+        </RoundBoxM>
       </div>
     </div>
   );

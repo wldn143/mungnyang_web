@@ -42,14 +42,19 @@ function SelectRaw() {
   const ClickBtn = (id, category, ingredient) => {
     setFoodsArray([...foodsArray, { id, ingredient, category }]);
   };
-  let deDup = [...new Set(foodsArray)];
+  let deDup = [...new Set(foodsArray.map(JSON.stringify))].map(JSON.parse);
   if (foodsArray.length !== deDup.length) {
     //console.log("중복!");
   } else if (foodsArray.length !== 0 && deDup.length !== 13) {
     const allergyFoodBtn = document.getElementById("allergyFoodBtn");
     const btn = document.createElement("button");
-    btn.innerHTML = foodsArray[foodsArray.length - 1].ingredient;
-    btn.id = "allergyfoodbtn";
+    if (foodsArray[foodsArray.length - 1].ingredient.length >= 7) {
+      btn.innerHTML =
+        foodsArray[foodsArray.length - 1].ingredient.substr(0, 7) + "...";
+    } else if (foodsArray[foodsArray.length - 1].ingredient.length < 7) {
+      btn.innerHTML = foodsArray[foodsArray.length - 1].ingredient;
+    }
+    btn.id = "selectedfoodbtn";
     if (allergyFoodBtn.childElementCount + 1 === foodsArray.length) {
       allergyFoodBtn.appendChild(btn);
     }
@@ -87,6 +92,7 @@ function SelectRaw() {
               display: "flex",
               flexWrap: "wrap",
               alignContent: "center",
+              marginLeft: "33px",
             }}
           >
             <div

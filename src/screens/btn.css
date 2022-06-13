@@ -8,14 +8,30 @@
   font-weight: bolder;
   margin: 0px 8px 10px 0px;
 }
+#selectedfoodbtn {
+  cursor: pointer;
+  width: 100px;
+  height: 23px;
+  color: white;
+  background-color: #ead463;
+  border-radius: 14px;
+  font-weight: bolder;
+  margin: 0px 8px 10px 0px;
+}
 #foodBtn {
   cursor: pointer;
   width: 150px;
-  height: 27px;
+  height: 22px;
   color: black;
   border: #ed7567 solid 1px;
-  margin: 0px 8px 10px 0px;
+  margin: 0px 8px 5px 0px;
   border-radius: 5px;
+}
+#more {
+  color: black;
+  text-align: center;
+  font-size: 15px;
+  margin-top: -10px;
 }
 #Ielement {
   height: 20px;

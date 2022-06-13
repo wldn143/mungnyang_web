@@ -34,20 +34,14 @@ function RecipeDetail() {
 
   //하루권장 섭취량
   useEffect(() => {
-    fetch(`http://localhost:8080/Pet_RER`)
+    axios
+      .get(`http://localhost:8080/Pet_RER`)
       .then((response) => response.json())
       .then((json) => {
         const der = json.Pet_RER.find((data) => data.pet_id === petId);
         setDER(der.DER);
         console.log(PET_DER);
       });
-  });
-
-  let body = {
-    pet_id: petId,
-  };
-
-  useEffect(() => {
     fetch(`http://localhost:8080/recipe/${receivedId}`)
       .then((response) => response.json())
       .then((json) => {
@@ -57,11 +51,16 @@ function RecipeDetail() {
     axios
       .post(`http://localhost:8080/recipe/${receivedId}`, body)
       .then((res) => {
-        //console.log(res.data);
         setIngredientArray(res.data);
+        console.log(res.data);
       });
-  }, []); //레시피 재료정보 g단위
-  console.log(ingredientArray);
+  }, []);
+
+  let body = {
+    pet_id: petId,
+  };
+  //레시피 재료정보 g단위
+  //console.log(ingredientArray);
   useEffect(() => {
     //ingredientArray.filter((item) => item.foodDescription_KOR.includes(searchField))
     if (ingredientArray !== undefined) {
@@ -91,7 +90,10 @@ function RecipeDetail() {
           <div> </div>
         </Header>
         <div>
-          <img src={RecipeImg} style={{ height: "150px" }} />
+          <img
+            src={require(`./crawled_img/${receivedId}.jpg`)}
+            style={{ height: "200px" }}
+          />
         </div>
         <div
           className='recipeInfo'
@@ -163,7 +165,6 @@ function RecipeDetail() {
             <div
               id='ingredientContainer'
               style={{
-                height: "280px",
                 marginTop: "5px",
               }}
             ></div>
