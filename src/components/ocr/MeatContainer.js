@@ -24,9 +24,12 @@ function MeatContainer(props) {
   useEffect(() => {
     setUserMeatResult(props.userMeatResult);
     setPostAllergyFood(props.postAllergyFood);
-    axios.put(`http://localhost:8080/allergyfood/${petId}`, {
-      allergy_food_id: postAllergyFood.allergy_food_id,
-    });
+    axios.put(
+      `https://mungnyangapp-server.herokuapp.com/allergyfood/${petId}`,
+      {
+        allergy_food_id: postAllergyFood.allergy_food_id,
+      }
+    );
   }, []);
 
   useEffect(() => {

@@ -21,7 +21,10 @@ function RawFoodRecipe() {
   const [vegeAlert, setVegeAlert] = useState(null);
   useEffect(() => {
     axios
-      .post("http://localhost:8080/rawFood", location.state.data)
+      .post(
+        "https://mungnyangapp-server.herokuapp.com/rawFood",
+        location.state.data
+      )
       .then((res) => {
         setRawInfo(res.data[3]);
         setWaterInfo(res.data[1]);

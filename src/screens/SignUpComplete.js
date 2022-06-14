@@ -35,7 +35,7 @@ function SignUpComplete() {
     pet_weight: pet_weight,
   };
   axios
-    .post("http://localhost:8080/pet", pet_body)
+    .post("https://mungnyangapp-server.herokuapp.com/pet", pet_body)
     .then((res) => {})
     .catch((error) => {
       console.log(error);
@@ -52,9 +52,13 @@ function SignUpComplete() {
     health_id: health,
   };
 
-  axios.post("http://localhost:8080/user", user_body).then((res) => {});
+  axios
+    .post("https://mungnyangapp-server.herokuapp.com/user", user_body)
+    .then((res) => {});
 
-  axios.post("http://localhost:8080/pet_health", h_body).then((res) => {});
+  axios
+    .post("https://mungnyangapp-server.herokuapp.com/pet_health", h_body)
+    .then((res) => {});
 
   return (
     <StartLayout>

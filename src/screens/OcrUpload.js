@@ -76,7 +76,7 @@ function OcrUpload() {
     values.preventDefault();
 
     axios
-      .post("http://localhost:8080/ocrimg", {
+      .post("https://mungnyangapp-server.herokuapp.com/ocrimg", {
         pet_id: petId,
         meatImageUrl: meatImageUrl,
         fishImageUrl: fishImageUrl,
@@ -107,7 +107,7 @@ function OcrUpload() {
           <OcrContainer>
             <Upload
               name='image'
-              action={"http://localhost:8080/image"}
+              action={"https://mungnyangapp-server.herokuapp.com/image"}
               listType='picture'
               showUploadList={false}
               onChange={onChangeImage1}
@@ -115,7 +115,7 @@ function OcrUpload() {
               {meatImageUrl ? (
                 <img
                   id='upload-img'
-                  src={`http://localhost:8080/${meatImageUrl}`}
+                  src={`https://mungnyangapp-server.herokuapp.com/${meatImageUrl}`}
                   style={{ margin: "auto" }}
                   width='163'
                   height='197'
@@ -129,7 +129,7 @@ function OcrUpload() {
 
             <Upload
               name='image'
-              action={"http://localhost:8080/image"}
+              action={"https://mungnyangapp-server.herokuapp.com/image"}
               listType='picture'
               showUploadList={false}
               onChange={onChangeImage2}
@@ -137,7 +137,7 @@ function OcrUpload() {
               {fruitImageUrl ? (
                 <img
                   id='upload-img'
-                  src={`http://localhost:8080/${fruitImageUrl}`}
+                  src={`https://mungnyangapp-server.herokuapp.com/${fruitImageUrl}`}
                   style={{ margin: "auto" }}
                   width='163'
                   height='197'
@@ -152,7 +152,7 @@ function OcrUpload() {
           <OcrContainer>
             <Upload
               name='image'
-              action={"http://localhost:8080/image"}
+              action={"https://mungnyangapp-server.herokuapp.com/image"}
               listType='picture'
               showUploadList={false}
               onChange={onChangeImage3}
@@ -160,7 +160,7 @@ function OcrUpload() {
               {fishImageUrl ? (
                 <img
                   id='upload-img'
-                  src={`http://localhost:8080/${fishImageUrl}`}
+                  src={`https://mungnyangapp-server.herokuapp.com/${fishImageUrl}`}
                   style={{ margin: "auto" }}
                   width='163'
                   height='197'
@@ -173,7 +173,7 @@ function OcrUpload() {
             </Upload>
             <Upload
               name='image'
-              action={"http://localhost:8080/image"}
+              action={"https://mungnyangapp-server.herokuapp.com/image"}
               listType='picture'
               showUploadList={false}
               onChange={onChangeImage4}
@@ -181,7 +181,7 @@ function OcrUpload() {
               {vegeImageUrl ? (
                 <img
                   id='upload-img'
-                  src={`http://localhost:8080/${vegeImageUrl}`}
+                  src={`https://mungnyangapp-server.herokuapp.com/${vegeImageUrl}`}
                   style={{ margin: "auto" }}
                   width='163'
                   height='197'
@@ -196,7 +196,7 @@ function OcrUpload() {
           <OcrContainer>
             <Upload
               name='image'
-              action={"http://localhost:8080/image"}
+              action={"https://mungnyangapp-server.herokuapp.com/image"}
               listType='picture'
               showUploadList={false}
               onChange={onChangeImage5}
@@ -204,7 +204,7 @@ function OcrUpload() {
               {nutImageUrl ? (
                 <img
                   id='upload-img'
-                  src={`http://localhost:8080/${nutImageUrl}`}
+                  src={`https://mungnyangapp-server.herokuapp.com/${nutImageUrl}`}
                   style={{ margin: "auto" }}
                   width='163'
                   height='197'

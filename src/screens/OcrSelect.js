@@ -25,7 +25,7 @@ function OcrSelect() {
   const [filteredFoods, setFilteredFoods] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/food")
+    fetch("https://mungnyangapp-server.herokuapp.com/food")
       .then((response) => response.json())
       .then((foods) => {
         setFoods(foods.foods);
@@ -70,14 +70,14 @@ function OcrSelect() {
       pet_id: petId,
     };
     axios
-      .post("http://localhost:8080/allergyfood", body)
+      .post("https://mungnyangapp-server.herokuapp.com/allergyfood", body)
       .then((res) => {})
       .catch((error) => {
         console.log(error);
       });
 
     for (let i = 0; i < foodsArray.length; i++) {
-      fetch("http://localhost:8080/food")
+      fetch("https://mungnyangapp-server.herokuapp.com/food")
         .then((response) => response.json())
         .then((data) => {
           resultArray.push(
@@ -85,9 +85,12 @@ function OcrSelect() {
           );
 
           axios
-            .put(`http://localhost:8080/allergyfood/${petId}`, {
-              allergy_food_id: resultArray,
-            })
+            .put(
+              `https://mungnyangapp-server.herokuapp.com/allergyfood/${petId}`,
+              {
+                allergy_food_id: resultArray,
+              }
+            )
             .then(function (response) {
               console.log(resultArray);
             });

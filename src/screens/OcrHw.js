@@ -129,19 +129,34 @@ function OcrHw() {
     };
 
     axios
-      .post("http://localhost:8080/OCR_result_meat", meat_body)
+      .post(
+        "https://mungnyangapp-server.herokuapp.com/OCR_result_meat",
+        meat_body
+      )
       .then((res) => {});
     axios
-      .post("http://localhost:8080/OCR_result_seafood", seafood_body)
+      .post(
+        "https://mungnyangapp-server.herokuapp.com/OCR_result_seafood",
+        seafood_body
+      )
       .then((res) => {});
     axios
-      .post("http://localhost:8080/OCR_result_fruit", fruits_body)
+      .post(
+        "https://mungnyangapp-server.herokuapp.com/OCR_result_fruit",
+        fruits_body
+      )
       .then((res) => {});
     axios
-      .post("http://localhost:8080/OCR_result_vege", vege_body)
+      .post(
+        "https://mungnyangapp-server.herokuapp.com/OCR_result_vege",
+        vege_body
+      )
       .then((res) => {});
     axios
-      .post("http://localhost:8080/OCR_result_nuts", nuts_body)
+      .post(
+        "https://mungnyangapp-server.herokuapp.com/OCR_result_nuts",
+        nuts_body
+      )
       .then((res) => {});
     //sessionStorage.clear();
     history.push("/ocr-result");

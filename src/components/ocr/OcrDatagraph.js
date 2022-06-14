@@ -83,7 +83,7 @@ function OcrDatagraph(props) {
       pet_id: petId,
     };
     axios
-      .post("http://localhost:8080/allergyfood", body)
+      .post("https://mungnyangapp-server.herokuapp.com/allergyfood", body)
       .then((res) => {})
       .catch((error) => {
         console.log(error);

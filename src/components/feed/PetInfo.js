@@ -20,7 +20,7 @@ function PetInfo() {
   const [foods, setfoods] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/food")
+    fetch("https://mungnyangapp-server.herokuapp.com/food")
       .then((response) => response.json())
       .then((data) => {
         setfoods(data.foods);
@@ -28,7 +28,7 @@ function PetInfo() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8080/allergyfood")
+    fetch("https://mungnyangapp-server.herokuapp.com/allergyfood")
       .then((response) => response.json())
       .then((data) => {
         setAllergyId(data.allergy_food);
@@ -74,7 +74,7 @@ function PetInfo() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:8080/pet")
+    fetch("https://mungnyangapp-server.herokuapp.com/pet")
       .then((response) => response.json())
       .then((data) => {
         setPetInfo(data.pets);

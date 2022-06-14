@@ -18,20 +18,23 @@ function RecipeDetail() {
 
   //하루권장 섭취량
   useEffect(() => {
-    fetch(`http://localhost:8080/Pet_RER`)
+    fetch(`https://mungnyangapp-server.herokuapp.com/Pet_RER`)
       .then((response) => response.json())
       .then((json) => {
         const der = json.Pet_RER.find((data) => data.pet_id === petId);
         setDER(der.DER);
       });
-    fetch(`http://localhost:8080/recipe/${receivedId}`)
+    fetch(`https://mungnyangapp-server.herokuapp.com/recipe/${receivedId}`)
       .then((response) => response.json())
       .then((json) => {
         setRecipe(json.recipe);
       });
 
     axios
-      .post(`http://localhost:8080/recipe/${receivedId}`, body)
+      .post(
+        `https://mungnyangapp-server.herokuapp.com/recipe/${receivedId}`,
+        body
+      )
       .then((res) => {
         setIngredientArray(res.data);
         console.log(res.data);

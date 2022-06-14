@@ -42,7 +42,9 @@ function RecipeDes() {
     };
   };
   useEffect(() => {
-    fetch(`http://localhost:8080/recipe_description/${receivedId}`)
+    fetch(
+      `https://mungnyangapp-server.herokuapp.com/recipe_description/${receivedId}`
+    )
       .then((response) => response.json())
       .then((json) => {
         setRecipeDes(json.recipe_description);

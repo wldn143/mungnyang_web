@@ -31,7 +31,7 @@ function Login() {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:8080/user")
+    fetch("https://mungnyangapp-server.herokuapp.com/user")
       .then((response) => response.json())
       .then((json) => {
         const foundData = json.users.find((data) => data.email === email);
