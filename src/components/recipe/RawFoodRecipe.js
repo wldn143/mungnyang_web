@@ -164,44 +164,6 @@ function RawFoodRecipe() {
             </div>
           </div>
           <div id='info'>
-            {/* <div>
-              {meatAlert !== null ? (
-                <div
-                  style={{
-                    backgroundColor: "#f1f1f1",
-                    position: "absolute",
-                    width: "325px",
-                    height: "150px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    borderRadius: "10px",
-                    boxShadow: "2px 2px 2px 2px #cecece",
-                    fontSize: "16px",
-                  }}
-                >
-                  <div>{meatAlert}</div>
-                </div>
-              ) : null}
-              {vegeAlert !== null ? (
-                <div
-                  style={{
-                    backgroundColor: "#f1f1f1",
-                    position: "absolute",
-                    width: "325px",
-                    height: "150px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    borderRadius: "10px",
-                    boxShadow: "2px 2px 2px 2px #cecece",
-                    fontSize: "16px",
-                  }}
-                >
-                  <div style={{}}>{vegeAlert}</div>
-                </div>
-              ) : null}
-            </div> */}
             <div
               style={{
                 height: "40px",
@@ -242,7 +204,7 @@ function RawFoodRecipe() {
                 </div>
                 <div
                   style={{
-                    fontSize: "16px",
+                    fontSize: "15px",
                   }}
                 >
                   {kcal === undefined ? <div></div> : <div> {kcal}kcal</div>}
@@ -279,6 +241,7 @@ function RawFoodRecipe() {
                         flexDirection: "row",
                         width: "250px",
                         justifyContent: "space-between",
+                        fontSize: "15px",
                       }}
                     >
                       <div>
@@ -350,6 +313,7 @@ function RawFoodRecipe() {
                               justifyContent: "center",
                               alignItems: "center",
                               height: "30px",
+                              fontSize: "12px",
                             }}
                           >
                             {item.nutriReal === "NaN" ? (
@@ -363,7 +327,12 @@ function RawFoodRecipe() {
                               <div>mg</div>
                             )}
                           </td>
-                          <td style={{ border: "solid 0.5px #e3e3e3" }}>
+                          <td
+                            style={{
+                              border: "solid 0.5px #e3e3e3",
+                              fontSize: "12px",
+                            }}
+                          >
                             <div
                               style={{
                                 display: "flex",
@@ -379,7 +348,12 @@ function RawFoodRecipe() {
                               )}
                             </div>
                           </td>
-                          <td style={{ border: "solid 0.5px #e3e3e3" }}>
+                          <td
+                            style={{
+                              border: "solid 0.5px #e3e3e3",
+                              fontSize: "12px",
+                            }}
+                          >
                             {item.nutriGood}
                           </td>
                           <td
