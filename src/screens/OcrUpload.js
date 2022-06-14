@@ -99,7 +99,7 @@ function OcrUpload() {
       <AuthLayout>
         <Header>
           <BackButton></BackButton>
-          <div>알레르기 검사 OCR</div>
+          <div style={{ fontWeight: "bold" }}>알레르기 검사 OCR</div>
           <div> </div>
         </Header>
 

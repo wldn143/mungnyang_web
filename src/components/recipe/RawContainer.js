@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 
 const SelectedElem = styled.div`
-  font-size: 10px;
+  font-size: 13px;
   width: 340px;
   height: 65px;
 `;
@@ -72,10 +72,14 @@ function RawContainer() {
         if (item.category === "육류") {
           const meatBtn = document.getElementById("meat");
           const btn = document.createElement("button");
-          btn.innerHTML = item.ingredient;
           btn.id = "foodBtn";
           if (meatBtn.childElementCount < meatIngredient.length) {
             if (meatBtn.childElementCount <= 3) {
+              if (item.ingredient.length > 14) {
+                btn.innerHTML = item.ingredient.substr(0, 14) + "...";
+              } else {
+                btn.innerHTML = item.ingredient;
+              }
               meatBtn.appendChild(btn);
             } else if (meatBtn.childElementCount === 4) {
               meatBtn.appendChild(more);
@@ -84,10 +88,14 @@ function RawContainer() {
         } else if (item.category === "채소") {
           const vegeBtn = document.getElementById("vege");
           const btn = document.createElement("button");
-          btn.innerHTML = item.ingredient;
           btn.id = "foodBtn";
           if (vegeBtn.childElementCount < vegeIngredient.length) {
             if (vegeBtn.childElementCount <= 3) {
+              if (item.ingredient.length > 14) {
+                btn.innerHTML = item.ingredient.substr(0, 14) + "...";
+              } else {
+                btn.innerHTML = item.ingredient;
+              }
               vegeBtn.appendChild(btn);
             } else if (vegeBtn.childElementCount === 4) {
               vegeBtn.appendChild(more);
@@ -96,10 +104,14 @@ function RawContainer() {
         } else if (item.category === "과일") {
           const fruitsBtn = document.getElementById("fruits");
           const btn = document.createElement("button");
-          btn.innerHTML = item.ingredient;
           btn.id = "foodBtn";
           if (fruitsBtn.childElementCount < fruitsIngredient.length) {
             if (fruitsBtn.childElementCount <= 3) {
+              if (item.ingredient.length > 14) {
+                btn.innerHTML = item.ingredient.substr(0, 14) + "...";
+              } else {
+                btn.innerHTML = item.ingredient;
+              }
               fruitsBtn.appendChild(btn);
             } else if (fruitsBtn.childElementCount === 4) {
               fruitsBtn.appendChild(more);
@@ -108,10 +120,14 @@ function RawContainer() {
         } else if (item.category === "기타") {
           const elseBtn = document.getElementById("else");
           const btn = document.createElement("button");
-          btn.innerHTML = item.ingredient;
           btn.id = "foodBtn";
           if (elseBtn.childElementCount < elseIngredient.length) {
             if (elseBtn.childElementCount <= 3) {
+              if (item.ingredient.length > 14) {
+                btn.innerHTML = item.ingredient.substr(0, 14) + "...";
+              } else {
+                btn.innerHTML = item.ingredient;
+              }
               elseBtn.appendChild(btn);
             } else if (elseBtn.childElementCount === 4) {
               elseBtn.appendChild(more);

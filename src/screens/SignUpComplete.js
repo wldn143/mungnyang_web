@@ -61,7 +61,7 @@ function SignUpComplete() {
       <AuthLayout>
         <Header>
           <div> ㅤ</div>
-          <div>회원가입 완료</div>
+          <div style={{ fontWeight: "bold" }}>회원가입 완료</div>
           <div> </div>
         </Header>
         <div

@@ -14,7 +14,7 @@ function OcrComplete() {
       <AuthLayout>
         <Header>
           <div> ㅤ</div>
-          <div>알레르기 정보 입력 완료</div>
+          <div style={{ fontWeight: "bold" }}>알레르기 정보 입력 완료</div>
           <div> </div>
         </Header>
 

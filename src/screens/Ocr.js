@@ -21,7 +21,7 @@ function Ocr() {
       <AuthLayout>
         <Header>
           <BackButton></BackButton>
-          <div>알레르기 정보 입력</div>
+          <div style={{ fontWeight: "bold" }}>알레르기 정보 입력</div>
           <div> </div>
         </Header>
         <div className='slider'>

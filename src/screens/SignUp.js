@@ -58,7 +58,7 @@ function SignUp() {
       <AuthLayout>
         <Header>
           <BackButton></BackButton>
-          <div>사용자 정보 입력</div>
+          <div style={{ fontWeight: "bold" }}>사용자 정보 입력</div>
           <div> </div>
         </Header>
         <div

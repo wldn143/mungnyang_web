@@ -42,8 +42,9 @@ function MainPage(props) {
             <div
               style={{
                 color: "#ED7567",
-                fontSize: "20px",
+                fontSize: "22px",
                 marginBottom: "10px",
+                fontFamily: "suitB",
               }}
             >
               멍냥식탁

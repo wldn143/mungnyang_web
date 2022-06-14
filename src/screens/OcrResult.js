@@ -48,7 +48,7 @@ function OcrResult() {
       <AuthLayout>
         <Header>
           <div> ㅤ</div>
-          <div>인식 결과 확인</div>
+          <div style={{ fontWeight: "bold" }}>인식 결과 확인</div>
           <div> </div>
         </Header>
         <div style={{ height: "80px", width: "85%" }}>

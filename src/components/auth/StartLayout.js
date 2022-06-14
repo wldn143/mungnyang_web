@@ -6,6 +6,7 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: rgb(245, 230, 230);
+  font-family: "suit";
 `;
 
 function StartLayout({ children }) {

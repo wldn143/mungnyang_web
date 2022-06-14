@@ -100,7 +100,7 @@ function OcrSelect() {
       <AuthLayout>
         <Header>
           <BackButton></BackButton>
-          <div>알레르기 유발 식재료 선택</div>
+          <div style={{ fontWeight: "bold" }}>알레르기 유발 식재료 선택</div>
           <div> </div>
         </Header>
         <div

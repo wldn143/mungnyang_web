@@ -32,7 +32,7 @@ function SignUp3(props) {
       <AuthLayout>
         <Header>
           <BackButton></BackButton>
-          <div>반려동물 정보 입력</div>
+          <div style={{ fontWeight: "bold" }}>반려동물 정보 입력</div>
           <div> </div>
         </Header>
         <div

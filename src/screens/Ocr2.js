@@ -16,7 +16,9 @@ function Ocr2() {
       <AuthLayout>
         <Header>
           <BackButton></BackButton>
-          <div>알레르기 검사결과 입력 방식 선택</div>
+          <div style={{ fontWeight: "bold" }}>
+            알레르기 검사결과 입력 방식 선택
+          </div>
           <div> </div>
         </Header>
         <div>

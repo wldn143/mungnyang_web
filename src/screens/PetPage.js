@@ -39,7 +39,7 @@ function PetPage() {
       <AuthLayout>
         <Header>
           <BackButton></BackButton>
-          <div>반려동물 정보</div>
+          <div style={{ fontWeight: "bold" }}>반려동물 정보</div>
           <div> </div>
         </Header>
         <RoundBoxF>

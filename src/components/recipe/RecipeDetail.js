@@ -88,7 +88,7 @@ function RecipeDetail() {
       <AuthLayout>
         <Header>
           <BackButton></BackButton>
-          <div>레시피 정보 상세 보기</div>
+          <div style={{ fontWeight: "bold" }}>레시피 정보 상세 보기</div>
           <div> </div>
         </Header>
         <div>

@@ -21,3 +21,13 @@ body,
   height: 200px;
   background-color: rgb(230, 230, 230);
 }
+@font-face {
+  font-family: "suit";
+  src: url("./styles/fonts/SUIT-Medium.woff2");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "suitB";
+  src: url("./styles/fonts/SUIT-Bold.woff2");
+  font-weight: bold;
+}
