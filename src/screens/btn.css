@@ -1,3 +1,33 @@
+.btn {
+  width: 110px;
+  height: 40px;
+  color: #ed7567;
+  border: #ed7567 solid 1px;
+  border-radius: 7px;
+  cursor: pointer;
+  -webkit-transition: width 2s, height 2s, background-color 2s,
+    -webkit-transform 2s;
+  transition: width 0.2s, height 0.2s, background-color 0.01s, transform 0.2s;
+}
+.btn2 {
+  width: 230px;
+  height: 40px;
+  background-color: #ed7567;
+  color: white;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.btn:hover {
+  color: #fff7f6;
+}
+.hover1:hover {
+  background-color: #ed746766;
+  border: #ed746766 1px;
+}
+.hover2:hover {
+  background-color: #ed746766;
+  border: #ed746766 1px;
+}
 #allergyfoodbtn {
   cursor: pointer;
   width: 72px;

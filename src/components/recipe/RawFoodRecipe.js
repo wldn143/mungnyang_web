@@ -16,7 +16,9 @@ function RawFoodRecipe() {
   const [vaInfo, setVaInfo] = useState();
   const [kcal, setKcal] = useState();
   const [allInfo, setAllInfo] = useState();
-
+  const [flagInfo, setFlagInfo] = useState();
+  const [meatAlert, setMeatAlert] = useState(null);
+  const [vegeAlert, setVegeAlert] = useState(null);
   useEffect(() => {
     axios
       .post("http://localhost:8080/rawFood", location.state.data)
@@ -25,10 +27,20 @@ function RawFoodRecipe() {
         setWaterInfo(res.data[1]);
         setIngreInfo(res.data[0]);
         setKcal(res.data[4].kcal);
+        setFlagInfo(res.data[2]);
       });
     setVaInfo(location.state.info.infoArr);
   }, []);
+
   useEffect(() => {
+    if (flagInfo !== undefined) {
+      if (flagInfo.meatFlag === true) {
+        alert("영양균형을 위해 육류를 선택해주세요");
+      }
+      if (flagInfo.vegeFlag === true) {
+        alert("영양균형을 위해 비육류를 선택해주세요");
+      }
+    }
     if (ingreInfo !== undefined) {
       ingreInfo.filter((item) => {
         const meatEle = document.getElementById("meat");
@@ -152,6 +164,44 @@ function RawFoodRecipe() {
             </div>
           </div>
           <div id='info'>
+            {/* <div>
+              {meatAlert !== null ? (
+                <div
+                  style={{
+                    backgroundColor: "#f1f1f1",
+                    position: "absolute",
+                    width: "325px",
+                    height: "150px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderRadius: "10px",
+                    boxShadow: "2px 2px 2px 2px #cecece",
+                    fontSize: "16px",
+                  }}
+                >
+                  <div>{meatAlert}</div>
+                </div>
+              ) : null}
+              {vegeAlert !== null ? (
+                <div
+                  style={{
+                    backgroundColor: "#f1f1f1",
+                    position: "absolute",
+                    width: "325px",
+                    height: "150px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderRadius: "10px",
+                    boxShadow: "2px 2px 2px 2px #cecece",
+                    fontSize: "16px",
+                  }}
+                >
+                  <div style={{}}>{vegeAlert}</div>
+                </div>
+              ) : null}
+            </div> */}
             <div
               style={{
                 height: "40px",
@@ -165,6 +215,7 @@ function RawFoodRecipe() {
             >
               주 영양성분 정보
             </div>
+
             <div
               style={{
                 display: "flex",

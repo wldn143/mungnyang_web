@@ -146,13 +146,15 @@ function RawContainer() {
     let info = {
       infoArr: infoArr,
     };
-    history.push({
-      pathname: "/rawFoodRecipe",
-      state: {
-        data: body,
-        info: info,
-      },
-    });
+    if (info.infoArr.length !== 0) {
+      history.push({
+        pathname: "/rawFoodRecipe",
+        state: {
+          data: body,
+          info: info,
+        },
+      });
+    }
   }
   return (
     <div>

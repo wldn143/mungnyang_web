@@ -7,22 +7,6 @@ import BackButton from "../feed/BackButton";
 import Header from "../feed/Header";
 import RecipeImg from "../../image/recipeImg.png";
 import axios from "axios";
-const Minibutn = styled.button`
-  width: 230px;
-  height: 40px;
-  background-color: #ed7567;
-  color: white;
-  border-radius: 7px;
-  cursor: pointer;
-`;
-const WhiteMinibtn = styled.button`
-  width: 110px;
-  height: 40px;
-  color: #ed7567;
-  border: #ed7567 solid 1px;
-  border-radius: 7px;
-  cursor: pointer;
-`;
 
 function RecipeDetail() {
   let petId = parseInt(sessionStorage.getItem("pet_id"));
@@ -187,10 +171,10 @@ function RecipeDetail() {
                 height: "50px",
               }}
             >
-              <WhiteMinibtn>♥ 찜하기</WhiteMinibtn>
-              <Minibutn onClick={() => recipeDesPage()}>
+              <button className='btn hover1'>♥ 찜하기</button>
+              <button className='btn2 hover2' onClick={() => recipeDesPage()}>
                 레시피 제작방법
-              </Minibutn>
+              </button>
             </div>
             <div
               style={{
