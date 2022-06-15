@@ -84,9 +84,8 @@ function OcrSelect() {
           resultArray.push(
             data.foods.filter((item) => item.foodInKor === foodsArray[i])[0].id
           );
-
           axios
-            .put(`${API_URL}/${petId}`, {
+            .put(`${API_URL}/allergyfood/${petId}`, {
               allergy_food_id: resultArray,
             })
             .then(function (response) {
