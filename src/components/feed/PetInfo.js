@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import "../../screens/btn.css";
+import { API_URL } from "../../config/constants";
 const InfoBox = styled.div`
   width: 120px;
   margin: 0 0 5px 0;
@@ -20,7 +21,7 @@ function PetInfo() {
   const [foods, setfoods] = useState([]);
 
   useEffect(() => {
-    fetch("https://mungnyangapp-server.herokuapp.com/food")
+    fetch(`${API_URL}/food`)
       .then((response) => response.json())
       .then((data) => {
         setfoods(data.foods);
@@ -28,10 +29,11 @@ function PetInfo() {
   }, []);
 
   useEffect(() => {
-    fetch("https://mungnyangapp-server.herokuapp.com/allergyfood")
+    fetch(`${API_URL}/allergyfood`)
       .then((response) => response.json())
       .then((data) => {
         setAllergyId(data.allergy_food);
+        console.log(data.allergy_food);
       });
   }, []);
 
@@ -45,18 +47,17 @@ function PetInfo() {
             return parseInt(item, 10);
           });
           if (
-            (allergyList[0] =
-              isNaN ||
-              allergyList.length === 0 ||
-              allergyList === undefined ||
-              allergyList === null)
+            allergyList[0] !== isNaN ||
+            allergyList.length !== 0 ||
+            allergyList !== undefined ||
+            allergyList !== null
           ) {
-          } else {
             for (let i = 0; i < allergyList.length; i++) {
               if (foods.filter((item) => item.id === allergyList[i])) {
                 let allergyfood = foods.filter(
                   (item) => item.id === allergyList[i]
                 )[0].foodInKor;
+                console.log(allergyfood);
                 const allergyFoodBtn =
                   document.getElementById("allergyFoodBtn");
                 const btn = document.createElement("button");
@@ -74,7 +75,7 @@ function PetInfo() {
   });
 
   useEffect(() => {
-    fetch("https://mungnyangapp-server.herokuapp.com/pet")
+    fetch(`${API_URL}/pet`)
       .then((response) => response.json())
       .then((data) => {
         setPetInfo(data.pets);
