@@ -7,6 +7,7 @@ import BackButton from "../feed/BackButton";
 import Header from "../feed/Header";
 import RecipeImg from "../../image/recipeImg.png";
 import axios from "axios";
+import { API_URL } from "../../config/constants";
 
 function RecipeDetail() {
   let petId = parseInt(sessionStorage.getItem("pet_id"));
@@ -18,27 +19,22 @@ function RecipeDetail() {
 
   //하루권장 섭취량
   useEffect(() => {
-    fetch(`https://mungnyangapp-server.herokuapp.com/Pet_RER`)
+    fetch(`${API_URL}/Pet_RER`)
       .then((response) => response.json())
       .then((json) => {
         const der = json.Pet_RER.find((data) => data.pet_id === petId);
         setDER(der.DER);
       });
-    fetch(`https://mungnyangapp-server.herokuapp.com/recipe/${receivedId}`)
+    fetch(`${API_URL}/recipe/${receivedId}`)
       .then((response) => response.json())
       .then((json) => {
         setRecipe(json.recipe);
       });
 
-    axios
-      .post(
-        `https://mungnyangapp-server.herokuapp.com/recipe/${receivedId}`,
-        body
-      )
-      .then((res) => {
-        setIngredientArray(res.data);
-        console.log(res.data);
-      });
+    axios.post(`${API_URL}/recipe/${receivedId}`, body).then((res) => {
+      setIngredientArray(res.data);
+      console.log(res.data);
+    });
   }, []);
 
   let body = {

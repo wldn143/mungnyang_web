@@ -33,7 +33,6 @@ function PetInfo() {
       .then((response) => response.json())
       .then((data) => {
         setAllergyId(data.allergy_food);
-        console.log(data.allergy_food);
       });
   }, []);
 
@@ -48,23 +47,29 @@ function PetInfo() {
           });
           if (
             allergyList[0] !== isNaN ||
+            allergyList !== [NaN] ||
+            allergyList[0] !== "NaN" ||
             allergyList.length !== 0 ||
-            allergyList !== undefined ||
-            allergyList !== null
+            allergyList[0] !== undefined ||
+            allergyList[0] !== null
           ) {
             for (let i = 0; i < allergyList.length; i++) {
               if (foods.filter((item) => item.id === allergyList[i])) {
                 let allergyfood = foods.filter(
                   (item) => item.id === allergyList[i]
-                )[0].foodInKor;
-                console.log(allergyfood);
-                const allergyFoodBtn =
-                  document.getElementById("allergyFoodBtn");
-                const btn = document.createElement("button");
-                btn.innerHTML = allergyfood;
-                btn.id = "allergyfoodbtn";
-                if (allergyFoodBtn.childElementCount < allergyList.length) {
-                  allergyFoodBtn.appendChild(btn);
+                )[0];
+                if (allergyfood === undefined) {
+                  console.log(allergyfood);
+                } else {
+                  allergyfood = allergyfood.foodInKor;
+                  const allergyFoodBtn =
+                    document.getElementById("allergyFoodBtn");
+                  const btn = document.createElement("button");
+                  btn.innerHTML = allergyfood;
+                  btn.id = "allergyfoodbtn";
+                  if (allergyFoodBtn.childElementCount < allergyList.length) {
+                    allergyFoodBtn.appendChild(btn);
+                  }
                 }
               }
             }

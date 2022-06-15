@@ -7,6 +7,7 @@ import BackButton from "../feed/BackButton";
 import Header from "../feed/Header";
 import RecipeImg from "../../image/recipeImg.png";
 import axios from "axios";
+import { API_URL } from "../../config/constants";
 const Container = styled.div`
   display: flex;
   justify-content: space-around;
@@ -42,9 +43,7 @@ function RecipeDes() {
     };
   };
   useEffect(() => {
-    fetch(
-      `https://mungnyangapp-server.herokuapp.com/recipe_description/${receivedId}`
-    )
+    fetch(`${API_URL}/recipe_description/${receivedId}`)
       .then((response) => response.json())
       .then((json) => {
         setRecipeDes(json.recipe_description);

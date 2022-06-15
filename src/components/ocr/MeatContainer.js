@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { API_URL } from "../../config/constants";
 import {
   Container,
   ElementContainer,
@@ -24,12 +25,9 @@ function MeatContainer(props) {
   useEffect(() => {
     setUserMeatResult(props.userMeatResult);
     setPostAllergyFood(props.postAllergyFood);
-    axios.put(
-      `https://mungnyangapp-server.herokuapp.com/allergyfood/${petId}`,
-      {
-        allergy_food_id: postAllergyFood.allergy_food_id,
-      }
-    );
+    axios.put(`${API_URL}/allergyfood/${petId}`, {
+      allergy_food_id: postAllergyFood.allergy_food_id,
+    });
   }, []);
 
   useEffect(() => {

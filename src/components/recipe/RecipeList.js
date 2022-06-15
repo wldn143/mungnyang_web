@@ -7,6 +7,7 @@ import PureeContainer from "./PureeContainer";
 import RawContainer from "./RawContainer";
 import SnackContainer from "./SnackContainer";
 import RoundBoxM from "../auth/RoundBoxM";
+import { API_URL } from "../../config/constants";
 const CategoryBtn = styled.button`
   width: 54px;
   height: 54px;
@@ -30,7 +31,7 @@ function RecipeList() {
 
   //로그인된 유저의 반려동물 정보
   useEffect(() => {
-    fetch("https://mungnyangapp-server.herokuapp.com/pet")
+    fetch(`${API_URL}/pet`)
       .then((response) => response.json())
       .then((json) => {
         const foundData = json.pets.find((data) => data.pet_id === petId);
@@ -50,7 +51,7 @@ function RecipeList() {
   //음식 전체 리스트
   useEffect(() => {
     if (foods.length === 0) {
-      fetch("https://mungnyangapp-server.herokuapp.com/food")
+      fetch(`${API_URL}/food`)
         .then((response) => response.json())
         .then((json) => {
           setfoods(json.foods);
@@ -61,7 +62,7 @@ function RecipeList() {
   //알러지 음식 확인 ID배열
   useEffect(() => {
     if (allergyId.length === 0) {
-      fetch("https://mungnyangapp-server.herokuapp.com/allergyfood")
+      fetch(`${API_URL}/allergyfood`)
         .then((response) => response.json())
         .then((json) => {
           const foundData = json.allergy_food.find(
@@ -91,7 +92,7 @@ function RecipeList() {
   //레시피 전체 출력
   useEffect(() => {
     if (recipe.length === 0) {
-      fetch("https://mungnyangapp-server.herokuapp.com/recipe")
+      fetch(`${API_URL}/recipe`)
         .then((response) => response.json())
         .then((recipe) => {
           setRecipe(recipe.recipe);

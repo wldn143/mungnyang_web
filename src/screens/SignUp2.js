@@ -9,6 +9,7 @@ import Header from "../components/feed/Header";
 import AuthBox from "../components/auth/AuthBox";
 import Radio from "../components/auth/Radio";
 import BackButton from "../components/feed/BackButton";
+import { API_URL } from "../config/constants";
 
 function SignUp2() {
   //const isSigningUp = props.isSigningUp;
@@ -65,7 +66,7 @@ function SignUp2() {
     sessionStorage.setItem("pet_size", size);
     sessionStorage.setItem("pet_weight", pet_weight);
 
-    fetch("https://mungnyangapp-server.herokuapp.com/pet")
+    fetch(`${API_URL}/pet`)
       .then((response) => response.json())
       .then((json) => {
         let petId;

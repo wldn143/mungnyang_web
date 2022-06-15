@@ -8,6 +8,7 @@ import Header from "../feed/Header";
 import RecipeImg from "../../image/recipeImg.png";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { API_URL } from "../../config/constants";
 function RawFoodRecipe() {
   const location = useLocation();
   const [rawInfo, setRawInfo] = useState();
@@ -20,18 +21,13 @@ function RawFoodRecipe() {
   const [meatAlert, setMeatAlert] = useState(null);
   const [vegeAlert, setVegeAlert] = useState(null);
   useEffect(() => {
-    axios
-      .post(
-        "https://mungnyangapp-server.herokuapp.com/rawFood",
-        location.state.data
-      )
-      .then((res) => {
-        setRawInfo(res.data[3]);
-        setWaterInfo(res.data[1]);
-        setIngreInfo(res.data[0]);
-        setKcal(res.data[4].kcal);
-        setFlagInfo(res.data[2]);
-      });
+    axios.post(`${API_URL}/rawFood`, location.state.data).then((res) => {
+      setRawInfo(res.data[3]);
+      setWaterInfo(res.data[1]);
+      setIngreInfo(res.data[0]);
+      setKcal(res.data[4].kcal);
+      setFlagInfo(res.data[2]);
+    });
     setVaInfo(location.state.info.infoArr);
   }, []);
 

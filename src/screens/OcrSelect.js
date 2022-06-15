@@ -8,6 +8,7 @@ import "./btn.css";
 import SubmitButton from "../components/auth/SubmitButton";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { API_URL } from "../config/constants";
 const FoodListBtn = styled.button`
   width: 100px;
   height: 30px;
@@ -25,7 +26,7 @@ function OcrSelect() {
   const [filteredFoods, setFilteredFoods] = useState([]);
 
   useEffect(() => {
-    fetch("https://mungnyangapp-server.herokuapp.com/food")
+    fetch(`${API_URL}/food`)
       .then((response) => response.json())
       .then((foods) => {
         setFoods(foods.foods);
@@ -70,14 +71,14 @@ function OcrSelect() {
       pet_id: petId,
     };
     axios
-      .post("https://mungnyangapp-server.herokuapp.com/allergyfood", body)
+      .post(`${API_URL}/allergyfood`, body)
       .then((res) => {})
       .catch((error) => {
         console.log(error);
       });
 
     for (let i = 0; i < foodsArray.length; i++) {
-      fetch("https://mungnyangapp-server.herokuapp.com/food")
+      fetch(`${API_URL}/food`)
         .then((response) => response.json())
         .then((data) => {
           resultArray.push(
@@ -85,12 +86,9 @@ function OcrSelect() {
           );
 
           axios
-            .put(
-              `https://mungnyangapp-server.herokuapp.com/allergyfood/${petId}`,
-              {
-                allergy_food_id: resultArray,
-              }
-            )
+            .put(`${API_URL}/${petId}`, {
+              allergy_food_id: resultArray,
+            })
             .then(function (response) {
               console.log(resultArray);
             });

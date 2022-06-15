@@ -9,6 +9,7 @@ import WhiteButton from "../components/auth/WhiteButton";
 import PinkButton from "../components/auth/PinkButton";
 import Logo from "../image/landing_logo.png";
 import axios from "axios";
+import { API_URL } from "../config/constants";
 
 function SignUpComplete() {
   const history = useHistory();
@@ -35,7 +36,7 @@ function SignUpComplete() {
     pet_weight: pet_weight,
   };
   axios
-    .post("https://mungnyangapp-server.herokuapp.com/pet", pet_body)
+    .post(`${API_URL}/pet`, pet_body)
     .then((res) => {})
     .catch((error) => {
       console.log(error);
@@ -52,13 +53,9 @@ function SignUpComplete() {
     health_id: health,
   };
 
-  axios
-    .post("https://mungnyangapp-server.herokuapp.com/user", user_body)
-    .then((res) => {});
+  axios.post(`${API_URL}/user`, user_body).then((res) => {});
 
-  axios
-    .post("https://mungnyangapp-server.herokuapp.com/pet_health", h_body)
-    .then((res) => {});
+  axios.post(`${API_URL}/pet_health`, h_body).then((res) => {});
 
   return (
     <StartLayout>

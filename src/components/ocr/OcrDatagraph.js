@@ -7,6 +7,7 @@ import VegeContainer from "./VegeContainer";
 import NutsContainer from "./NutsContainer";
 import FruitsContainer from "./FruitsContainer";
 import axios from "axios";
+import { API_URL } from "../../config/constants";
 const OcrNavBtn = styled.button`
   height: 35px;
   color: #ed7567;
@@ -83,7 +84,7 @@ function OcrDatagraph(props) {
       pet_id: petId,
     };
     axios
-      .post("https://mungnyangapp-server.herokuapp.com/allergyfood", body)
+      .post(`${API_URL}/allergyfood`, body)
       .then((res) => {})
       .catch((error) => {
         console.log(error);

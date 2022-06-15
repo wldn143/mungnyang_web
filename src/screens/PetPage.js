@@ -7,12 +7,13 @@ import BackButton from "../components/feed/BackButton";
 import OcrYes from "../components/ocr/OcrYes";
 import OcrNo from "../components/ocr/OcrNo";
 import RoundBoxF from "../components/auth/RoundBoxF";
+import { API_URL } from "../config/constants";
 function PetPage() {
   let petId = parseInt(sessionStorage.getItem("pet_id"));
   const [isOcr, setIsOcr] = useState([]); //패치나 axios쓸때 얘를 써야 데이터를 꺼낼수가이쎄
   const [content, setContent] = useState();
   useEffect(() => {
-    fetch("https://mungnyangapp-server.herokuapp.com/OCR_result_meat")
+    fetch(`${API_URL}/OCR_result_meat`)
       .then((response) => response.json())
       .then((data) => {
         setIsOcr(data.OCR_result_meat);

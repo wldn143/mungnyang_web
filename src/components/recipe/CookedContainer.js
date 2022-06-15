@@ -145,6 +145,7 @@ function CookedContainer(props) {
       return !uniqueSet.includes(data);
     });
     setRecipeResult(arr4);
+    console.log(arr4);
   }, [filteredRecipes]);
 
   return (

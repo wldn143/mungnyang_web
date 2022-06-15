@@ -13,6 +13,7 @@ import nutOcrImg from "../image/nutOcr.png";
 import { Upload } from "antd";
 import OcrContainer from "../components/auth/OcrContainer";
 import axios from "axios";
+import { API_URL } from "../config/constants";
 
 function OcrUpload() {
   const [meatImageUrl, setMeatImageUrl] = useState(null);
@@ -76,7 +77,7 @@ function OcrUpload() {
     values.preventDefault();
 
     axios
-      .post("https://mungnyangapp-server.herokuapp.com/ocrimg", {
+      .post(`${API_URL}/ocrimg`, {
         pet_id: petId,
         meatImageUrl: meatImageUrl,
         fishImageUrl: fishImageUrl,
@@ -107,7 +108,7 @@ function OcrUpload() {
           <OcrContainer>
             <Upload
               name='image'
-              action={"https://mungnyangapp-server.herokuapp.com/image"}
+              action={`${API_URL}/image`}
               listType='picture'
               showUploadList={false}
               onChange={onChangeImage1}
@@ -115,7 +116,7 @@ function OcrUpload() {
               {meatImageUrl ? (
                 <img
                   id='upload-img'
-                  src={`https://mungnyangapp-server.herokuapp.com/${meatImageUrl}`}
+                  src={`${API_URL}/${meatImageUrl}`}
                   style={{ margin: "auto" }}
                   width='163'
                   height='197'
@@ -129,7 +130,7 @@ function OcrUpload() {
 
             <Upload
               name='image'
-              action={"https://mungnyangapp-server.herokuapp.com/image"}
+              action={`${API_URL}/image`}
               listType='picture'
               showUploadList={false}
               onChange={onChangeImage2}
@@ -137,7 +138,7 @@ function OcrUpload() {
               {fruitImageUrl ? (
                 <img
                   id='upload-img'
-                  src={`https://mungnyangapp-server.herokuapp.com/${fruitImageUrl}`}
+                  src={`${API_URL}/${fruitImageUrl}`}
                   style={{ margin: "auto" }}
                   width='163'
                   height='197'
@@ -152,7 +153,7 @@ function OcrUpload() {
           <OcrContainer>
             <Upload
               name='image'
-              action={"https://mungnyangapp-server.herokuapp.com/image"}
+              action={`${API_URL}/image`}
               listType='picture'
               showUploadList={false}
               onChange={onChangeImage3}
@@ -160,7 +161,7 @@ function OcrUpload() {
               {fishImageUrl ? (
                 <img
                   id='upload-img'
-                  src={`https://mungnyangapp-server.herokuapp.com/${fishImageUrl}`}
+                  src={`${API_URL}/${fishImageUrl}`}
                   style={{ margin: "auto" }}
                   width='163'
                   height='197'
@@ -173,7 +174,7 @@ function OcrUpload() {
             </Upload>
             <Upload
               name='image'
-              action={"https://mungnyangapp-server.herokuapp.com/image"}
+              action={`${API_URL}/image`}
               listType='picture'
               showUploadList={false}
               onChange={onChangeImage4}
@@ -181,7 +182,7 @@ function OcrUpload() {
               {vegeImageUrl ? (
                 <img
                   id='upload-img'
-                  src={`https://mungnyangapp-server.herokuapp.com/${vegeImageUrl}`}
+                  src={`${API_URL}/${vegeImageUrl}`}
                   style={{ margin: "auto" }}
                   width='163'
                   height='197'
@@ -196,7 +197,7 @@ function OcrUpload() {
           <OcrContainer>
             <Upload
               name='image'
-              action={"https://mungnyangapp-server.herokuapp.com/image"}
+              action={`${API_URL}/image`}
               listType='picture'
               showUploadList={false}
               onChange={onChangeImage5}
@@ -204,7 +205,7 @@ function OcrUpload() {
               {nutImageUrl ? (
                 <img
                   id='upload-img'
-                  src={`https://mungnyangapp-server.herokuapp.com/${nutImageUrl}`}
+                  src={`${API_URL}/${nutImageUrl}`}
                   style={{ margin: "auto" }}
                   width='163'
                   height='197'

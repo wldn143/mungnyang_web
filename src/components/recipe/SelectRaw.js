@@ -4,6 +4,7 @@ import StartLayout from "../auth/StartLayout";
 import AuthLayout from "../auth/AuthLayout";
 import SubmitButton from "../auth/SubmitButton";
 import { useHistory } from "react-router-dom";
+import { API_URL } from "../../config/constants";
 
 const FoodListBtn = styled.button`
   width: 250px;
@@ -26,7 +27,7 @@ function SelectRaw() {
   const [selectedIngredient, setSelectedIngredient] = useState([]);
 
   useEffect(() => {
-    fetch("https://mungnyangapp-server.herokuapp.com/raw_ingredient")
+    fetch(`${API_URL}/raw_ingredient`)
       .then((response) => response.json())
       .then((data) => {
         setFoods(data.raw);

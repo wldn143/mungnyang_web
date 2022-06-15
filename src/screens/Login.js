@@ -6,6 +6,7 @@ import StartText from "../components/auth/StartText";
 import Input from "../components/auth/Input";
 import SubmitButton from "../components/auth/SubmitButton";
 import { useHistory } from "react-router-dom";
+import { API_URL } from "../config/constants";
 
 const StartText1 = styled.p`
   font-weight: bold;
@@ -31,7 +32,7 @@ function Login() {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    fetch("https://mungnyangapp-server.herokuapp.com/user")
+    fetch(`${API_URL}/user`)
       .then((response) => response.json())
       .then((json) => {
         const foundData = json.users.find((data) => data.email === email);
