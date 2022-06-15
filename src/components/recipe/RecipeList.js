@@ -41,10 +41,12 @@ function RecipeList() {
 
   //종 확인
   useEffect(() => {
-    if (petInfo.cat_or_dog === "dog") {
-      setPetKind("강아지");
-    } else if (petInfo.cat_or_dog === "cat") {
-      setPetKind("고양이");
+    if (petInfo.length !== 0) {
+      if (petInfo.cat_or_dog === "dog") {
+        setPetKind("강아지");
+      } else if (petInfo.cat_or_dog === "cat") {
+        setPetKind("고양이");
+      }
     }
   }, [petInfo]);
 
